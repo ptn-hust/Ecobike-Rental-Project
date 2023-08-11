@@ -12,7 +12,7 @@ import group13.ecobikerental.dbconnnection_layer.DBConnector;
  * Entity Dock
  */
 public class Dock {
-    /**
+	/**
      * Represent for id of Dock
      */
     private int id;
@@ -32,6 +32,10 @@ public class Dock {
      * Represent for area of Dock
      */
     private int area;
+    
+    private int available_bike;
+    
+    private String img_url;
 
     /**
      * Constructor with 5 arguments
@@ -42,13 +46,31 @@ public class Dock {
      * @param total_bike - the total_bike of bike
      * @param area     - the area of dock
      */
-    public Dock(int id, String dockName, String address, int quantity, int area) {
+    public Dock(int id, String dockName, String address, int total_bike, int area) {
         this.id = id;
         this.dockName = dockName;
         this.address = address;
-        this.total_bike = quantity;
+        this.total_bike = total_bike;
         this.area = area;
     }
+    public Dock(int id, String dockName, String address, int total_bike, int area, int available_bike) {
+        this.id = id;
+        this.dockName = dockName;
+        this.address = address;
+        this.total_bike = total_bike;
+        this.area = area;
+        this.available_bike = available_bike;
+    }
+    public Dock(int id, String dockName, String address, int total_bike, int area, int available_bike, String img_url) {
+		super();
+		this.id = id;
+		this.dockName = dockName;
+		this.address = address;
+		this.total_bike = total_bike;
+		this.area = area;
+		this.available_bike = available_bike;
+		this.img_url = img_url;
+	}
 
     /**
      * Default constructor for class Dock
@@ -189,4 +211,16 @@ public class Dock {
         }
         return dockList;
     }
+	public int getAvailable_bike() {
+		return available_bike;
+	}
+	public void setAvailable_bike(int available_bike) {
+		this.available_bike = available_bike;
+	}
+	public String getImg_url() {
+		return img_url;
+	}
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
+	}
 }

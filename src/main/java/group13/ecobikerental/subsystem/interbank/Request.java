@@ -35,6 +35,7 @@ public class Request {
         return gson.toJson(this, Request.class);
     }
 
+//    test
     public static void main(String[] args) {
         Transaction transaction = new Transaction("vn_group2_2021", "Group 2", "774", "1125", "pay", "test pay", 100);
         Request request = new Request(transaction);

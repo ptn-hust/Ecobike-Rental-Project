@@ -17,8 +17,8 @@ public class Configs {
     public static final String SECRETKEY = "BLRqOL6OIrI=";
 
     public static final String DB_NAME = "ecobikerental2";
-    public static final String DB_USERNAME = "";
-    public static final String DB_PASSWORD = "";
+    public static final String DB_USERNAME = "nhiliti";
+    public static final String DB_PASSWORD = "920203";
 
     public static final String SPLASH_SCREEN_PATH = "/ecobikerental/capstone_project/views/splash.fxml";
     public static final String HOME_SCREEN_PATH = "/ecobikerental/capstone_project/views/home.fxml";

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import group13.ecobikerental.controller.RentBikeController;
+import group13.ecobikerental.controller.ViewDockController;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.dock.Dock;
 import group13.ecobikerental.utils.Configs;
@@ -31,7 +32,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
     public Button btnBack;
 
     private Dock dock;
-    private int numberOfBike;
+//    private int numberOfBike;
 
     public DockInfoScreenHandler(Stage stage, String screenPath, Dock dock) throws IOException {
         super(stage, screenPath);
@@ -45,15 +46,15 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
         lbName.setText(this.dock.getDockName());
         lbAddress.setText(this.dock.getAddress());
         lbArea.setText(this.dock.getArea() + " m\u00B2");
-        lbQuantity.setText(this.numberOfBike + "/" + this.dock.getTotal_bike());
-        setImage(imgDock, "assets/images/dock2.jpg");
+        lbQuantity.setText(this.dock.getAvailable_bike() + "/" + this.dock.getTotal_bike());
+//        setImage(imgDock, "assets/images/dock2.jpg");
+        setImage(imgDock,this.dock.getImg_url() ,"assets/images/dock2.jpg");
         setImage(imgLogo, Configs.LOGO_IMG_PATH);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setController(new RentBikeController());
-
         btnBack.setOnAction(event -> {
             this.getPrev().show();
         });
@@ -73,7 +74,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
     }
 
     public void viewBike() {
-        System.out.println("clickeddddd");
+        System.out.println("view bike clickeddddd");
         String barcode = tfBarcode.getText();
 
         Bike bike = null;
@@ -115,7 +116,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
         return (RentBikeController) super.getController();
     }
 
-    public void setNumberOfBike(int numberOfBike) {
-        this.numberOfBike = numberOfBike;
-    }
+//    public void setNumberOfBike(int numberOfBike) {
+//        this.numberOfBike = numberOfBike;
+//    }
 }

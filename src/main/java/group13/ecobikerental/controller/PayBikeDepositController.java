@@ -34,9 +34,13 @@ public class PayBikeDepositController extends BaseController {
         result.put("RESULT", "PAYMENT FAILED!");
         try {
             card.setDateExpired(CreditCardBL.getExpirationDate(card.getDateExpired()));
+            System.out.println("date expired ne: " + card.getDateExpired());
             this.interbank = new InterbankSubsystem();
-
+            
+            System.out.println("hello1");
+            
             PaymentTransaction transaction = interbank.payDeposit(card, amount, contents);
+            System.out.println("hello2");
             Invoice.getInstance().setPayDepositTransaction(transaction);
             new BikeDL().updateBike(Invoice.getInstance().getBike().getBikeCode(),null, 1);
             PaymentTransactionDL.save(transaction);

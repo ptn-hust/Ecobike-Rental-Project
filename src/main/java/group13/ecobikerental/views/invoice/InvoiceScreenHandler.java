@@ -2,6 +2,7 @@ package group13.ecobikerental.views.invoice;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import group13.ecobikerental.controller.ViewDockController;
@@ -47,7 +48,12 @@ public class InvoiceScreenHandler extends BaseScreenHandler implements Initializ
             HomeScreenHandler homeScreenHandler = null;
             try {
                 homeScreenHandler = new HomeScreenHandler(this.stage, Configs.HOME_SCREEN_PATH);
-                homeScreenHandler.setController(new ViewDockController());
+                try {
+					homeScreenHandler.setController(new ViewDockController());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 homeScreenHandler.setScreenTitle("Home Screen");
                 homeScreenHandler.show();
             } catch (IOException e) {

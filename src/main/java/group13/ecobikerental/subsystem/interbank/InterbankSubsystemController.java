@@ -29,7 +29,7 @@ public class InterbankSubsystemController {
         //            "774", "1125", "pay", "test pay", 100);
         Request request = new Request(transaction);
         System.out.println(request.makeRequestJson());
-        String responseText = interbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, request.makeRequestJson());
+        String responseText = InterbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, request.makeRequestJson());
         System.out.println(responseText);
         return makePaymentTransaction(responseText);
     }
@@ -41,9 +41,9 @@ public class InterbankSubsystemController {
         //        Transaction transaction = new Transaction("vn_group2_2021", "Group 2",
         //            "774", "1125", "pay", "test pay", 100);
         Request request = new Request(transaction);
-        System.out.println(request.makeRequestJson());
-        String responseText = interbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, request.makeRequestJson());
-        System.out.println(responseText);
+        System.out.println("print chua zi:" + request.makeRequestJson());
+        String responseText = InterbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, request.makeRequestJson());
+        System.out.println("response chua zi" + responseText);
         return makePaymentTransaction(responseText);
     }
 
@@ -53,6 +53,8 @@ public class InterbankSubsystemController {
         }
         Gson gson = new Gson();
         Response responseTransaction = gson.fromJson(response, Response.class);
+        
+        System.out.println("hello 5");
 
         PaymentTransaction paymentTransaction = responseTransaction.toPaymentTransaction();
         System.out.println(gson.toJson(paymentTransaction));

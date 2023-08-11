@@ -69,4 +69,15 @@ public class FXMLScreenHandler {
         Image img = new Image(file.toURI().toString());
         imv.setImage(img);
     }
+    public void setImage(ImageView imv, String img_url, String alt_path) {
+        try {
+            Image img = new Image(img_url);
+            imv.setImage(img);
+        } catch (Exception e) {
+            // Set an alternative image if the URL is not found
+            File file = new File(alt_path);
+            Image img = new Image(file.toURI().toString());
+            imv.setImage(img);
+        }
+    }
 }

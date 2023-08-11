@@ -26,15 +26,17 @@ public class DockDL {
      * Constructor for DockDL
      * @throws SQLException - Exceptions relate to SQL
      */
-    private DockDL() throws SQLException {
+    public DockDL() throws SQLException {
         this.dockList = new ArrayList<>();
         Statement stmt = DBConnector.getConnection().createStatement();
-        String query = "select * from dock";
+        String query = "select dock.*, COUNT(bike.bike_id) as available_bike from dock\r\n"
+        		+ "left join bike on bike.dock = dock.dock_id and bike.bike_is_being_used = 0\r\n"
+        		+ "group by dock.dock_id;";
         ResultSet res = stmt.executeQuery(query);
         Dock dock;
         while (res.next()) {
             dock = new Dock(res.getInt("dock_id"), res.getString("dock_name"), res.getString("dock_address"), res.getInt("dock_total_bike"),
-                res.getInt("dock_area"));
+                res.getInt("dock_area"), res.getInt("available_bike"), res.getString("dock_img_url"));
             dockList.add(dock);
         }
     }
@@ -82,6 +84,18 @@ public class DockDL {
         } else {
             return false;
         }
+    }
+    public static int countAvailableBike(String dockName) throws SQLException {
+    	int available_bike = 0;
+        String sql =
+            "select count(bike.bike_id) as available_bike from bike, dock where bike.dock = dock.dock_id and bike.bike_is_being_used = 0 and dock.dock_name = \'" + dockName +
+                "\'";
+        ResultSet res = DBConnector.query(sql);
+        if (res.next()) {
+        	available_bike = res.getInt("available_bike");
+        	System.out.println(available_bike);
+        }
+        return available_bike;
     }
 
     /**

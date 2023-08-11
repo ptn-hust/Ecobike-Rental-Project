@@ -35,14 +35,14 @@ public class RentBikeController extends BaseController {
 //        System.out.println(bike.toString());
 //    }
 
-//    test
-    public static void main(String[] args) {
-        Bike bike = null;
-        try {
-            bike = new RentBikeController().viewBike("Bach Khoa", "2278346617372");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println(bike.toString());
-    }
+////    test
+//    public static void main(String[] args) {
+//        Bike bike = null;
+//        try {
+//            bike = new RentBikeController().viewBike("Bach Khoa", "2278346617372");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(bike.toString());
+//    }
 }
