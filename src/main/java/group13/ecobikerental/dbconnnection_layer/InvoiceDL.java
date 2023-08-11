@@ -14,7 +14,7 @@ public class InvoiceDL {
      * This method saves invoice
      */
     public static void save(){
-        String sql = "insert into invoice(time_rental,rental_fees,bike,pay_deposit_transaction,refund_transaction)  values(?,?,?,?,?)";
+        String sql = "insert into invoice(iv_time_rental,iv_rental_fees,bike,iv_pay_deposit_trx,iv_refund_trx)  values(?,?,?,?,?)";
         PreparedStatement pstmt = null;
         try {
             pstmt = DBConnector.getConnection().prepareStatement(sql);

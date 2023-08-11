@@ -21,6 +21,8 @@ public class Bike {
      * deposit fee of bike.
      */
     private int deposit;
+    
+    private int isBeingUsed;
 
     public Bike() {
 
@@ -126,4 +128,12 @@ public class Bike {
     public void setBikeId(int bikeId) {
         this.bikeId = bikeId;
     }
+
+	public int getIsBeingUsed() {
+		return isBeingUsed;
+	}
+
+	public void setIsBeingUsed(int isBeingUsed) {
+		this.isBeingUsed = isBeingUsed;
+	}
 }

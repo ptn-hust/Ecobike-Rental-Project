@@ -38,7 +38,7 @@ public class PayBikeDepositController extends BaseController {
 
             PaymentTransaction transaction = interbank.payDeposit(card, amount, contents);
             Invoice.getInstance().setPayDepositTransaction(transaction);
-            new BikeDL().updateBike(Invoice.getInstance().getBike().getBikeCode(),null);
+            new BikeDL().updateBike(Invoice.getInstance().getBike().getBikeCode(),null, 1);
             PaymentTransactionDL.save(transaction);
             result.put("RESULT", "PAYMENT SUCCESSFUL!");
             result.put("MESSAGE", "You have successfully paid the bike of deposit!");

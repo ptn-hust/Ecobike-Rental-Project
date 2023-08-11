@@ -165,7 +165,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
         colDockName.setCellValueFactory(new PropertyValueFactory<Dock, String>("dockName"));
         colAddress.setCellValueFactory(new PropertyValueFactory<Dock, String>("address"));
         colArea.setCellValueFactory(new PropertyValueFactory<Dock, Integer>("area"));
-        colQuantity.setCellValueFactory(new PropertyValueFactory<Dock, Integer>("quantity"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<Dock, Integer>("total_bike"));
         tvDockList.setItems(list);
     }
 

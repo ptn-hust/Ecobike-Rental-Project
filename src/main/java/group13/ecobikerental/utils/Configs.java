@@ -16,7 +16,7 @@ public class Configs {
     public static final String APPCODE = "DR/hgxXfn+c=";
     public static final String SECRETKEY = "BLRqOL6OIrI=";
 
-    public static final String DB_NAME = "ecobikerental";
+    public static final String DB_NAME = "ecobikerental2";
     public static final String DB_USERNAME = "";
     public static final String DB_PASSWORD = "";
 

@@ -56,7 +56,7 @@ public class ReturnBikeController extends BaseController {
 
                 Invoice.getInstance().setRefundTransaction(refundTransaction);
                 Invoice.getInstance().setRentalFee(rentalFees);
-                new BikeDL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName);
+                new BikeDL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName, 0);
                 PaymentTransactionDL.save(refundTransaction);
                 InvoiceDL.save();
             } catch (PaymentException | UnrecognizedException ex) {

@@ -27,7 +27,11 @@ public class BikeDL {
     public BikeDL() throws SQLException {
         this.bikeList = new ArrayList<>();
         String sql =
-            "select bike.id as id, code, type.name as type, dock.name as dock_name, deposit_fee from bike, dock, type where bike.dock = dock.id and bike.type = type.id";
+            "select bike.bike_id as id, bike_barcode as code, \r\n"
+            + "    biketype.bike_type_name as type,\r\n"
+            + "    biketype.bike_type_deposit as deposit_fee,\r\n"
+            + "    dock.dock_name as dock_name\r\n"
+            + "    from bike, dock, biketype where bike.dock = dock.dock_id and bike.bike_type = biketype.bike_type_id;";
         ResultSet res = DBConnector.query(sql);
         Bike bike;
         while (res.next()) {
@@ -52,7 +56,7 @@ public class BikeDL {
     public static int countBikeInDock(String dockName) throws SQLException {
         int num = 0;
         String sql =
-            "select count(bike.id) as num from bike,dock where bike.dock = dock.id and dock.name = \'" + dockName +
+            "select count(bike.bike_id) as num from bike, dock where bike.dock = dock.dock_id and dock.dock_name = \'" + dockName +
                 "\'";
         ResultSet res = DBConnector.query(sql);
         if (res.next()) {
@@ -78,11 +82,11 @@ public class BikeDL {
         }
         if (result != null && result.getType().equals("Standard e-bike")) {
             ElectricBike eBike = (ElectricBike) result;
-            String sql = "select ebike.* from bike,ebike where bike.id = ebike.id and bike.id = " + result.getBikeId();
+            String sql = "select ebike.* from bike,ebike where bike.bike_id = ebike.ebike_id and bike.bike_id = " + result.getBikeId();
             ResultSet res = DBConnector.query(sql);
             if (res.next()) {
-                eBike.setPin(res.getInt("pin_status"));
-                eBike.setLicensePlate(res.getString("license_Plate"));
+                eBike.setPin(res.getInt("ebike_battery"));
+                eBike.setLicensePlate(res.getString("ebike_license"));
             }
             return eBike;
         }
@@ -93,9 +97,10 @@ public class BikeDL {
      * This method updates 'dock' in Bike database when user rent/return a bike
      * @param bikeCode - the bike code
      * @param dockName - the name of dock
+     * @param option - equals 1 in case of rent bike, 0 otherwise
      * @throws SQLException - Exceptions relate to SQL
      */
-    public void updateBike(String bikeCode, String dockName) throws SQLException {
+    public void updateBike(String bikeCode, String dockName, int option) throws SQLException {
         int dockId = 0;
         if (dockName != null) {
             dockId = DockDL.getInstance().getDockId(dockName);
@@ -103,16 +108,22 @@ public class BikeDL {
                 throw new SQLException();
             }
         }
-        String sql = "UPDATE bike SET dock = ? WHERE code = ?";
+        String sql = "";
+        if (option == 1) {
+        	sql = "UPDATE bike SET bike_is_being_used = 1, dock = ?  WHERE bike_barcode = ?";
+        } else{
+        	sql = "UPDATE bike SET bike_is_being_used = 0, dock = ?  WHERE bike_barcode = ?";
+        }
+        
         PreparedStatement pstmt = null;
         try {
             pstmt = DBConnector.getConnection().prepareStatement(sql);
+            
             if (dockName != null) {
                 pstmt.setString(1, String.valueOf(dockId));
             } else {
                 pstmt.setString(1, null);
             }
-
             pstmt.setString(2, bikeCode);
             pstmt.execute();
         } catch (SQLException e) {
@@ -127,6 +138,7 @@ public class BikeDL {
             }
         }
     }
+
 
 //    private void seeder() throws SQLException {
 //        Random random = new Random();

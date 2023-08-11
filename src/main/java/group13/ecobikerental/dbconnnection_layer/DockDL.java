@@ -33,8 +33,8 @@ public class DockDL {
         ResultSet res = stmt.executeQuery(query);
         Dock dock;
         while (res.next()) {
-            dock = new Dock(res.getInt("id"), res.getString("name"), res.getString("address"), res.getInt("quantity"),
-                res.getInt("area"));
+            dock = new Dock(res.getInt("dock_id"), res.getString("dock_name"), res.getString("dock_address"), res.getInt("dock_total_bike"),
+                res.getInt("dock_area"));
             dockList.add(dock);
         }
     }
