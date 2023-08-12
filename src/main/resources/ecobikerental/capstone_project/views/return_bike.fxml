@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -15,21 +14,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="130.0" layoutY="144.0" prefHeight="60.0" style="-fx-background-color: #160C67;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="345.0" layoutY="160.0" prefHeight="60.0" style="-fx-background-color: #e4e1e1;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+      <Pane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #66d392;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="680.0" layoutY="10.0" prefHeight="40.0" prefWidth="300.0" text="RETURN BIKE" textFill="#160c67">
+            <ImageView fx:id="imgLogo" fitHeight="100.0" fitWidth="152.0" layoutX="1097.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box,gray,8,0.0,0,4);">
+               <image>
+                  <Image url="@../../../../../../assets/images/LogoMain.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label layoutX="505.0" layoutY="6.0" prefHeight="77.0" prefWidth="369.0" text="RETURN BIKE" textAlignment="CENTER" textFill="#160c67">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="53.0" />
                </font>
             </Label>
          </children>
       </Pane>
       <HBox alignment="CENTER" prefHeight="500.0" prefWidth="1160.0" spacing="130.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
-            <ImageView fx:id="imgBike" fitHeight="420.0" fitWidth="320.0" focusTraversable="true" pickOnBounds="true" smooth="false">
+            <ImageView fx:id="imgBike" fitHeight="420.0" fitWidth="320.0" focusTraversable="true" pickOnBounds="true" smooth="false" style="-fx-background-radius: 10;">
                <image>
                   <Image url="@../../../../../../assets/images/e-bike.jpg" />
                </image>
@@ -39,7 +45,7 @@
             </ImageView>
             <VBox maxHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" style="-fx-background-color: #160c67; -fx-background-radius: 5;">
+                  <HBox alignment="CENTER" prefHeight="40.0" style="-fx-background-color: #160c67; -fx-background-radius: 7;">
                      <children>
                         <Label fx:id="lbTypeBike" prefHeight="40.0" text="Electric standard bike" textFill="WHITE">
                            <font>
@@ -50,40 +56,12 @@
                   </HBox>
                   <HBox prefHeight="40.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="150.0" text="Barcode" textFill="#160c67">
+                        <Label prefHeight="40.0" prefWidth="248.0" text="       Barcode" textFill="#160c67">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbBarcode" prefHeight="40.0" text="0987654321" textFill="#160c67">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="licensePlate" focusTraversable="true" maxHeight="40.0" minHeight="0.0" visible="false">
-                     <children>
-                        <Label prefHeight="50.0" prefWidth="150.0" text="License Plate" textFill="#160c67">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbLicensePlate" prefHeight="40.0" text="29-X1/53214" textFill="#160c67">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="pin" maxHeight="40.0" minHeight="0.0" visible="false">
-                     <children>
-                        <Label prefHeight="50.0" prefWidth="150.0" text="Pin" textFill="#160c67">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbPin" prefHeight="40.0" text="50%" textFill="#160c67">
+                        <Label fx:id="lbBarcode" prefHeight="40.0" prefWidth="122.0" text="0987654321" textFill="#160c67">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -94,12 +72,12 @@
                      <children>
                         <HBox prefHeight="40.0" prefWidth="300.0">
                            <children>
-                              <Label prefHeight="50.0" prefWidth="150.0" text="Rental Time" textFill="#160c67">
+                              <Label prefHeight="40.0" prefWidth="341.0" text="       Rental Time" textFill="#160c67">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbRentalTime" prefHeight="40.0" prefWidth="150.0" text="01:56:34" textFill="#160c67">
+                              <Label fx:id="lbRentalTime" prefHeight="40.0" prefWidth="264.0" text="01:56:34" textFill="#160c67">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
@@ -130,12 +108,12 @@
                   </HBox>
                   <HBox prefHeight="40.0" spacing="50.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="150.0" text="Return Dock" textFill="#160c67">
+                        <Label prefHeight="40.0" prefWidth="150.0" text="      Return Dock" textFill="#160c67">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cbReturnDock" prefHeight="40.0" prefWidth="420.0" promptText="choose dock" style="-fx-border-color: #160C67; -fx-background-color: #ffffff; -fx-border-radius: 5; -fx-border-width: 2;">
+                        <ComboBox fx:id="cbReturnDock" prefHeight="40.0" prefWidth="360.0" promptText="choose dock" style="-fx-border-color: #160C67; -fx-background-color: #ffffff; -fx-border-radius: 5; -fx-border-width: 2;">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -145,11 +123,39 @@
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <HBox fx:id="licensePlate" focusTraversable="true" maxHeight="40.0" minHeight="0.0" visible="false">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="License Plate" textFill="#160c67">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbLicensePlate" prefHeight="40.0" text="29-X1/53214" textFill="#160c67">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="pin" maxHeight="40.0" minHeight="0.0" visible="false">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Pin" textFill="#160c67">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbPin" prefHeight="40.0" text="50%" textFill="#160c67">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="40.0">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefWidth="300.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="176.0">
                            <children>
-                              <Button fx:id="btnBack" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #160c67;" text="Back" textFill="WHITE">
+                              <Button fx:id="btnBack" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="76.0" style="-fx-background-color: #160c67;" text="Back" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
@@ -186,14 +192,6 @@
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </padding>
       </HBox>
-      <Pane layoutX="124.0" layoutY="343.0" prefHeight="60.0" style="-fx-background-color: #160C67;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fx:id="imgLogo" fitWidth="130.0" layoutX="30.0" layoutY="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box,gray,8,0.0,0,4);" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../../../../../assets/images/Splash.jpg" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
+      <Pane layoutX="124.0" layoutY="343.0" prefHeight="60.0" style="-fx-background-color: #66d392;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

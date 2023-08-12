@@ -14,13 +14,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #66d392;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="imgLogo" fitHeight="100.0" fitWidth="152.0" layoutX="1097.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box,gray,8,0.0,0,4);">
                <image>
-                  <Image url="@../../../../../../assets/images/Splash.jpg" />
+                  <Image url="@../../../../../../assets/images/LogoMain.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

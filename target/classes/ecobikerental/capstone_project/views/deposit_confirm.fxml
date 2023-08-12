@@ -14,21 +14,34 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="120.0" layoutY="134.0" prefHeight="60.0" style="-fx-background-color: #160C67;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox alignment="CENTER" prefHeight="60.0" style="-fx-background-color: #e4e1e1;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+      <Pane layoutX="120.0" layoutY="134.0" prefHeight="111.0" prefWidth="1280.0" style="-fx-background-color: #00bf63;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="500.0" text="INFORMATION CONFIRMATION" textFill="#160c67">
+            <ImageView fx:id="imgLogo" fitHeight="193.0" fitWidth="185.0" layoutX="42.0" layoutY="-37.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../assets/images/LogoMain.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </ImageView>
+         </children></Pane>
+      <HBox alignment="CENTER" layoutY="151.0" prefHeight="86.0" prefWidth="1280.0" style="-fx-background-color: #e4e1e1;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="111.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="553.0" text="CONFIRM INFORMATION" textFill="#160c67">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+      <HBox alignment="CENTER" layoutY="198.0" prefHeight="542.0" prefWidth="1280.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="198.0">
          <children>
-            <VBox alignment="CENTER" prefWidth="600.0" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="595.0" prefWidth="602.0" spacing="10.0">
                <children>
                   <HBox>
                      <children>
@@ -37,7 +50,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbCardholderName" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="400.0" text="VU VAN LONG" textFill="#160c67">
+                        <Label fx:id="lbCardholderName" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="400.0" text="NGUYEN TRAN MINH NGOC" textFill="#160c67">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -52,7 +65,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbCardNumber" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="400.0" text="0983234567890" textFill="#160c67">
+                        <Label fx:id="lbCardNumber" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="400.0" text="4242424242424242" textFill="#160c67">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -82,7 +95,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbExpDate" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="400.0" text="12/25" textFill="#160c67">
+                        <Label fx:id="lbExpDate" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="400.0" text="08/27" textFill="#160c67">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -92,7 +105,7 @@
                   <Line endX="499.29290771484375" endY="-1.2426408529281616" layoutX="111.0" layoutY="72.0" startX="-100.0" stroke="#160c67" />
                   <HBox layoutX="10.0" layoutY="190.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="200.0" text="Command" textFill="#160c67">
+                        <Label prefHeight="40.0" prefWidth="200.0" text="Comand" textFill="#160c67">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -112,7 +125,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbContent" alignment="TOP_RIGHT" minHeight="40.0" prefWidth="400.0" text="Pay deposit to Ecobike Company" textFill="#160c67" wrapText="true">
+                        <Label fx:id="lbContent" alignment="TOP_RIGHT" minHeight="40.0" prefWidth="400.0" text="Pay deposite to Ecobike Company" textFill="#160c67" wrapText="true">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -121,9 +134,9 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #160C67; -fx-background-radius: 5;" text="Back" textFill="WHITE">
+                        <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: D53E1D; -fx-background-radius: 5;" text="Back" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -132,12 +145,12 @@
                               <Insets left="30.0" right="30.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="btnConfirm" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #160C67; -fx-background-radius: 5;" text="Confirm" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="btnConfirm" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: #00bf63; -fx-background-radius: 5;" text="Confirm" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="22.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="371.0" />
+                              <Insets left="347.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -155,17 +168,5 @@
             </VBox>
          </children>
       </HBox>
-      <Pane layoutX="114.0" layoutY="333.0" prefHeight="60.0" style="-fx-background-color: #160C67;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ImageView fx:id="imgLogo" fitWidth="130.0" layoutX="20.0" layoutY="20.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box,gray,8,0.0,0,4);" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="0.0">
-         <image>
-            <Image url="@../../../../../../assets/images/Splash.jpg" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </ImageView>
    </children>
 </AnchorPane>
