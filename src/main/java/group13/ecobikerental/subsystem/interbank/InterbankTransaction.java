@@ -2,8 +2,8 @@ package group13.ecobikerental.subsystem.interbank;
 
 import group13.ecobikerental.utils.Utils;
 
-public class Transaction {
-    private String cardCode;
+public class InterbankTransaction {
+	private String cardCode;
     private String owner;
     private String cvvCode;
     private String dateExpired;
@@ -13,7 +13,7 @@ public class Transaction {
     private String transactionId;
     private String createdAt;
 
-    public Transaction(String cardCode, String owner, String cvvCode, String dateExpired, String commmand,
+    public InterbankTransaction(String cardCode, String owner, String cvvCode, String dateExpired, String commmand,
                        String transactionContent, int amount) {
         this.cardCode = cardCode;
         this.owner = owner;

@@ -49,15 +49,6 @@ public class EcoBikeRentalApplication extends Application {
             }
 
         });
-        //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("views/home.fxml"));
-        //        fxmlLoader.setController(new HomeScreenHandler());
-        //        Scene scene = new Scene(fxmlLoader.load());
-        //        stage.setTitle("Hello!");
-        //        stage.setScene(scene);
-        //        stage.show();
-        //        HomeScreenHandler homeScreenHandler = new HomeScreenHandler(stage,"views/home.fxml");
-        //        homeScreenHandler.setSceneTitle("Home Screen");
-        //        homeScreenHandler.show();
     }
 
     public static void main(String[] args) {

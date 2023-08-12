@@ -1,4 +1,4 @@
-package group13.ecobikerental.dbconnnection_layer;
+package group13.ecobikerental.data_access_layer;
 
 import java.sql.*;
 

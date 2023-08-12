@@ -1,15 +1,15 @@
-package group13.ecobikerental.dbconnnection_layer;
+package group13.ecobikerental.data_access_layer;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import group13.ecobikerental.dbconnnection_layer.DBConnector;
+import group13.ecobikerental.data_access_layer.DBConnector;
 import group13.ecobikerental.entity.invoice.Invoice;
 
 /**
  * This class controls the database transactions relate to Invoice
  */
-public class InvoiceDL {
+public class InvoiceDAL {
     /**
      * This method saves invoice
      */

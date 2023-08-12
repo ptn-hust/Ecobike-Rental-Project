@@ -1,4 +1,4 @@
-package group13.ecobikerental.dbconnnection_layer;
+package group13.ecobikerental.data_access_layer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,23 +14,26 @@ import group13.ecobikerental.entity.bike.ElectricBike;
 /**
  * This class controls the database transactions relate to Bike
  */
-public class BikeDL {
+public class BikeDAL {
     /**
      * Represent the list of bike
      */
     private List<Bike> bikeList;
 
     /**
-     * Constructor for BikeDL
+     * Constructor for BikeDAL
      * @throws SQLException - Exceptions relate to SQL
      */
-    public BikeDL() throws SQLException {
+    public BikeDAL() throws SQLException {
         this.bikeList = new ArrayList<>();
         String sql =
             "select bike.bike_id as id, bike_barcode as code, \r\n"
             + "    biketype.bike_type_name as type,\r\n"
             + "    biketype.bike_type_deposit as deposit_fee,\r\n"
-            + "    dock.dock_name as dock_name\r\n"
+            + "    dock.dock_name as dock_name,\r\n"
+            + "    dock.dock_id as dock_id,\r\n"
+            + "    biketype.bike_type_base_fee as base_fee,\r\n"
+            + "    biketype.bike_type_extra_fee as extra_fee \r\n"
             + "    from bike, dock, biketype where bike.dock = dock.dock_id and bike.bike_type = biketype.bike_type_id;";
         ResultSet res = DBConnector.query(sql);
         Bike bike;
@@ -38,12 +41,15 @@ public class BikeDL {
             bike = new BikeFactory().getBike(res.getString("type"));
             bike.setBikeId(res.getInt("id"));
             bike.setBikeCode(res.getString("code"));
-            System.out.println(res.getString("code"));
             bike.setType(res.getString("type"));
             bike.setDockName(res.getString("dock_name"));
+            bike.setDockId(res.getInt("dock_id"));
             bike.setDeposit(res.getInt("deposit_fee"));
-            bikeList.add(bike);
-//            System.out.println(bike.toString());
+            bike.setBaseFee(res.getInt("base_fee"));
+            bike.setExtraFee(res.getInt("extra_fee"));
+            System.out.println(bike.toString());
+            
+            bikeList.add(bike);         
         }
     }
 
@@ -72,10 +78,10 @@ public class BikeDL {
      * @return result - Bike
      * @throws SQLException - Exceptions relate to SQL
      */
-    public Bike getBikeByBikeCode(String bikeCode, String dockName) throws SQLException {
+    public Bike getBikeByBikeCode(String bikeCode, int id) throws SQLException {
         Bike result = null;
         for (Bike bike : bikeList) {
-            if (bike.getBikeCode().equals(bikeCode) && bike.getDockName().equals(dockName)) {
+            if (bike.getBikeCode().equals(bikeCode) && bike.getDockId() == id) {
                 result = bike;
                 break;
             }
@@ -103,7 +109,7 @@ public class BikeDL {
     public void updateBike(String bikeCode, String dockName, int option) throws SQLException {
         int dockId = 0;
         if (dockName != null) {
-            dockId = DockDL.getInstance().getDockId(dockName);
+            dockId = DockDAL.getInstance().getDockId(dockName);
             if (dockId == 0) {
                 throw new SQLException();
             }
@@ -138,42 +144,4 @@ public class BikeDL {
             }
         }
     }
-
-
-//    private void seeder() throws SQLException {
-//        Random random = new Random();
-//        String sql = "update bike set code = ?, barcode = ? where id = ?";
-//        PreparedStatement stmt = DBConnector.getConnection().prepareStatement(sql);
-//        for (int i = 1; i < 51; i++) {
-//            int num1 = (int) (random.nextDouble() * 100000);
-//            int num2 = (int) (random.nextDouble() * 100000);
-//            int num3 = (int) (random.nextDouble() * 1000);
-//            while (String.valueOf(num1).length() < 5) {
-//                num1 = num1 * 10;
-//            }
-//            while (String.valueOf(num2).length() < 5) {
-//                num2 = num2 * 10;
-//            }
-//            while (String.valueOf(num3).length() < 3) {
-//                num3 = num3 * 10;
-//            }
-//            String barcode = "" + num1 + num2 + num3;
-//            String bikecode = barcode + "123456" + barcode;
-//            System.out.println(bikecode);
-//            stmt.setString(1, bikecode);
-//            stmt.setString(2, barcode);
-//            stmt.setString(3, String.valueOf(i));
-//            stmt.execute();
-//        }
-//    }
-
-//    public static void main(String[] args) throws SQLException {
-//        //        BikeDL.getInstance().seeder();
-////        System.out.println(BikeDL.countBikeInDock("Bach Khoa"));
-//        Bike bike = new BikeDL().getBikeByBikeCode("54306206155401234565430620615540", "Bach Khoa");
-//        System.out.println(bike.toString());
-////        ElectricBike eBike =
-////            (ElectricBike) bike;
-////        System.out.println(eBike.toString());
-//    }
 }

@@ -28,17 +28,22 @@
                </viewport>
             </ImageView>
          </children></Pane>
-      <HBox alignment="CENTER" layoutX="335.0" layoutY="109.0" prefHeight="86.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
+      <HBox alignment="CENTER" layoutX="-3.0" layoutY="118.0" prefHeight="86.0" prefWidth="1442.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="500.0" text="CREDIT CARD INFORMATION" textFill="#160c67">
+            <Label fx:id="message1" alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="1349.0" text="Your rental fee exceeds deposit. Please enter credit card information to complete payment!" textFill="#660c0c">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <VBox alignment="BOTTOM_CENTER" layoutX="365.0" layoutY="198.0" prefHeight="502.0" prefWidth="594.0" spacing="10.0">
+      <VBox alignment="BOTTOM_CENTER" layoutX="383.0" layoutY="226.0" prefHeight="531.0" prefWidth="714.0" spacing="10.0">
          <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="500.0" text="CREDIT CARD INFORMATION" textFill="#160c67">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
             <VBox>
                <children>
                   <Label prefHeight="40.0" prefWidth="230.0" text="Cardholder Name" textFill="#160c67">

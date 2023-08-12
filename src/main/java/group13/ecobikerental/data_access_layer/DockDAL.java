@@ -1,4 +1,4 @@
-package group13.ecobikerental.dbconnnection_layer;
+package group13.ecobikerental.data_access_layer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import group13.ecobikerental.entity.dock.Dock;
 /**
  * This class controls the database transactions relate to Dock
  */
-public class DockDL {
+public class DockDAL {
     /**
      * Represent the list of docks
      */
@@ -20,13 +20,13 @@ public class DockDL {
     /**
      * Represent the instance of dock
      */
-    private static DockDL instance;
+    private static DockDAL instance;
 
     /**
-     * Constructor for DockDL
+     * Constructor for DockDAL
      * @throws SQLException - Exceptions relate to SQL
      */
-    public DockDL() throws SQLException {
+    public DockDAL() throws SQLException {
         this.dockList = new ArrayList<>();
         Statement stmt = DBConnector.getConnection().createStatement();
         String query = "select dock.*, COUNT(bike.bike_id) as available_bike from dock\r\n"
@@ -79,7 +79,7 @@ public class DockDL {
                 break;
             }
         }
-        if ( BikeDL.countBikeInDock(dockName) < quantity) {
+        if ( BikeDAL.countBikeInDock(dockName) < quantity) {
             return true;
         } else {
             return false;
@@ -99,13 +99,13 @@ public class DockDL {
     }
 
     /**
-     * This method gets instance of DockDL
-     * @return instance - the instance of DockDL
+     * This method gets instance of DockDAL
+     * @return instance - the instance of DockDAL
      * @throws SQLException - Exceptions relate to SQL
      */
-    public static DockDL getInstance() throws SQLException {
+    public static DockDAL getInstance() throws SQLException {
         if (instance == null) {
-            return new DockDL();
+            return new DockDAL();
         }
         return instance;
     }

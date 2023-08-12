@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import group13.ecobikerental.controller.ReturnBikeController;
-import group13.ecobikerental.dbconnnection_layer.DockDL;
+import group13.ecobikerental.data_access_layer.DockDAL;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.ElectricBike;
 import group13.ecobikerental.entity.dock.Dock;
@@ -18,6 +18,7 @@ import group13.ecobikerental.utils.Configs;
 import group13.ecobikerental.utils.Utils;
 import group13.ecobikerental.views.BaseScreenHandler;
 import group13.ecobikerental.views.invoice.InvoiceScreenHandler;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -31,7 +32,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.stage.Stage;
 
 public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initializable {
-    public ImageView imgBike;
+	public ImageView imgBike;
     public RowConstraints rowPin;
     public Label lbBarcode;
     public Label lbLicensePlate;
@@ -49,6 +50,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
     private String rentalTime;
     private int rentalFee;
     private Bike bike;
+    private Timeline timeline;
 
     /**
      * This method is constructor with current stage.
@@ -68,6 +70,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setImage(imgLogo, Configs.LOGO_IMG_PATH);
         setImage(imgBike, "assets/images/e-bike.jpg");
+        btnBack.setVisible(false);
 
         btnReturn.setOnMouseClicked(mouseEvent -> {
             String dockReturn = cbReturnDock.getValue();
@@ -80,15 +83,15 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
             }
         });
 
-        btnBack.setOnMouseClicked(mouseEvent -> {
-            this.getPrev().show();
-        });
+//        btnBack.setOnMouseClicked(mouseEvent -> {
+//            this.getPrev().show();
+//        });
 
     }
 
     public void setInfo() throws SQLException {
         setCombobox();
-        this.rentalFee = this.getController().calculateRentalFee(this.rentalTime);
+        this.rentalFee = this.getController().calculateRentalFee(this.rentalTime, this.bike);
         lbBarcode.setText(this.bike.getBarcode());
         lbRentalTime.setText(this.rentalTime);
         lbRentalFees.setText(Utils.getCurrencyFormat(this.rentalFee));
@@ -102,7 +105,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
     }
 
     private void setCombobox() throws SQLException {
-        List<Dock> listDock = DockDL.getInstance().getDockList();
+        List<Dock> listDock = DockDAL.getInstance().getDockList();
 
         ObservableList<String> listValue = FXCollections.observableArrayList();
         for (Dock dock : listDock) {
@@ -112,7 +115,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
     }
 
     public void returnBike(String dockReturn, String timeRental) throws IOException, SQLException {
-        Map<String, String> result = this.getController().returnBike(dockReturn, timeRental);
+        Map<String, String> result = this.getController().returnBike(dockReturn, timeRental, this.bike);
         if (result.get("RESULT").equals("NOT AVAILABLE")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(result.get("RESULT"));
@@ -140,19 +143,5 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 
     public ReturnBikeController getController() {
         return (ReturnBikeController) super.getController();
-    }
-
-    public static void main(String[] args) throws SQLException {
-        List<Dock> listDock = new Dock().getDockList();
-        Iterator<Dock> listI = listDock.iterator();
-        Dock dock = null;
-        while (listI.hasNext()) {
-            dock = listI.next();
-            System.out.println(dock.getDockName());
-            if (dock.getDockName().equals("Xay Dung")) {
-                break;
-            }
-        }
-        System.out.println(dock.getId());
     }
 }

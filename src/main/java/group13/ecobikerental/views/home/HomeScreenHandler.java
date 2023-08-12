@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import group13.ecobikerental.controller.RentBikeController;
-import group13.ecobikerental.controller.ViewDockController;
+import group13.ecobikerental.controller.ViewInfoController;
 import group13.ecobikerental.entity.dock.Dock;
 import group13.ecobikerental.utils.Configs;
 import group13.ecobikerental.views.BaseScreenHandler;
@@ -100,7 +99,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		try {
-			setController(new ViewDockController());
+			setController(new ViewInfoController());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -108,7 +107,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		setImage(imgLogo, Configs.LOGO_IMG_PATH);
 
 		try {
-			insertTable(this.getController().getDockList());
+			insertTable(this.getController().getDockListRequest());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -123,10 +122,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		});
 
 		btnSearch.setOnAction(event -> {
-			System.out.println("clicked");
 			String name = tfSearch.getText();
+			System.out.println("Search name: " + name);
 			try {
-				insertTable(getController().searchDock(name));
+				insertTable(getController().searchDockRequest(name));
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -143,8 +142,6 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 					try {
 						dockInfoScreenHandler = new DockInfoScreenHandler(this.stage, Configs.DOCK_INFO_SCREEN_PATH,
 								rowData);
-//                        dockInfoScreenHandler.setNumberOfBike(this.getController().getNumberOfBike(rowData.getDockName()));
-//						dockInfoScreenHandler.setController(this.getController());
 						dockInfoScreenHandler.setInfo();
 						dockInfoScreenHandler.setPrev(this);
 						dockInfoScreenHandler.setScreenTitle("Dock Information");
@@ -161,8 +158,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	/**
 	 * @return - HomeController is controller of HomeScreen
 	 */
-	public ViewDockController getController() {
-		return (ViewDockController) super.getController();
+	public ViewInfoController getController() {
+		return (ViewInfoController) super.getController();
 	}
 
 	/**

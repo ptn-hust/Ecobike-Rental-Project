@@ -1,26 +1,18 @@
 package group13.ecobikerental.business_layer;
 
+import group13.ecobikerental.entity.bike.Bike;
+
 /**
  * This class processes businesses related to Invoice
  */
 public class InvoiceBL {
-    /**
-     * This method calculates the rental fee
-     * @param timeRental - the time that user rented bike
-     * @return rentalFee - the rental fee
-     */
-    public static int calculateRentalFee(String timeRental) {
+	
+    public int calculateRentalFee(String timeRental, String paymemtMethod, Bike bike) {
         int rentalFee = 0;
-        int minutes = processTime(timeRental);
-        if (minutes <= 10) {
-            rentalFee = 0;
-        } else if (minutes < 30) {
-            rentalFee = 10000;
-        } else if (minutes % 15 == 0) {
-            rentalFee = 10000 + (minutes - 30) / 15 * 3000;
-        } else {
-            rentalFee = 10000 + ((minutes - 30) / 15 + 1) * 3000;
-        }
+        int minutes = InvoiceBL.processTime(timeRental);
+        PaymentFactory paymentFactory = new PaymentFactory();
+        PaymentBase payment = paymentFactory.getPayment(paymemtMethod, bike);
+        rentalFee = payment.calculateRentalFee(minutes);        
         return rentalFee;
     }
 

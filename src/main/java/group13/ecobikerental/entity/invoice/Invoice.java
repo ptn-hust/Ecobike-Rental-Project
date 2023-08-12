@@ -1,7 +1,8 @@
 package group13.ecobikerental.entity.invoice;
 
 import group13.ecobikerental.entity.bike.Bike;
-import group13.ecobikerental.entity.payment.PaymentTransaction;
+import group13.ecobikerental.entity.payment.CreditCard;
+import group13.ecobikerental.entity.payment.Transaction;
 
 /**
  * Entity Invoice
@@ -16,10 +17,11 @@ public class Invoice {
     /**
      * Represent for payment transaction.
      */
-    private PaymentTransaction payDepositTransaction;
-    private PaymentTransaction refundTransaction;
+    private Transaction payDepositTransaction;
+    private Transaction refundTransaction;
 
-    private static Invoice instance = new Invoice();
+//    private static Invoice instance = new Invoice();
+    private static Invoice instance;
 
     private Invoice() {
     }
@@ -34,11 +36,17 @@ public class Invoice {
 
 
     public static Invoice getInstance() {
+    	if(instance == null) {
+    		instance = new Invoice();
+    	}
         return instance;
     }
 
     public static void setInstance(Invoice instance) {
         Invoice.instance = instance;
+    }
+    public static void setInstance() {
+        instance = null;
     }
 
     public Bike getBike() {
@@ -49,19 +57,19 @@ public class Invoice {
         this.bike = bike;
     }
 
-    public PaymentTransaction getPayDepositTransaction() {
+    public Transaction getPayDepositTransaction() {
         return payDepositTransaction;
     }
 
-    public void setPayDepositTransaction(PaymentTransaction payDepositTransaction) {
+    public void setPayDepositTransaction(Transaction payDepositTransaction) {
         this.payDepositTransaction = payDepositTransaction;
     }
 
-    public PaymentTransaction getRefundTransaction() {
+    public Transaction getRefundTransaction() {
         return refundTransaction;
     }
 
-    public void setRefundTransaction(PaymentTransaction refundTransaction) {
+    public void setRefundTransaction(Transaction refundTransaction) {
         this.refundTransaction = refundTransaction;
     }
 

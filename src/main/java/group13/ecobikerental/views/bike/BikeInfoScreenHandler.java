@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import group13.ecobikerental.controller.PayBikeDepositController;
-import group13.ecobikerental.controller.RentBikeController;
+import group13.ecobikerental.controller.PayDepositController;
+import group13.ecobikerental.controller.ViewInfoController;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.ElectricBike;
 import group13.ecobikerental.entity.invoice.Invoice;
@@ -90,7 +90,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
             new PayDepositScreenHandler(this.stage, Configs.PAY_DEPOSIT_SCREEN_PATH);
 
         payDepositScreen.setScreenTitle("Pay Deposit Screen");
-        payDepositScreen.setController(new PayBikeDepositController());
+        payDepositScreen.setController(new PayDepositController());
         payDepositScreen.setPrev(this);
 
         payDepositScreen.show();
@@ -100,8 +100,8 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
     public void setBike(Bike bike) {
         this.bike = bike;
     }
-
-    public RentBikeController getController() {
-        return (RentBikeController) super.getController();
+    
+    public ViewInfoController getController() {
+        return (ViewInfoController) super.getController();
     }
 }

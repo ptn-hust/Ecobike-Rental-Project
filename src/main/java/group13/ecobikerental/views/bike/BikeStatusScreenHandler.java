@@ -34,23 +34,11 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 	public ImageView imgLogo;
 
 	private int hours;
-
 	private int minutes;
-
 	private int seconds;
-
 	private Timeline timeline;
-
 	private Bike bike;
 
-	/**
-	 * This method is constructor with current stage.
-	 *
-	 * @param stage      -
-	 * @param screenPath -
-	 *
-	 * @throws IOException
-	 */
 	public BikeStatusScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		this.bike = Invoice.getInstance().getBike();
@@ -61,17 +49,8 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 		setImage(imgLogo, Configs.LOGO_IMG_PATH);
 		setImage(imgBike, Configs.BIKE_RUNNING_IMG_PATH);
 
-//      stop watch
+		// stop watch
 		this.stopWatchInitialize();
-
-//		btnReturn.setOnMouseClicked(mouseEvent -> {
-//			try {
-//				requestToReturnBike();
-//			} catch (IOException | SQLException e) {
-//				e.printStackTrace();
-//			}
-//		});
-
 	}
 
 	private void stopWatchInitialize() {
@@ -82,7 +61,7 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 		btnReturn.setOnMouseClicked(mouseEvent -> {
 			try {
 				pause();
-				System.out.println("check 2: " + lbTime.getText());
+				System.out.println("pause and return: " + lbTime.getText());
 				requestToReturnBike();
 			} catch (IOException | SQLException e) {
 				e.printStackTrace();
@@ -90,15 +69,12 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 		});
 	}
 
-	public void requestToReturnBike() throws IOException, SQLException {
-		Invoice.getInstance().setRentalTime(lbTime.getText());
-		ReturnBikeScreenHandler returnBikeScreen = new ReturnBikeScreenHandler(this.stage,
-				Configs.RETURN_BIKE_SCREEN_PATH);
-		returnBikeScreen.setScreenTitle("Return Bike Screen");
-		returnBikeScreen.setController(this.getController());
-		returnBikeScreen.setInfo();
-		returnBikeScreen.setPrev(this);
-		returnBikeScreen.show();
+	private void pause() {
+		timeline.pause();
+	}
+
+	private void resume() {
+		timeline.play();
 	}
 
 	public void setInfo() {
@@ -109,13 +85,6 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 			pin.setVisible(true);
 			lbPin.setText(eBike.getPin() + "%");
 		}
-	}
-
-	/**
-	 * @return - {@link ReturnBikeController}
-	 */
-	public ReturnBikeController getController() {
-		return (ReturnBikeController) super.getController();
 	}
 
 	// stopwatch
@@ -144,24 +113,29 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 		KeyFrame keyFrame = new KeyFrame(Duration.millis(1000), e -> {
 			seconds++;
 			setTime();
-			// init a bike rent info entity
-//			bikeRentInfo.setHours(hours);
-//			bikeRentInfo.setMinutes(minutes);
-//			bikeRentInfo.setSeconds(seconds);
-			System.out.println("check check: " + lbTime.getText());
-//			Invoice.getInstance().setRentalTime(lbTime.getText());
 		});
 
 		timeline = new Timeline(keyFrame);
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 	}
-	
-	private void pause() {
-        timeline.pause();
-    }
 
-    private void resume() {
-        timeline.play();
-    }
+	public void requestToReturnBike() throws IOException, SQLException {
+		Invoice.getInstance().setRentalTime(lbTime.getText());
+		ReturnBikeScreenHandler returnBikeScreen = new ReturnBikeScreenHandler(this.stage,
+				Configs.RETURN_BIKE_SCREEN_PATH);
+		returnBikeScreen.setScreenTitle("Return Bike Screen");
+		returnBikeScreen.setController(this.getController());
+		returnBikeScreen.setInfo();
+		returnBikeScreen.setPrev(this);
+		returnBikeScreen.show();
+	}
+
+	/**
+	 * @return - {@link ReturnBikeController}
+	 */
+	public ReturnBikeController getController() {
+		return (ReturnBikeController) super.getController();
+	}
+
 }

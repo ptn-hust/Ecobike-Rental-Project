@@ -1,9 +1,11 @@
 package group13.ecobikerental.subsystem.interbank;
 
+import org.json.JSONObject;
+
 import com.google.gson.Gson;
 
 import group13.ecobikerental.entity.payment.CreditCard;
-import group13.ecobikerental.entity.payment.PaymentTransaction;
+import group13.ecobikerental.entity.payment.Transaction;
 import group13.ecobikerental.exception.InternalServerErrorException;
 import group13.ecobikerental.exception.InvalidCardException;
 import group13.ecobikerental.exception.InvalidTransactionAmountException;
@@ -15,76 +17,92 @@ import group13.ecobikerental.exception.UnrecognizedException;
 import group13.ecobikerental.utils.Configs;
 
 public class InterbankSubsystemController {
+	public InterbankBoundary interbankBoundary;
 
-    /**
-     * attribute interbankBoundary is used to send request.
-     */
-    public InterbankBoundary interbankBoundary;
+	public Transaction pay(CreditCard card, int amount, String contents) {
+		InterbankTransaction transaction = new InterbankTransaction(card.getCardCode(), card.getOwner(),
+				card.getCvvCode(), card.getDateExpired(), "pay", contents, amount);
+		// create request string
+		JSONObject transactionJson = new JSONObject().put("cardCode", transaction.getCardCode())
+				.put("owner", transaction.getOwner()).put("cvvCode", transaction.getCvvCode())
+				.put("dateExpired", transaction.getDateExpired()).put("command", transaction.getCommand())
+				.put("transactionContent", transaction.getTransactionContent()).put("amount", transaction.getAmount())
+				.put("createdAt", transaction.getCreatedAt());
 
-    public PaymentTransaction refund(CreditCard card, int amount, String contents) {
-        Transaction transaction =
-            new Transaction(card.getCardCode(), card.getOwner(), card.getCvvCode(), card.getDateExpired(), "refund",
-                contents, amount);
-        //        Transaction transaction = new Transaction("vn_group2_2021", "Group 2",
-        //            "774", "1125", "pay", "test pay", 100);
-        Request request = new Request(transaction);
-        System.out.println(request.makeRequestJson());
-        String responseText = InterbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, request.makeRequestJson());
-        System.out.println(responseText);
-        return makePaymentTransaction(responseText);
-    }
+		JSONObject dataJson = new JSONObject().put("transaction", transactionJson);
 
-    public PaymentTransaction payDeposit(CreditCard card, int amount, String contents) {
-        Transaction transaction =
-            new Transaction(card.getCardCode(), card.getOwner(), card.getCvvCode(), card.getDateExpired(), "pay",
-                contents, amount);
-        //        Transaction transaction = new Transaction("vn_group2_2021", "Group 2",
-        //            "774", "1125", "pay", "test pay", 100);
-        Request request = new Request(transaction);
-        System.out.println("print chua zi:" + request.makeRequestJson());
-        String responseText = InterbankBoundary.query(Configs.PROCESS_TRANSACTION_URL, request.makeRequestJson());
-        System.out.println("response chua zi" + responseText);
-        return makePaymentTransaction(responseText);
-    }
+		JSONObject request = new JSONObject().put("data", dataJson);
 
-    private PaymentTransaction makePaymentTransaction(final String response) {
-        if (response == null) {
-            return null;
-        }
-        Gson gson = new Gson();
-        Response responseTransaction = gson.fromJson(response, Response.class);
-        
-        System.out.println("hello 5");
+		// send request
+		String responseText = InterbankBoundary.queryManual(Configs.PROCESS_TRANSACTION_URL, request.toString());
 
-        PaymentTransaction paymentTransaction = responseTransaction.toPaymentTransaction();
-        System.out.println(gson.toJson(paymentTransaction));
-        switch (paymentTransaction.getErrorCode()) {
-            case "00":
-                break;
-            case "01":
-                throw new InvalidCardException();
-            case "02":
-                throw new NotEnoughBalanceException();
-            case "03":
-                throw new InternalServerErrorException();
-            case "04":
-                throw new SuspiciousTransactionException();
-            case "05":
-                throw new NotEnoughTransactionInfoException();
-            case "06":
-                throw new InvalidVersionException();
-            case "07":
-                throw new InvalidTransactionAmountException();
-            default:
-                throw new UnrecognizedException();
-        }
+		Transaction trx = convertToTransaction(responseText);
+		trx.setCard(card);
+		return trx;
+	}
 
-        return paymentTransaction;
-    }
+	public Transaction refund(CreditCard card, int amount, String contents) {
+		InterbankTransaction transaction = new InterbankTransaction(card.getCardCode(), card.getOwner(),
+				card.getCvvCode(), card.getDateExpired(), "refund", contents, amount);
+		// create request string
+		JSONObject transactionJson = new JSONObject().put("cardCode", transaction.getCardCode())
+				.put("owner", transaction.getOwner()).put("cvvCode", transaction.getCvvCode())
+				.put("dateExpired", transaction.getDateExpired()).put("command", transaction.getCommand())
+				.put("transactionContent", transaction.getTransactionContent()).put("amount", transaction.getAmount())
+				.put("createdAt", transaction.getCreatedAt());
 
-    public static void main(String[] args) {
-        CreditCard card = new CreditCard("vn_group2_2021", "Group 2", "774", "1125");
-        InterbankSubsystemController ctrl = new InterbankSubsystemController();
-        System.out.println(ctrl.payDeposit(card, 100, "test pay"));
-    }
+		JSONObject dataJson = new JSONObject().put("transaction", transactionJson);
+
+		JSONObject request = new JSONObject().put("data", dataJson);
+
+		// send request
+		String responseText = InterbankBoundary.queryManual(Configs.PROCESS_TRANSACTION_URL, request.toString());
+
+		Transaction trx = convertToTransaction(responseText);
+		trx.setCard(card);
+		return trx;
+	}
+
+	private Transaction convertToTransaction(String responseText) {
+		if (responseText == null) {
+			return null;
+		}
+		JSONObject resJson = new JSONObject(responseText);
+		Gson gson = new Gson();
+
+		Transaction transactionRes = gson
+				.fromJson(resJson.getJSONObject("data").getJSONObject("transaction").toString(), Transaction.class);
+		System.out.println(resJson.getString("errorCode"));
+		
+		transactionRes.setErrorCode(resJson.getString("errorCode"));
+
+		switch (transactionRes.getErrorCode()) {
+		case "00":
+			break;
+		case "01":
+			throw new InvalidCardException();
+		case "02":
+			throw new NotEnoughBalanceException();
+		case "03":
+			throw new InternalServerErrorException();
+		case "04":
+			throw new SuspiciousTransactionException();
+		case "05":
+			throw new NotEnoughTransactionInfoException();
+		case "06":
+			throw new InvalidVersionException();
+		case "07":
+			throw new InvalidTransactionAmountException();
+		default:
+			throw new UnrecognizedException();
+		}
+
+		return transactionRes;
+	}
+
+	public static void main(String[] args) {
+		CreditCard card = new CreditCard("vn_group2_2021", "Group 2", "774", "1125");
+		InterbankSubsystemController ctrl = new InterbankSubsystemController();
+		Transaction trx = ctrl.pay(card, 100, "test pay");
+	}
 }

@@ -1,43 +1,61 @@
 package group13.ecobikerental.entity.bike;
 
 public class ElectricBike extends Bike {
-    private String licensePlate;
-    private int pin;
+	@Override
+	public String toString() {
+		return "ElectricBike [licensePlate=" + licensePlate + ", pin=" + pin + ", getType()=" + getType()
+				+ ", getBarcode()=" + getBarcode() + ", getDockName()=" + getDockName() + ", getDeposit()="
+				+ getDeposit() + ", getBikeCode()=" + getBikeCode() + ", toString()=" + super.toString()
+				+ ", getBikeId()=" + getBikeId() + ", getIsBeingUsed()=" + getIsBeingUsed() + ", getBaseFee()="
+				+ getBaseFee() + ", getExtraFee()=" + getExtraFee() + ", getDockId()=" + getDockId() + "]";
+	}
 
-    public ElectricBike() {
-    }
+	private String licensePlate;
+	private int pin;
 
-    public ElectricBike(String bikecode, String type, String dockName, int deposit, String licensePlate,
-                        int pin) {
-        super(bikecode, type, dockName, deposit);
-        this.licensePlate = licensePlate;
-        this.pin = pin;
-    }
+	public ElectricBike() {
+		super();
+	}
 
-    public String getLicensePlate() {
-        return licensePlate;
-    }
+	public ElectricBike(String bikecode, String type, String dockName, int deposit, String licensePlate, int pin) {
+		super(bikecode, type, dockName, deposit);
+		this.licensePlate = licensePlate;
+		this.pin = pin;
+	}
 
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
+	public ElectricBike(String bikecode, String type, String dockName, int deposit, int baseFee, int extraFee,
+			String licensePlate, int pin) {
+		super(bikecode, type, dockName, deposit, baseFee, extraFee);
+		this.licensePlate = licensePlate;
+		this.pin = pin;
+	}
 
-    public int getPin() {
-        return pin;
-    }
+	public String getLicensePlate() {
+		return licensePlate;
+	}
 
-    public void setPin(int pin) {
-        this.pin = pin;
-    }
+	public void setLicensePlate(String licensePlate) {
+		this.licensePlate = licensePlate;
+	}
 
-    @Override
-    public String toString() {
-        return "EBike{" + "licensePlate='" + licensePlate + '\'' + ", pin=" + pin + '}';
-    }
+	public int getPin() {
+		return pin;
+	}
 
-    public static void main(String[] args) {
-        Bike bike = new ElectricBike("0987654321", "type 1", "dock", 20, "abcyxz", 80);
-        System.out.println(bike.toString());
-        System.out.println(((ElectricBike) bike).getPin());
-    }
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
+
+	@Override
+	public int calculateRentalFee(int minutes) {
+		// TODO Auto-generated method stub
+		return (int) (super.calculateRentalFee(minutes) * 1.5);
+	}
+
+	public static void main(String[] args) {
+		Bike bike = new ElectricBike("0987654321", "type 1", "dock", 20, "abcyxz", 80);
+		System.out.println(bike.toString());
+		System.out.println(((ElectricBike) bike).getPin());
+	}
+
 }

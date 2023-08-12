@@ -5,8 +5,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-import group13.ecobikerental.controller.RentBikeController;
-import group13.ecobikerental.controller.ViewDockController;
+import group13.ecobikerental.controller.ViewInfoController;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.dock.Dock;
 import group13.ecobikerental.utils.Configs;
@@ -32,7 +31,6 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
     public Button btnBack;
 
     private Dock dock;
-//    private int numberOfBike;
 
     public DockInfoScreenHandler(Stage stage, String screenPath, Dock dock) throws IOException {
         super(stage, screenPath);
@@ -47,14 +45,18 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
         lbAddress.setText(this.dock.getAddress());
         lbArea.setText(this.dock.getArea() + " m\u00B2");
         lbQuantity.setText(this.dock.getAvailable_bike() + "/" + this.dock.getTotal_bike());
-//        setImage(imgDock, "assets/images/dock2.jpg");
         setImage(imgDock,this.dock.getImg_url() ,"assets/images/dock2.jpg");
         setImage(imgLogo, Configs.LOGO_IMG_PATH);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setController(new RentBikeController());
+        try {
+			setController(new ViewInfoController());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         btnBack.setOnAction(event -> {
             this.getPrev().show();
         });
@@ -68,21 +70,20 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
         });
 
         btnViewBike.setOnAction(event -> {
-            viewBike();
+        	String barcode = tfBarcode.getText();
+        	System.out.println("clicked with barcode: " + barcode);
+            viewBike(barcode);
         });
 
     }
 
-    public void viewBike() {
-        System.out.println("view bike clickeddddd");
-        String barcode = tfBarcode.getText();
-
+    public void viewBike(String barcode) {
         Bike bike = null;
         try {
-            bike = this.getController().viewBike(this.dock.getDockName(), barcode);
+            bike = this.getController().getBikeRequest(this.dock.getId(), barcode);
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("The bike with barcode " + barcode + " could not found");
+            alert.setTitle("The bike with barcode: " + barcode + " could not found");
             alert.setContentText("Please enter barcode again!!!");
             alert.showAndWait();
         }
@@ -112,11 +113,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
     /**
      * @return HomeController
      */
-    public RentBikeController getController() {
-        return (RentBikeController) super.getController();
+    public ViewInfoController getController() {
+        return (ViewInfoController) super.getController();
     }
-
-//    public void setNumberOfBike(int numberOfBike) {
-//        this.numberOfBike = numberOfBike;
-//    }
 }

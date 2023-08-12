@@ -5,12 +5,13 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import group13.ecobikerental.business_layer.InvoiceBL;
-import group13.ecobikerental.dbconnnection_layer.BikeDL;
-import group13.ecobikerental.dbconnnection_layer.DockDL;
-import group13.ecobikerental.dbconnnection_layer.InvoiceDL;
-import group13.ecobikerental.dbconnnection_layer.PaymentTransactionDL;
+import group13.ecobikerental.data_access_layer.BikeDAL;
+import group13.ecobikerental.data_access_layer.DockDAL;
+import group13.ecobikerental.data_access_layer.InvoiceDAL;
+import group13.ecobikerental.data_access_layer.TransactionDAL;
+import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.invoice.Invoice;
-import group13.ecobikerental.entity.payment.PaymentTransaction;
+import group13.ecobikerental.entity.payment.Transaction;
 import group13.ecobikerental.exception.PaymentException;
 import group13.ecobikerental.exception.UnrecognizedException;
 import group13.ecobikerental.subsystem.InterbankInterface;
@@ -29,8 +30,10 @@ public class ReturnBikeController extends BaseController {
      * @param timeRental - the time that user rented
      * @return rentalFee - the fee corresponds to the rental time
      */
-    public int calculateRentalFee(String timeRental) {
-        return InvoiceBL.calculateRentalFee(timeRental);
+    public int calculateRentalFee(String timeRental, Bike bike) {
+    	InvoiceBL iv = new InvoiceBL();
+    	int amount = iv.calculateRentalFee(timeRental, "Normal", bike);
+        return amount;
     }
 
     /**
@@ -40,15 +43,15 @@ public class ReturnBikeController extends BaseController {
      * @return result
      * @throws SQLException - Exceptions relate to SQL
      */
-    public Map<String, String> returnBike(String dockName, String timeRental) throws SQLException {
-        int rentalFees = calculateRentalFee(timeRental);
+    public Map<String, String> returnBike(String dockName, String timeRental, Bike bike) throws SQLException {
+        int rentalFees = calculateRentalFee(timeRental, bike);
         Map<String, String> result = new Hashtable<String, String>();
-        if (DockDL.getInstance().checkDockAvailable(dockName)) {
+        if (DockDAL.getInstance().checkDockAvailable(dockName)) {
             result.put("RESULT", "PAYMENT FAILED!");
             int refundAmount = Invoice.getInstance().getBike().getDeposit() - rentalFees;
             interbank = new InterbankSubsystem();
             try {
-                PaymentTransaction refundTransaction =
+                Transaction refundTransaction =
                     interbank.refund(Invoice.getInstance().getPayDepositTransaction().getCard(), refundAmount,
                         "request refund");
                 result.put("RESULT", "PAYMENT SUCCESSFUL!");
@@ -56,9 +59,9 @@ public class ReturnBikeController extends BaseController {
 
                 Invoice.getInstance().setRefundTransaction(refundTransaction);
                 Invoice.getInstance().setRentalFee(rentalFees);
-                new BikeDL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName, 0);
-                PaymentTransactionDL.save(refundTransaction);
-                InvoiceDL.save();
+                new BikeDAL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName, 0);
+                TransactionDAL.save(refundTransaction);
+                InvoiceDAL.save();
             } catch (PaymentException | UnrecognizedException ex) {
                 result.put("MESSAGE", ex.getMessage());
             }

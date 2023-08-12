@@ -4,7 +4,8 @@ package group13.ecobikerental.entity.bike;
  * Entity Bike
  */
 public class Bike {
-    private int bikeId;
+
+	private int bikeId;
     /**
      * Represent for code of Bike.
      */
@@ -20,9 +21,15 @@ public class Bike {
     /**
      * deposit fee of bike.
      */
+    private int dockId;
+    
     private int deposit;
     
     private int isBeingUsed;
+    
+    private int baseFee;
+    
+    private int extraFee;
 
     public Bike() {
 
@@ -41,7 +48,27 @@ public class Bike {
         this.type = type;
         this.dockName = dockName;
         this.deposit = deposit;
+        this.baseFee = 10000;
+        this.extraFee = 3000;
     }
+    /**
+	 * @param bikeCode
+	 * @param type
+	 * @param dockName
+	 * @param deposit
+	 * @param baseFee
+	 * @param extraFee
+	 */
+	public Bike(String bikeCode, String type, String dockName, int deposit, int baseFee, int extraFee) {
+		super();
+		this.bikeCode = bikeCode;
+		this.type = type;
+		this.dockName = dockName;
+		this.deposit = deposit;
+		this.baseFee = baseFee;
+		this.extraFee = extraFee;
+	}
+    
 
     /**
      * Getter for type
@@ -113,13 +140,28 @@ public class Bike {
     public void setBikeCode(String bikeCode) {
         this.bikeCode = bikeCode;
     }
+    
+    public int calculateRentalFee(int minutes) {
+    	int rentalFee = 0;
+        if (minutes <= 1) {
+            rentalFee = 0;
+        } else if (minutes < 30) {
+            rentalFee = this.baseFee;
+        } else if (minutes % 15 == 0) {
+            rentalFee = this.baseFee + (minutes - 30) / 15 * this.extraFee;
+        } else {
+            rentalFee = this.baseFee + ((minutes - 30) / 15 + 1) * this.extraFee;
+        }
+        return rentalFee;
+    }
 
 
     @Override
-    public String toString() {
-        return "Bike{" + "bikeCode='" + bikeCode + '\'' + ", barcode='" + getBarcode() + '\'' + ", type='" + type + '\'' +
-            ", dockName='" + dockName + '\'' + ", deposit=" + deposit + '}';
-    }
+	public String toString() {
+		return "Bike [bikeId=" + bikeId + ", bikeCode=" + bikeCode + ", type=" + type + ", dockName=" + dockName
+				+ ", deposit=" + deposit + ", isBeingUsed=" + isBeingUsed + ", baseFee=" + baseFee + ", extraFee="
+				+ extraFee + "]";
+	}
 
     public int getBikeId() {
         return bikeId;
@@ -135,5 +177,29 @@ public class Bike {
 
 	public void setIsBeingUsed(int isBeingUsed) {
 		this.isBeingUsed = isBeingUsed;
+	}
+
+	public int getBaseFee() {
+		return baseFee;
+	}
+
+	public void setBaseFee(int baseFee) {
+		this.baseFee = baseFee;
+	}
+
+	public int getExtraFee() {
+		return extraFee;
+	}
+
+	public void setExtraFee(int extraFee) {
+		this.extraFee = extraFee;
+	}
+
+	public int getDockId() {
+		return dockId;
+	}
+
+	public void setDockId(int dockId) {
+		this.dockId = dockId;
 	}
 }
