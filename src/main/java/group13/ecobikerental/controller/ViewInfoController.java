@@ -14,12 +14,11 @@ import group13.ecobikerental.entity.dock.Dock;
  */
 public class ViewInfoController extends BaseController {
 	private DockDAL dockDlInstance;
-	private BikeDAL bikeDlInstance;
 
 	public ViewInfoController() throws SQLException {
 		super();
 		this.dockDlInstance = new DockDAL();
-		this.bikeDlInstance = new BikeDAL();
+//		this.bikeDlInstance = new BikeDAL();
 	}
 
 	public List<Dock> getDockListRequest() throws SQLException {
@@ -30,11 +29,15 @@ public class ViewInfoController extends BaseController {
 		return dockDlInstance.searchDock(name);
 	}
 
-    public Bike getBikeRequest(final int id, final String barcode) throws SQLException {
-
-        String bikeCode = BikeBL.convertBarcodeToBikeCode(barcode);
+    public Bike getBikeRequest(final int dockId, final String barcode) throws SQLException {
+        String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
+        
+        System.out.println("hello final bikecode: " + bikeCode);
+        
         if (bikeCode != null) {
-            return this.bikeDlInstance.getBikeByBikeCode(bikeCode, id);
+        	Bike biketest = this.dockDlInstance.getBikeByBikeCode(dockId, bikeCode);
+            System.out.println(biketest.getDeposit());
+        	return biketest;
         } else {
             return null;
         }

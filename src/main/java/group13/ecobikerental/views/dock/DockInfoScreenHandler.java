@@ -61,39 +61,39 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
             this.getPrev().show();
         });
 
-        imgLogo.setOnMouseClicked(mouseEvent -> {
-            try {
-                this.getHomeScreenHandler().show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+//        imgLogo.setOnMouseClicked(mouseEvent -> {
+//            try {
+//                this.getHomeScreenHandler().show();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        });
 
         btnViewBike.setOnAction(event -> {
-        	String barcode = tfBarcode.getText();
-        	System.out.println("clicked with barcode: " + barcode);
-            viewBike(barcode);
+            viewBike(tfBarcode.getText());
         });
 
     }
 
     public void viewBike(String barcode) {
         Bike bike = null;
+        System.out.println("hello 1 " + barcode);
         try {
             bike = this.getController().getBikeRequest(this.dock.getId(), barcode);
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("The bike with barcode: " + barcode + " could not found");
+            alert.setTitle("Bike not found");
             alert.setContentText("Please enter barcode again!!!");
             alert.showAndWait();
         }
-
+        
         if (bike == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("This Barcode Invalid");
             alert.setContentText("Please enter barcode again!!");
             alert.showAndWait();
         } else {
+        	System.out.println("extra fee: " +bike.getExtraFee());
             BikeInfoScreenHandler bikeScreen = null;
             try {
                 bikeScreen = new BikeInfoScreenHandler(this.stage, Configs.BIKE_INFO_SCREEN_PATH);

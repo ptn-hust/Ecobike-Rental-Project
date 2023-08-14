@@ -8,84 +8,103 @@ import group13.ecobikerental.entity.payment.Transaction;
  * Entity Invoice
  */
 public class Invoice {
-    /**
-     * Represent for bike
-     */
-    private Bike bike;
-    private String rentalTime;
-    private int rentalFee;
-    /**
-     * Represent for payment transaction.
-     */
-    private Transaction payDepositTransaction;
-    private Transaction refundTransaction;
+	/**
+	 * Represent for bike
+	 */
+	private Bike bike;
+	private String rentalTime;
+	private int rentalFee;
+	/**
+	 * Represent for payment transaction.
+	 */
+	private Transaction payTransaction;
+	private Transaction refundTransaction;
 
-//    private static Invoice instance = new Invoice();
-    private static Invoice instance;
+	private static Invoice instance;
 
-    private Invoice() {
-    }
+	public static Invoice getInstance() {
+		if (instance == null) {
+			instance = new Invoice();
+		}
+		return instance;
+	}
 
+	public static void setInstance(Invoice instance) {
+		Invoice.instance = instance;
+	}
 
-    /**
-     * This method saves the invoice.
-     */
-    public void save() {
+	public static void setInstance() {
+		instance = null;
+	}
 
-    }
+	/**
+	 * @return the bike
+	 */
+	public Bike getBike() {
+		return bike;
+	}
 
+	/**
+	 * @param bike the bike to set
+	 */
+	public void setBike(Bike bike) {
+		this.bike = bike;
+	}
 
-    public static Invoice getInstance() {
-    	if(instance == null) {
-    		instance = new Invoice();
-    	}
-        return instance;
-    }
+	/**
+	 * @return the rentalTime
+	 */
+	public String getRentalTime() {
+		return rentalTime;
+	}
 
-    public static void setInstance(Invoice instance) {
-        Invoice.instance = instance;
-    }
-    public static void setInstance() {
-        instance = null;
-    }
+	/**
+	 * @param rentalTime the rentalTime to set
+	 */
+	public void setRentalTime(String rentalTime) {
+		this.rentalTime = rentalTime;
+	}
 
-    public Bike getBike() {
-        return bike;
-    }
+	/**
+	 * @return the rentalFee
+	 */
+	public int getRentalFee() {
+		return rentalFee;
+	}
 
-    public void setBike(Bike bike) {
-        this.bike = bike;
-    }
+	/**
+	 * @param rentalFee the rentalFee to set
+	 */
+	public void setRentalFee(int rentalFee) {
+		this.rentalFee = rentalFee;
+	}
 
-    public Transaction getPayDepositTransaction() {
-        return payDepositTransaction;
-    }
+	/**
+	 * @return the payTransaction
+	 */
+	public Transaction getPayTransaction() {
+		return payTransaction;
+	}
 
-    public void setPayDepositTransaction(Transaction payDepositTransaction) {
-        this.payDepositTransaction = payDepositTransaction;
-    }
+	/**
+	 * @param payTransaction the payTransaction to set
+	 */
+	public void setPayTransaction(Transaction payTransaction) {
+		this.payTransaction = payTransaction;
+	}
 
-    public Transaction getRefundTransaction() {
-        return refundTransaction;
-    }
+	/**
+	 * @return the refundTransaction
+	 */
+	public Transaction getRefundTransaction() {
+		return refundTransaction;
+	}
 
-    public void setRefundTransaction(Transaction refundTransaction) {
-        this.refundTransaction = refundTransaction;
-    }
+	/**
+	 * @param refundTransaction the refundTransaction to set
+	 */
+	public void setRefundTransaction(Transaction refundTransaction) {
+		this.refundTransaction = refundTransaction;
+	}
 
-    public void setRentalTime(String rentalTime) {
-        this.rentalTime = rentalTime;
-    }
-
-    public String getRentalTime() {
-        return rentalTime;
-    }
-
-    public int getRentalFee() {
-        return rentalFee;
-    }
-
-    public void setRentalFee(int rentalFee) {
-        this.rentalFee = rentalFee;
-    }
 }

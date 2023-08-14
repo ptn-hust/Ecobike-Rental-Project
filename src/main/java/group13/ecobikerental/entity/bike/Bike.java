@@ -93,8 +93,8 @@ public class Bike {
      *
      * @return bikeCode
      */
-    public String getBarcode() {
-        return this.bikeCode.substring(0, 13);
+    public String getBikecode() {
+        return this.bikeCode;
     }
 
     /**

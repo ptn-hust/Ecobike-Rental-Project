@@ -1,36 +1,54 @@
 package group13.ecobikerental.business_layer;
 
-import group13.ecobikerental.utils.Utils;
-
-/**
- * This class processes businesses related to Bike
- */
 public class BikeBL {
-    /**
-     * This method validate format barcode
-     * @param barcode - barcode of bike
-     * @return - true if format barcode is correct else false
-     */
-    public static boolean validateBarcode(final String barcode) {
-        if (barcode == null || barcode.length() != 5) {
-            return false;
+	private static BikeBL instance;
+	
+	private BikeBL() {
+		
+	}
+	
+    public static BikeBL getInstance() {
+        if (instance == null) {
+            synchronized (BikeBL.class) {
+                if (instance == null) {
+                    instance = new BikeBL();
+                }
+            }
         }
-        return barcode.matches("^[0-9]+");
+        return instance;
     }
+    
+	public boolean validateBarcode(final String barcode) {
+		if (barcode == null || barcode.length() != 12 || !barcode.matches("\\d{12}")) {
+			return false;
+		}
+		return true;
+	}
 
-    /**
-     * This method convert barcode to bike code
-     * @param barcode - the barcode that user entered
-     * @return String: bike code
-     */
-    public static String convertBarcodeToBikeCode(final String barcode) {
-        if (!validateBarcode(barcode)) {
-        	System.out.println("invalid barcode");
-            return null;
-        }
-        System.out.println(barcode + "123456" + barcode);
-        return barcode + "123456" + barcode;
-    }
+	public String deduceBikeCode(String barcode) {
+		int barcodeLength = barcode.length();
+		System.out.println("length " + barcodeLength);
+		String firstHalf = barcode.substring(0, 3);
+		System.out.println("first half "+ firstHalf);
+		
+		String secondHalf = barcode.substring(9,12);
+		System.out.println("second half "+ secondHalf);
 
+		if (secondHalf.equals(firstHalf)) {
+			return firstHalf;
+		}
+
+		return null; // Barcode does not match the pattern
+	}
+
+	public String convertBarcodeToBikeCode(final String barcode) {
+		if (!validateBarcode(barcode)) {
+			System.out.println("Invalid barcode format");
+			return null;
+		}
+		String bikecode = deduceBikeCode(barcode);
+		System.out.println("bike code: " + bikecode);
+		return bikecode;
+	}
 
 }

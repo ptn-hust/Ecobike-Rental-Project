@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import group13.ecobikerental.controller.PayDepositController;
+import group13.ecobikerental.controller.PaymentController;
 import group13.ecobikerental.controller.ViewInfoController;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.ElectricBike;
@@ -12,7 +12,7 @@ import group13.ecobikerental.entity.invoice.Invoice;
 import group13.ecobikerental.utils.Configs;
 import group13.ecobikerental.utils.Utils;
 import group13.ecobikerental.views.BaseScreenHandler;
-import group13.ecobikerental.views.paydeposit.PayDepositScreenHandler;
+import group13.ecobikerental.views.paydeposit.CreditCardFormScreenHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -52,7 +52,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
      * this method set info of screen.
      */
     public void setInfo() {
-        this.lbBarcode.setText(this.bike.getBarcode());
+        this.lbBarcode.setText(this.bike.getBikecode());
         this.lbDockName.setText(this.bike.getDockName());
         this.lbDeposit.setText(Utils.getCurrencyFormat(this.bike.getDeposit()));
         this.lbType.setText(this.bike.getType());
@@ -72,7 +72,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
 
         btnRent.setOnAction(event -> {
             try {
-                confirmRentBike();
+                rentBike();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -83,17 +83,18 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
         });
     }
 
-    public void confirmRentBike() throws IOException {
+    public void rentBike() throws IOException {
+    	Invoice.setInstance(); // reset invoice
         Invoice.getInstance().setBike(this.bike);
 
-        PayDepositScreenHandler payDepositScreen =
-            new PayDepositScreenHandler(this.stage, Configs.PAY_DEPOSIT_SCREEN_PATH);
+        CreditCardFormScreenHandler creditCardFormScreen =
+            new CreditCardFormScreenHandler(this.stage, Configs.PAY_DEPOSIT_SCREEN_PATH,this.bike.getDeposit());
 
-        payDepositScreen.setScreenTitle("Pay Deposit Screen");
-        payDepositScreen.setController(new PayDepositController());
-        payDepositScreen.setPrev(this);
+        creditCardFormScreen.setScreenTitle("Pay Deposit Screen");
+        creditCardFormScreen.setController(new PaymentController());
+        creditCardFormScreen.setPrev(this);
 
-        payDepositScreen.show();
+        creditCardFormScreen.show();
 
     }
 

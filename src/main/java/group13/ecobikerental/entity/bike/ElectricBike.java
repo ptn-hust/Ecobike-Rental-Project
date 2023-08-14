@@ -4,7 +4,7 @@ public class ElectricBike extends Bike {
 	@Override
 	public String toString() {
 		return "ElectricBike [licensePlate=" + licensePlate + ", pin=" + pin + ", getType()=" + getType()
-				+ ", getBarcode()=" + getBarcode() + ", getDockName()=" + getDockName() + ", getDeposit()="
+				+ ", getBarcode()=" + getBikecode() + ", getDockName()=" + getDockName() + ", getDeposit()="
 				+ getDeposit() + ", getBikeCode()=" + getBikeCode() + ", toString()=" + super.toString()
 				+ ", getBikeId()=" + getBikeId() + ", getIsBeingUsed()=" + getIsBeingUsed() + ", getBaseFee()="
 				+ getBaseFee() + ", getExtraFee()=" + getExtraFee() + ", getDockId()=" + getDockId() + "]";

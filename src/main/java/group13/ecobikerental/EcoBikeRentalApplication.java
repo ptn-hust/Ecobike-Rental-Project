@@ -22,7 +22,7 @@ public class EcoBikeRentalApplication extends Application {
         stage.show();
 
         // Load splash screen with fade in effect
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), root);
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1), root);
         fadeIn.setFromValue(0);
         fadeIn.setToValue(1);
         fadeIn.setCycleCount(1);

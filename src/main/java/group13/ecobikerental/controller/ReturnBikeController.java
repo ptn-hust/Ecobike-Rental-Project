@@ -21,54 +21,42 @@ import group13.ecobikerental.subsystem.InterbankSubsystem;
  * This class controls the flow of events when users return bike to dock
  */
 public class ReturnBikeController extends BaseController {
-    /**
-     * Represent the Interbank subsystem
-     */
-    private InterbankInterface interbank;
-    /**
-     * The method calculates the rental fee
-     * @param timeRental - the time that user rented
-     * @return rentalFee - the fee corresponds to the rental time
-     */
-    public int calculateRentalFee(String timeRental, Bike bike) {
-    	InvoiceBL iv = new InvoiceBL();
-    	int amount = iv.calculateRentalFee(timeRental, "Normal", bike);
-        return amount;
-    }
 
-    /**
-     * This method takes responsibility for processing the return bike
-     * @param dockName - the name of dock where user returns bike
-     * @param timeRental - the time that user rented bike
-     * @return result
-     * @throws SQLException - Exceptions relate to SQL
-     */
-    public Map<String, String> returnBike(String dockName, String timeRental, Bike bike) throws SQLException {
-        int rentalFees = calculateRentalFee(timeRental, bike);
-        Map<String, String> result = new Hashtable<String, String>();
-        if (DockDAL.getInstance().checkDockAvailable(dockName)) {
-            result.put("RESULT", "PAYMENT FAILED!");
-            int refundAmount = Invoice.getInstance().getBike().getDeposit() - rentalFees;
-            interbank = new InterbankSubsystem();
-            try {
-                Transaction refundTransaction =
-                    interbank.refund(Invoice.getInstance().getPayDepositTransaction().getCard(), refundAmount,
-                        "request refund");
-                result.put("RESULT", "PAYMENT SUCCESSFUL!");
-                result.put("MESSAGE", "You have successfully refund!");
+	private InterbankInterface interbank;
 
-                Invoice.getInstance().setRefundTransaction(refundTransaction);
-                Invoice.getInstance().setRentalFee(rentalFees);
-                new BikeDAL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName, 0);
-                TransactionDAL.save(refundTransaction);
-                InvoiceDAL.save();
-            } catch (PaymentException | UnrecognizedException ex) {
-                result.put("MESSAGE", ex.getMessage());
-            }
-        } else {
-            result.put("RESULT", "NOT AVAILABLE");
-            result.put("MESSAGE", "Please choose another dock again!!!");
-        }
-        return result;
-    }
+	public int calculateRentalFee(String timeRental, Bike bike) {
+		int amount = InvoiceBL.getInstance().calculateRentalFee(timeRental, "Normal", bike);
+		return amount;
+	}
+
+	public Map<String, String> returnBike(String dockName, String timeRental, Bike bike) throws SQLException {
+		int rentalFees = calculateRentalFee(timeRental, bike);
+
+		Map<String, String> result = new Hashtable<String, String>();
+
+		if (new DockDAL().checkDockAvailable(dockName)) {
+			result.put("RESULT", "PAYMENT FAILED!");
+			int refundAmount = Invoice.getInstance().getBike().getDeposit() - rentalFees;
+			interbank = new InterbankSubsystem();
+			try {
+				Transaction refundTransaction = interbank.refund(
+						Invoice.getInstance().getPayTransaction().getCard(), refundAmount, "request refund");
+				result.put("RESULT", "PAYMENT SUCCESSFUL!");
+				result.put("MESSAGE", "You have successfully refund!");
+
+				Invoice.getInstance().setRefundTransaction(refundTransaction);
+				Invoice.getInstance().setRentalFee(rentalFees);
+				new BikeDAL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName, 0);
+				TransactionDAL.save(refundTransaction);
+				InvoiceDAL.save();
+			} catch (PaymentException | UnrecognizedException ex) {
+				result.put("MESSAGE", ex.getMessage());
+			}
+		} else {
+			result.put("RESULT", "DOCK IS NOT AVAILABLE");
+			result.put("MESSAGE", "Please choose another dock again!!!");
+		}
+
+		return result;
+	}
 }

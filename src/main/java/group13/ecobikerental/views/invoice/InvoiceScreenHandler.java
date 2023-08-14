@@ -63,11 +63,11 @@ public class InvoiceScreenHandler extends BaseScreenHandler implements Initializ
     }
 
     public void setInfo() {
-        lbBikeBarcode.setText(Invoice.getInstance().getBike().getBarcode());
-        lbCardNumber.setText(Invoice.getInstance().getPayDepositTransaction().getCard().getCardCode());
-        lbBikeBarcode.setText(Invoice.getInstance().getBike().getBarcode());
+        lbBikeBarcode.setText(Invoice.getInstance().getBike().getBikecode());
+        lbCardNumber.setText(Invoice.getInstance().getPayTransaction().getCard().getCardCode());
+        lbBikeBarcode.setText(Invoice.getInstance().getBike().getBikecode());
         lbDeposit.setText(Utils.getCurrencyFormat(Invoice.getInstance().getBike().getDeposit()));
-        lbRenter.setText(Invoice.getInstance().getPayDepositTransaction().getCard().getOwner());
+        lbRenter.setText(Invoice.getInstance().getPayTransaction().getCard().getOwner());
         lbRefund.setText(Utils.getCurrencyFormat(Invoice.getInstance().getRefundTransaction().getAmount()));
         lbRentaLFees.setText(Utils.getCurrencyFormat(Invoice.getInstance().getRentalFee()));
     }

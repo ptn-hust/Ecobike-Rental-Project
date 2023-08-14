@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import group13.ecobikerental.data_access_layer.DBConnector;
 import group13.ecobikerental.entity.invoice.Invoice;
-
+// this class is copied from project Group 2
 /**
  * This class controls the database transactions relate to Invoice
  */
@@ -21,7 +21,7 @@ public class InvoiceDAL {
             pstmt.setString(1, Invoice.getInstance().getRentalTime());
             pstmt.setString(2, String.valueOf(Invoice.getInstance().getRentalFee()));
             pstmt.setString(3, String.valueOf(Invoice.getInstance().getBike().getBikeId()));
-            pstmt.setString(4, Invoice.getInstance().getPayDepositTransaction().getTransactionId());
+            pstmt.setString(4, Invoice.getInstance().getPayTransaction().getTransactionId());
             pstmt.setString(5, Invoice.getInstance().getRefundTransaction().getTransactionId());
             pstmt.execute();
         } catch (SQLException e) {

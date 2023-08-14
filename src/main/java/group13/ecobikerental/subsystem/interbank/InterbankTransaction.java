@@ -9,9 +9,9 @@ public class InterbankTransaction {
     private String dateExpired;
     private String command;
     private String transactionContent;
-    private int amount;
     private String transactionId;
     private String createdAt;
+    private int amount;
 
     public InterbankTransaction(String cardCode, String owner, String cvvCode, String dateExpired, String commmand,
                        String transactionContent, int amount) {

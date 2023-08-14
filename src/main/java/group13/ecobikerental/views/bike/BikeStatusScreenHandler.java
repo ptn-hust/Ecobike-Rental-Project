@@ -29,6 +29,7 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 	public ProgressBar progressBarPin;
 	public Label lbPin;
 	public Label lbTime;
+	public Label lbBikeType;
 	public HBox pin;
 	public Button btnReturn;
 	public ImageView imgLogo;
@@ -85,6 +86,7 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 			pin.setVisible(true);
 			lbPin.setText(eBike.getPin() + "%");
 		}
+		lbBikeType.setText(this.bike.getType());
 	}
 
 	// stopwatch
