@@ -29,17 +29,17 @@ public class ViewInfoController extends BaseController {
 		return dockDlInstance.searchDock(name);
 	}
 
-    public Bike getBikeRequest(final int dockId, final String barcode) throws SQLException {
-        String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
-        
-        System.out.println("hello final bikecode: " + bikeCode);
-        
-        if (bikeCode != null) {
-        	Bike biketest = this.dockDlInstance.getBikeByBikeCode(dockId, bikeCode);
-            System.out.println(biketest.getDeposit());
-        	return biketest;
-        } else {
-            return null;
-        }
-    }
+//    public Bike getBikeRequest(final int dockId, final String barcode) throws SQLException {
+//        String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
+//        
+//        System.out.println("hello final bikecode: " + bikeCode);
+//        
+//        if (bikeCode != null) {
+//        	Bike biketest = this.dockDlInstance.getBikeByBikeCode(dockId, bikeCode);
+//            System.out.println(biketest.getDeposit());
+//        	return biketest;
+//        } else {
+//            return null;
+//        }
+//    }
 }
