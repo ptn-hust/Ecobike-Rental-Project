@@ -15,17 +15,17 @@ public class RentBikeController extends BaseController {
 		this.dockDlInstance = new DockDAL();
 	}
 
-	public Bike getBikeRequest(final int dockId, String barcode) throws SQLException {
-		String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
-		if (bikeCode != null) {
-			Bike biketest = this.dockDlInstance.getBikeByBikeCode(dockId, bikeCode);
-			return biketest;
-		} else {
-			return null;
-		}
-	}
+//	public Bike getBikeRequest(final int dockId, String barcode) throws SQLException {
+//		String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
+//		if (bikeCode != null) {
+//			Bike biketest = this.dockDlInstance.getBikeByBikeCode(dockId, bikeCode);
+//			return biketest;
+//		} else {
+//			return null;
+//		}
+//	}
 
-	public String getBikeCode(String barcode) {
+	public String getBikeCodeRequest(String barcode) {
 		String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
 		return bikeCode;
 	}

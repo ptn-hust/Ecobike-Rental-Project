@@ -13,12 +13,12 @@ public class InterbankSubsystem implements InterbankInterface {
     }
 
     public Transaction pay(CreditCard card, int amount, String contents) {
-        Transaction transaction = controller.pay(card, amount, contents);
+        Transaction transaction = controller.processPay(card, amount, contents);
         return transaction;
     }
 
     public Transaction refund(CreditCard card, int amount, String contents) {
-        Transaction transaction = controller.refund(card, amount, contents);
+        Transaction transaction = controller.processRefund(card, amount, contents);
         return transaction;
     }
 }

@@ -64,7 +64,7 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
 	private void viewBike(int dockId, String barcode) {
 		String bikeCode = null;
 		Bike bike = null;
-		bikeCode = this.getController().getBikeCode(barcode);
+		bikeCode = this.getController().getBikeCodeRequest(barcode);
 		if (bikeCode == null) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("Invalid bike code");
@@ -92,15 +92,10 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
 		} else {
 			BikeInfoScreenHandler bikeScreen = null;
 			try {
-				bikeScreen = new BikeInfoScreenHandler(this.stage, Configs.BIKE_INFO_SCREEN_PATH);
-				bikeScreen.setBike(bike);
+				bikeScreen = new BikeInfoScreenHandler(this.stage, Configs.BIKE_INFO_SCREEN_PATH, bike);
+//				bikeScreen.setBike(bike);
 				bikeScreen.setInfo();
-				try {
-					bikeScreen.setController(new ViewInfoController());
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				bikeScreen.setController(this.getController());
 				bikeScreen.setPrev(this);
 				bikeScreen.setScreenTitle("Bike Screen");
 				bikeScreen.show();

@@ -19,6 +19,8 @@ public class Invoice {
 	 */
 	private Transaction payTransaction;
 	private Transaction refundTransaction;
+	
+	private String paymentMethod;
 
 	private static Invoice instance;
 
@@ -105,6 +107,20 @@ public class Invoice {
 	 */
 	public void setRefundTransaction(Transaction refundTransaction) {
 		this.refundTransaction = refundTransaction;
+	}
+	
+	/**
+	 * @return the paymentMethod
+	 */
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	/**
+	 * @param paymentMethod the paymentMethod to set
+	 */
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 
 }

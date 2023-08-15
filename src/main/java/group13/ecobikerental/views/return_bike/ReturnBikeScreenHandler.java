@@ -117,7 +117,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 	}
 
 	public void returnBike(String dockReturn, String timeRental) throws IOException, SQLException {
-		Map<String, String> result = this.getController().returnBike(dockReturn, timeRental, this.bike);
+		Map<String, String> result = this.getController().returnBike(dockReturn, this.rentalFee, this.bike);
 
 		if (result.get("RESULT").equals("DOCK IS NOT AVAILABLE")) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);

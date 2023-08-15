@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import group13.ecobikerental.controller.PaymentController;
-import group13.ecobikerental.controller.ViewInfoController;
+import group13.ecobikerental.controller.RentBikeController;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.ElectricBike;
 import group13.ecobikerental.entity.invoice.Invoice;
@@ -44,8 +44,9 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
      *
      * @throws IOException
      */
-    public BikeInfoScreenHandler(Stage stage, String screenPath) throws IOException {
+    public BikeInfoScreenHandler(Stage stage, String screenPath, Bike bike) throws IOException {
         super(stage, screenPath);
+        this.bike = bike;
     }
 
     /**
@@ -98,11 +99,11 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
 
     }
 
-    public void setBike(Bike bike) {
-        this.bike = bike;
-    }
+//    public void setBike(Bike bike) {
+//        this.bike = bike;
+//    }
     
-    public ViewInfoController getController() {
-        return (ViewInfoController) super.getController();
+    public RentBikeController getController() {
+        return (RentBikeController) super.getController();
     }
 }

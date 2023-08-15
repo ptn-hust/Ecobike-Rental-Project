@@ -19,7 +19,7 @@ import group13.ecobikerental.utils.Configs;
 public class InterbankSubsystemController {
 	public InterbankBoundary interbankBoundary;
 
-	public Transaction pay(CreditCard card, int amount, String contents) {
+	public Transaction processPay(CreditCard card, int amount, String contents) {
 		InterbankTransaction transaction = new InterbankTransaction(card.getCardCode(), card.getOwner(),
 				card.getCvvCode(), card.getDateExpired(), "pay", contents, amount);
 		// create request string
@@ -41,7 +41,7 @@ public class InterbankSubsystemController {
 		return trx;
 	}
 
-	public Transaction refund(CreditCard card, int amount, String contents) {
+	public Transaction processRefund(CreditCard card, int amount, String contents) {
 		InterbankTransaction transaction = new InterbankTransaction(card.getCardCode(), card.getOwner(),
 				card.getCvvCode(), card.getDateExpired(), "refund", contents, amount);
 		// create request string

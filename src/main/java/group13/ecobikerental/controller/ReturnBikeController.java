@@ -29,23 +29,29 @@ public class ReturnBikeController extends BaseController {
 		return amount;
 	}
 
-	public Map<String, String> returnBike(String dockName, String timeRental, Bike bike) throws SQLException {
-		int rentalFees = calculateRentalFee(timeRental, bike);
+	private int calculateRefund(int deposit, int rentalFee) {
+		return (deposit - rentalFee);
+	}
+	public Map<String, String> returnBike(String dockName, int rentalFees, Bike bike) throws SQLException {
+//		int rentalFees = calculateRentalFee(timeRental, bike);
 
 		Map<String, String> result = new Hashtable<String, String>();
 
 		if (new DockDAL().checkDockAvailable(dockName)) {
 			result.put("RESULT", "PAYMENT FAILED!");
-			int refundAmount = Invoice.getInstance().getBike().getDeposit() - rentalFees;
+			
+			int refundAmount = calculateRefund(Invoice.getInstance().getBike().getDeposit(), rentalFees);
+			
 			interbank = new InterbankSubsystem();
 			try {
 				Transaction refundTransaction = interbank.refund(
 						Invoice.getInstance().getPayTransaction().getCard(), refundAmount, "request refund");
 				result.put("RESULT", "PAYMENT SUCCESSFUL!");
 				result.put("MESSAGE", "You have successfully refund!");
-
+				// update invoice
 				Invoice.getInstance().setRefundTransaction(refundTransaction);
 				Invoice.getInstance().setRentalFee(rentalFees);
+				// update bike
 				new BikeDAL().updateBike(Invoice.getInstance().getBike().getBikeCode(), dockName, 0);
 				TransactionDAL.save(refundTransaction);
 				InvoiceDAL.save();

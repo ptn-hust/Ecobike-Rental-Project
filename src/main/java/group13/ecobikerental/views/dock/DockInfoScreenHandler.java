@@ -77,7 +77,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 		RentBikeController newController = new RentBikeController();
 		String bikeCode = null;
 		Bike bike = null;
-		bikeCode = newController.getBikeCode(barcode);
+		bikeCode = newController.getBikeCodeRequest(barcode);
 		if (bikeCode == null) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			alert.setTitle("Invalid bike code");
@@ -105,11 +105,11 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 		} else {
 			BikeInfoScreenHandler bikeScreen = null;
 			try {
-				bikeScreen = new BikeInfoScreenHandler(this.stage, Configs.BIKE_INFO_SCREEN_PATH);
-				bikeScreen.setBike(bike);
+				bikeScreen = new BikeInfoScreenHandler(this.stage, Configs.BIKE_INFO_SCREEN_PATH, bike);
+//				bikeScreen.setBike(bike);
 				bikeScreen.setInfo();
 				try {
-					bikeScreen.setController(new ViewInfoController());
+					bikeScreen.setController(new RentBikeController());
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
