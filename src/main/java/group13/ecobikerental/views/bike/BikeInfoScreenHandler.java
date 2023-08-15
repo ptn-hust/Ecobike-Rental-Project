@@ -21,17 +21,17 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class BikeInfoScreenHandler extends BaseScreenHandler implements Initializable {
-    public ImageView imgBike;
+    public Button btnBack;
+    public Button btnRent;
+    public HBox licensePlate;
+    public HBox pin;
+	public ImageView imgBike;
     public Label lbType;
     public Label lbBarcode;
     public Label lbLicensePlate;
     public Label lbDockName;
     public Label lbDeposit;
     public Label lbPin;
-    public HBox licensePlate;
-    public HBox pin;
-    public Button btnBack;
-    public Button btnRent;
     public ImageView imgLogo;
 
     private Bike bike;

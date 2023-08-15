@@ -99,10 +99,4 @@ public class InterbankSubsystemController {
 
 		return transactionRes;
 	}
-
-	public static void main(String[] args) {
-		CreditCard card = new CreditCard("vn_group2_2021", "Group 2", "774", "1125");
-		InterbankSubsystemController ctrl = new InterbankSubsystemController();
-		Transaction trx = ctrl.pay(card, 100, "test pay");
-	}
 }

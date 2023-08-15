@@ -39,9 +39,9 @@ public class InterbankBoundary {
 		response = responseObj.toString();
 		/*
 		 * response =
-		 * {"data":{"transaction":{"owner":"Group 2","createdAt":"2023-08-13 00:29:02"
+		 * {"data":{"transaction":{"owner":"PHAM THAO NHI","createdAt":"2023-08-13 00:29:02"
 		 * ,"amount":100,"cvvCode":"774","dateExpired":"1125","cardCode":
-		 * "vn_group2_2021","transactionContent":"test pay","command":"pay",
+		 * "131313","transactionContent":"test pay","command":"pay",
 		 * "transactionId":"cafae64fcf"}},"errorCode":"00"}
 		 */
 		return response;
