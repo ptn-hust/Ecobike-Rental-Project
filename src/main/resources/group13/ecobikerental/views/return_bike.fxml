@@ -12,150 +12,175 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="720.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #66d392;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="100.0" prefWidth="1200.0" style="-fx-background-color: #7ac74f;">
          <children>
-            <ImageView fx:id="imgLogo" fitHeight="100.0" fitWidth="152.0" layoutX="1097.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box,gray,8,0.0,0,4);">
+            <ImageView fx:id="imgLogo" fitHeight="122.0" fitWidth="125.0" layoutX="55.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);">
                <image>
-                  <Image url="@../../../../../../assets/images/LogoMain.png" />
+                  <Image url="@../../../../../../assets/images/Logo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="505.0" layoutY="6.0" prefHeight="77.0" prefWidth="369.0" text="RETURN BIKE" textAlignment="CENTER" textFill="#160c67">
+            <Label alignment="CENTER" layoutY="4.0" prefHeight="92.0" prefWidth="1200.0" text="Ecobike Hust" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="53.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <HBox alignment="CENTER" prefHeight="500.0" prefWidth="1160.0" spacing="130.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+      <Pane layoutY="100.0" prefHeight="84.0" prefWidth="1200.0" style="-fx-background-color: #e1e1e1;">
          <children>
-            <ImageView fx:id="imgBike" fitHeight="420.0" fitWidth="320.0" focusTraversable="true" pickOnBounds="true" smooth="false" style="-fx-background-radius: 10;">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="1200.0" text="RETURN BIKE" textFill="#0d3b66">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <HBox alignment="CENTER" layoutY="210.0" prefWidth="1200.0" spacing="70.0">
+         <children>
+            <ImageView fx:id="imgBike" fitHeight="282.0" fitWidth="320.0" focusTraversable="true" pickOnBounds="true" smooth="false" style="-fx-background-radius: 10;">
                <image>
-                  <Image url="@../../../../../../assets/images/e-bike.jpg" />
+                  <Image url="@../../../../../../assets/images/e-bike.png" />
                </image>
                <effect>
                   <DropShadow blurType="GAUSSIAN" />
                </effect>
             </ImageView>
-            <VBox maxHeight="-Infinity" prefHeight="420.0" prefWidth="600.0" spacing="10.0">
+            <VBox maxHeight="-Infinity" prefHeight="455.0" prefWidth="582.0" spacing="5.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" style="-fx-background-color: #160c67; -fx-background-radius: 7;">
+                  <VBox alignment="CENTER_LEFT" prefHeight="310.0" prefWidth="500.0" spacing="8.0">
                      <children>
-                        <Label fx:id="lbTypeBike" prefHeight="40.0" text="Electric standard bike" textFill="WHITE">
+                        <Label fx:id="lbTypeBike" prefHeight="23.0" prefWidth="351.0" text="ELECTRIC STANDARD BIKE" textFill="#50892f">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="28.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
                         </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="40.0" prefWidth="543.0">
-                     <children>
-                        <Label prefHeight="27.0" prefWidth="278.0" text="Bike ID" textFill="#160c67">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbBarcode" prefHeight="40.0" prefWidth="78.0" text="bikeID" textFill="#160c67">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="40.0" spacing="10.0">
-                     <children>
-                        <HBox prefHeight="40.0" prefWidth="300.0">
+                        <HBox prefHeight="0.0" prefWidth="600.0">
                            <children>
-                              <Label prefHeight="40.0" prefWidth="341.0" text="       Rental Time" textFill="#160c67">
+                              <Label prefHeight="32.0" prefWidth="174.0" text="Bike ID" textFill="#0d3b66">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbRentalTime" prefHeight="40.0" prefWidth="264.0" text="01:56:34" textFill="#160c67">
+                              <Label fx:id="lbBarcode" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="446.0" text="111" textFill="#0d3b66">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font size="21.0" />
                                  </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="300.0">
+                        <HBox prefHeight="0.0" prefWidth="600.0">
                            <children>
-                              <Label prefHeight="50.0" prefWidth="150.0" text="Rental Fees" textFill="#160c67">
+                              <Label prefHeight="32.0" prefWidth="178.0" text="Brand" textFill="#0d3b66">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbRentalFees" prefHeight="40.0" prefWidth="150.0" text="24.000 VND" textFill="#160c67">
+                              <Label fx:id="lbLicensePlate1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="436.0" text="Thong Nhat" textFill="#0d3b66">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font size="21.0" />
                                  </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="600.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="178.0" text="License Plate" textFill="#0d3b66">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbLicensePlate" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="438.0" text="29AA1681" textFill="#0d3b66">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="600.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="178.0" text="Pin" textFill="#0d3b66">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbPin" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="439.0" text="100%" textFill="#0d3b66">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Line endX="479.29290771484375" endY="-1.6213569641113281" startX="-100.0" stroke="#0d3b66" />
+                        <HBox prefHeight="0.0" prefWidth="600.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="177.0" text="Rental Time" textFill="#0d3b66">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbRentalTime" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="427.0" text="01:15:30" textFill="#0d3b66">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="0.0" prefWidth="600.0">
+                           <children>
+                              <Label prefHeight="50.0" prefWidth="178.0" text="Rental Fees" textFill="#791818">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbRentalFees" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="449.0" text="70.000 VND" textFill="#791818">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
                               </Label>
                            </children>
                         </HBox>
                      </children>
-                  </HBox>
-                  <HBox prefHeight="40.0" spacing="50.0">
+                  </VBox>
+                  <VBox spacing="20.0">
                      <children>
-                        <Label prefHeight="40.0" prefWidth="150.0" text="      Return Dock" textFill="#160c67">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cbReturnDock" prefHeight="40.0" prefWidth="360.0" promptText="choose dock" style="-fx-border-color: #160C67; -fx-background-color: #ffffff; -fx-border-radius: 5; -fx-border-width: 2;">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </ComboBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="licensePlate" focusTraversable="true" maxHeight="40.0" minHeight="0.0" visible="false">
-                     <children>
-                        <Label prefHeight="50.0" prefWidth="150.0" text="License Plate" textFill="#160c67">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbLicensePlate" prefHeight="40.0" text="29-X1/53214" textFill="#160c67">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="pin" maxHeight="40.0" minHeight="0.0" visible="false">
-                     <children>
-                        <Label prefHeight="50.0" prefWidth="150.0" text="Pin" textFill="#160c67">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbPin" prefHeight="40.0" text="50%" textFill="#160c67">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="176.0">
+                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="580.0">
                            <children>
-                              <Button fx:id="btnBack" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="76.0" style="-fx-background-color: #160c67;" text="Back" textFill="WHITE">
+                              <Label alignment="TOP_LEFT" prefHeight="32.0" prefWidth="204.0" text="RETURN DOCK" textFill="#50892f">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="cbReturnDock" prefHeight="47.0" prefWidth="433.0" promptText="Choose dock" style="-fx-border-width: 2.5;" styleClass="search-box2" stylesheets="@../styles/home.css" visibleRowCount="12" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="42.0" prefWidth="580.0">
+                           <children>
+                              <Button fx:id="btnBack" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="116.0" styleClass="button-red" stylesheets="@../styles/home.css" text="Back" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets right="350.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" stylesheets="@../styles/home.css" text="Return Bike" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
@@ -165,33 +190,11 @@
                               </Button>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefWidth="300.0">
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <children>
-                              <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #160c67;" text="Return Bike" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                </children>
             </VBox>
          </children>
-         <padding>
-            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-         </padding>
       </HBox>
-      <Pane layoutX="124.0" layoutY="343.0" prefHeight="60.0" style="-fx-background-color: #66d392;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

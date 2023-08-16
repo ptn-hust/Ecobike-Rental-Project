@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import group13.ecobikerental.controller.PaymentController;
 import group13.ecobikerental.entity.payment.CreditCard;
+import group13.ecobikerental.exception.MissingFieldException;
 import group13.ecobikerental.utils.Configs;
 import group13.ecobikerental.views.BaseScreenHandler;
 import javafx.fxml.Initializable;
@@ -25,7 +26,6 @@ public class CreditCardFormScreenHandler extends BaseScreenHandler implements In
 	public TextField tfExpirationDate;
 	public TextField tfContent;
 
-	public Label message1;
 	public Button btnBack;
 	public Button btnContinue;
 	public ImageView imgLogo;
@@ -39,9 +39,6 @@ public class CreditCardFormScreenHandler extends BaseScreenHandler implements In
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		// set error invisible
-		message1.setVisible(false);
-
 //		setImage(imgLogo, Configs.LOGO_IMG_PATH);
 		btnContinue.setOnAction(event -> {
 			try {
@@ -66,6 +63,12 @@ public class CreditCardFormScreenHandler extends BaseScreenHandler implements In
 		String cvvCode = tfSecurityCode.getText();
 		String expDate = tfExpirationDate.getText();
 		String content = tfContent.getText();
+		if (content == null) {
+			content = "Pay deposit to Ecobike Rental Company";
+		}
+		if(owner == null || cardCode == null || cvvCode == null || expDate == null) {
+			throw new MissingFieldException();
+		}
 
 		if (this.getController().checkCardInfo(expDate, cvvCode)) {
 			CreditCard card = new CreditCard(cardCode, owner, cvvCode, expDate);

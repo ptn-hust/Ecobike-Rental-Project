@@ -24,7 +24,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
     public Button btnBack;
     public Button btnRent;
     public HBox licensePlate;
-    public HBox pin;
+//    public HBox pin;
 	public ImageView imgBike;
     public Label lbType;
     public Label lbBarcode;
@@ -59,7 +59,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
         this.lbType.setText(this.bike.getType());
         if (this.bike.getType().equals("Standard e-bike")) {
             ElectricBike electricBike = (ElectricBike) this.bike;
-            pin.setVisible(true);
+//            pin.setVisible(true);
             licensePlate.setVisible(true);
             lbLicensePlate.setText(electricBike.getLicensePlate());
             lbPin.setText(electricBike.getPin() + "%");

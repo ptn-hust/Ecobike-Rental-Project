@@ -30,7 +30,7 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 	public Label lbPin;
 	public Label lbTime;
 	public Label lbBikeType;
-	public HBox pin;
+	public Label pin;
 	public Button btnReturn;
 	public ImageView imgLogo;
 
@@ -83,8 +83,8 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 		if (this.bike.getType().equals("Standard e-bike")) {
 			ElectricBike eBike = (ElectricBike) this.bike;
 			progressBarPin.setVisible(true);
-			pin.setVisible(true);
-			lbPin.setText(eBike.getPin() + "%");
+			lbPin.setVisible(true);
+			pin.setText(eBike.getPin() + "%");
 		}
 		lbBikeType.setText(this.bike.getType());
 	}

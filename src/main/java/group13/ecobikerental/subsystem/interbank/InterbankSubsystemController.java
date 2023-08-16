@@ -8,11 +8,7 @@ import group13.ecobikerental.entity.payment.CreditCard;
 import group13.ecobikerental.entity.payment.Transaction;
 import group13.ecobikerental.exception.InternalServerErrorException;
 import group13.ecobikerental.exception.InvalidCardException;
-import group13.ecobikerental.exception.InvalidTransactionAmountException;
-import group13.ecobikerental.exception.InvalidVersionException;
 import group13.ecobikerental.exception.NotEnoughBalanceException;
-import group13.ecobikerental.exception.NotEnoughTransactionInfoException;
-import group13.ecobikerental.exception.SuspiciousTransactionException;
 import group13.ecobikerental.exception.UnrecognizedException;
 import group13.ecobikerental.utils.Configs;
 
