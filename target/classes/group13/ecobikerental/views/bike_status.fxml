@@ -112,7 +112,7 @@
                   </HBox>
                   <HBox spacing="200.0">
                      <children>
-                        <Label fx:id= "lbPin" graphicTextGap="5.0" prefHeight="40.0" prefWidth="310.0" text="Pin:" textFill="#0d3b66">
+                        <Label fx:id="lbPin" graphicTextGap="5.0" prefHeight="40.0" prefWidth="310.0" text="Pin:" textFill="#0d3b66">
                            <font>
                               <Font name="System Bold" size="26.0" />
                            </font>
@@ -159,7 +159,7 @@
       </HBox>
       <VBox alignment="CENTER" layoutY="605.0" prefHeight="80.0" prefWidth="1200.0">
          <children>
-            <Button fx:id="btnReturn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" stylesheets="@../styles/home.css" text="Return bike" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnReturn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" stylesheets="@styles/home.css" text="Return bike" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

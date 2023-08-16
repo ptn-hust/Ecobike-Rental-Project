@@ -41,7 +41,7 @@
             </Label>
          </children>
       </Pane>
-      <HBox layoutX="79.0" layoutY="223.0" prefHeight="400.0" prefWidth="1071.0">
+      <HBox alignment="CENTER" layoutX="79.0" layoutY="223.0" prefHeight="400.0" prefWidth="1071.0">
          <children>
             <ImageView fx:id="imgBike" blendMode="SRC_ATOP" cache="true" fitHeight="364.0" fitWidth="336.0" focusTraversable="true" pickOnBounds="true" smooth="false">
                <image>
@@ -56,9 +56,9 @@
             </ImageView>
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="601.0" spacing="10.0">
                <children>
-                  <Label fx:id="lbType" alignment="CENTER" prefHeight="61.0" prefWidth="738.0" styleClass="button" stylesheets="@../styles/home.css" text="Standard Bike" textFill="WHITE">
+                  <Label fx:id="lbType" prefHeight="61.0" prefWidth="738.0" stylesheets="@../styles/home.css" text="STANDARD BIKE" textFill="#50892f">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
                   <HBox prefHeight="40.0">
@@ -96,7 +96,7 @@
                               <Font name="System Bold" size="21.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbLicensePlate" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="406.0" text="29-X1/53214" textFill="#160c67">
+                        <Label fx:id="lbLicensePlate" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="406.0" text="29A-16845" textFill="#160c67">
                            <font>
                               <Font size="21.0" />
                            </font>
@@ -136,7 +136,7 @@
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="602.0">
                      <children>
-                        <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="116.0" styleClass="button-red" stylesheets="@../styles/home.css" text="Back" textFill="WHITE">
+                        <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="116.0" styleClass="button-red" stylesheets="@styles/home.css" text="Back" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>
@@ -150,7 +150,7 @@
                               <Insets right="130.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="btnRent" alignment="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="152.0" stylesheets="@../styles/home.css" text="Rent Bike" textFill="WHITE">
+                        <Button fx:id="btnRent" alignment="CENTER" mnemonicParsing="false" prefHeight="44.0" prefWidth="152.0" stylesheets="@styles/home.css" text="Rent Bike" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="24.0" />
                            </font>

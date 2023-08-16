@@ -8,7 +8,7 @@ public class Configs {
 
 	public static final String DB_NAME = "ecobikerental2";
 	public static final String DB_USERNAME = "root";
-	public static final String DB_PASSWORD = "123456";
+	public static final String DB_PASSWORD = "123456789";
 
 	public static final String SPLASH_SCREEN_PATH = "/group13/ecobikerental/views/splash.fxml";
 	public static final String HOME_SCREEN_PATH = "/group13/ecobikerental/views/home.fxml";
@@ -21,7 +21,7 @@ public class Configs {
 	public static final String RETURN_BIKE_SCREEN_PATH = "/group13/ecobikerental/views/return_bike.fxml";
 	public static final String INVOICE_SCREEN_PATH = "/group13/ecobikerental/views/invoice.fxml";
 
-	public static final String LOGO_IMG_PATH = "assets/images/Splash.jpg";
+	public static final String LOGO_IMG_PATH = "assets/images/Logo.png";
 	public static final String BIKE_RUNNING_IMG_PATH = "assets/images/bike_running.png";
 
 }

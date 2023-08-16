@@ -38,7 +38,7 @@
             </Label>
          </children>
       </Pane>
-      <TableView fx:id="tvDockList" layoutX="126.0" layoutY="209.0" prefHeight="430.0" prefWidth="989.0" stylesheets="@../styles/home.css" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="209.0">
+      <TableView fx:id="tvDockList" layoutX="126.0" layoutY="209.0" prefHeight="430.0" prefWidth="989.0" stylesheets="@styles/home.css" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="209.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="74.66665649414062" text="ID" />
           <TableColumn fx:id="colDockName" prefWidth="194.93336486816406" text="Dock Name" />
@@ -48,9 +48,9 @@
             <TableColumn fx:id="colAvailableBike" prefWidth="181.5999755859375" text="Availabe Bike" />
         </columns>
       </TableView>
-      <HBox alignment="CENTER" layoutX="-1.0" layoutY="100.0" prefHeight="75.0" prefWidth="1200.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutY="105.0" prefHeight="75.0" prefWidth="1200.0" spacing="20.0">
          <children>
-            <Label text="HOME" textAlignment="CENTER" textFill="#0d3b66">
+            <Label prefHeight="47.0" prefWidth="137.0" styleClass="shadow" stylesheets="@styles/home.css" text="HOME" textAlignment="CENTER" textFill="#0d3b66">
                <font>
                   <Font name="System Bold" size="32.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Insets right="120.0" />
                </HBox.margin>
             </Label>
-            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="398.0" stylesheets="@../styles/home.css">
+            <HBox alignment="CENTER" prefHeight="55.0" prefWidth="398.0" stylesheets="@styles/home.css">
                <children>
                   <FontAwesomeIcon fill="#2e7626" glyphName="SEARCH" opacity="0.7" selectionFill="#396935" size="2em" strokeWidth="0.05">
                      <stroke>
@@ -78,12 +78,12 @@
                         </LinearGradient>
                      </stroke>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                   </FontAwesomeIcon>
                   <TextField fx:id="tfSearch" prefHeight="40.0" prefWidth="222.0" promptText="Search dock" styleClass="transparent" stylesheets="@../styles/home.css">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Cambria" size="18.0" />
@@ -94,7 +94,7 @@
                         <Insets bottom="5.0" right="20.0" top="5.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Cambria" size="18.0" />
+                        <Font name="System Bold" size="16.0" />
                      </font>
                   </Button>
                </children>
@@ -106,9 +106,9 @@
                   <Insets bottom="15.0" left="30.0" top="15.0" />
                </HBox.margin>
             </HBox>
-            <Button fx:id="btnReload" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" stylesheets="@../styles/home.css" text="Reload" textFill="WHITE">
+            <Button fx:id="btnReload" mnemonicParsing="false" prefHeight="36.0" prefWidth="95.0" stylesheets="@styles/home.css" text="Reload" textFill="WHITE">
                <font>
-                  <Font name="Cambria" size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -121,9 +121,9 @@
                   <String fx:value="shadow" />
                </styleClass>
             </Button>
-            <Button fx:id="btnRentBike" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" stylesheets="@../styles/home.css" text="Rent Bike" textFill="WHITE">
+            <Button fx:id="btnRentBike" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" stylesheets="@styles/home.css" text="Rent Bike" textFill="WHITE">
                <font>
-                  <Font name="Cambria Bold" size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />

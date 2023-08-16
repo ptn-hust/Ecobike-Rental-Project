@@ -161,7 +161,7 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="cbReturnDock" prefHeight="47.0" prefWidth="433.0" promptText="Choose dock" style="-fx-border-width: 2.5;" styleClass="search-box2" stylesheets="@../styles/home.css" visibleRowCount="12" />
+                              <ComboBox fx:id="cbReturnDock" prefHeight="47.0" prefWidth="433.0" promptText="Choose dock" style="-fx-border-width: 2.5;" styleClass="search-box2" stylesheets="@styles/home.css" visibleRowCount="12" />
                            </children>
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -169,7 +169,7 @@
                         </HBox>
                         <HBox prefHeight="42.0" prefWidth="580.0">
                            <children>
-                              <Button fx:id="btnBack" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="116.0" styleClass="button-red" stylesheets="@../styles/home.css" text="Back" textFill="WHITE">
+                              <Button fx:id="btnBack" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="116.0" styleClass="button-red" stylesheets="@styles/home.css" text="Back" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
@@ -180,7 +180,7 @@
                                     <Insets right="350.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" stylesheets="@../styles/home.css" text="Return Bike" textFill="WHITE">
+                              <Button fx:id="btnReturn" mnemonicParsing="false" prefHeight="42.0" prefWidth="150.0" stylesheets="@styles/home.css" text="Return Bike" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>

@@ -117,7 +117,7 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="btnReturnHome" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="622.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@../styles/home.css" text="Return HOME" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="500.0">
+      <Button fx:id="btnReturnHome" alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="622.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" stylesheets="@styles/home.css" text="Return HOME" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="500.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

@@ -69,7 +69,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.setImage(imgLogo, Configs.LOGO_IMG_PATH);
-        this.setImage(imgBike, "assets/images/e-bike.jpg");
+        this.setImage(imgBike, "assets/images/e-bike.png");
 
         btnRent.setOnAction(event -> {
             try {
