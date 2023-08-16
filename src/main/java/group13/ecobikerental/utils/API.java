@@ -1,3 +1,12 @@
+/*
+ * API.class
+ *
+ * This class provides an API client for making HTTP requests to a specified base URL.
+ * 
+ * @Credits: This class is adapted from the 'API' module in a project by vvlong1801.
+ *           Original source: https://github.com/vvlong1801/ISD.VN.20211-Group2/
+ *
+ */
 package group13.ecobikerental.utils;
 
 import java.io.BufferedReader;
@@ -20,83 +29,72 @@ import java.util.logging.Logger;
 
 public class API {
 
-    public static DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
+	public static DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
-    public static String get(String url, String token) throws Exception {
-        LOGGER.info("Request URL: " + url + "\n");
+	public static String get(String url, String token) throws Exception {
+		LOGGER.info("Request URL: " + url + "\n");
 
-        HttpURLConnection conn = setupConnection(url);
+		HttpURLConnection conn = setupConnection(url);
 
-        conn.setRequestMethod("GET");
+		conn.setRequestMethod("GET");
 
-        conn.setRequestProperty("Authorization", "Bearer " + token);
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String inputLine;
-        StringBuilder response = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
-        while((inputLine = in.readLine()) != null) {
-            System.out.println(inputLine);
-        }
-        response.append(inputLine + "\n");
-        in.close();
-        LOGGER.info("Response Info: " + response.substring(0, response.length() - 1).toString());
-        return response.substring(0, response.length() - 1).toString();
-    }
+		conn.setRequestProperty("Authorization", "Bearer " + token);
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		String inputLine;
+		StringBuilder response = new StringBuilder(); // ising StringBuilder for the sake of memory and performance
+		while ((inputLine = in.readLine()) != null) {
+			System.out.println(inputLine);
+		}
+		response.append(inputLine + "\n");
+		in.close();
+		LOGGER.info("Response Info: " + response.substring(0, response.length() - 1).toString());
+		return response.substring(0, response.length() - 1).toString();
+	}
 
-    private static HttpURLConnection setupConnection(String url) throws IOException {
-        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setDoInput(true);
-        conn.setDoOutput(true);
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setRequestProperty("Accept", "application/json");
-        return conn;
-    }
+	private static HttpURLConnection setupConnection(String url) throws IOException {
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		conn.setDoInput(true);
+		conn.setDoOutput(true);
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setRequestProperty("Accept", "application/json");
+		return conn;
+	}
 
-    public static String post(String url, String data) throws IOException {
-        allowMethods("PATCH");
-        String payload = data;
-        LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
+	public static String post(String url, String data) throws IOException {
+		String payload = data;
+		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
 
-        HttpURLConnection conn = setupConnection(url);
-        //        conn.setRequestProperty("X-HTTP-Method-Override", "PATCH");
-        conn.setRequestMethod("PATCH");
+		HttpURLConnection conn = setupCustomConnection(url, "POST");
 
-        Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
-        writer.write(payload);
-        writer.close();
-        BufferedReader in;
-        String inputLine;
-        if (conn.getResponseCode() / 100 == 2) {
-            in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-        }
-        StringBuilder response = new StringBuilder();
-        while((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        LOGGER.info("Response Info: " + response.toString());
-        return response.toString();
-    }
+		Writer writer = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+		writer.write(payload);
+		writer.close();
 
-    private static void allowMethods(String... methods) {
-        try {
-            Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
-            methodsField.setAccessible(true);
+		BufferedReader in;
+		String inputLine;
+		if (conn.getResponseCode() / 100 == 2) {
+			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		} else {
+			in = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+		}
+		StringBuilder response = new StringBuilder();
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+		LOGGER.info("Response Info: " + response.toString());
+		return response.toString();
+	}
 
-            Field modifiersField = Field.class.getDeclaredField("modifiers");
-            modifiersField.setAccessible(true);
-            modifiersField.setInt(methodsField, methodsField.getModifiers() & ~Modifier.FINAL);
+	private static HttpURLConnection setupCustomConnection(String url, String method) throws IOException {
+		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+		conn.setRequestMethod(method);
+		conn.setDoInput(true);
+		conn.setDoOutput(true);
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setRequestProperty("Accept", "application/json");
+		return conn;
+	}
 
-            String[] oldMethods = (String[]) methodsField.get(null);
-            Set<String> methodsSet = new LinkedHashSet<>(Arrays.asList(oldMethods));
-            methodsSet.addAll(Arrays.asList(methods));
-            String[] newMethods = methodsSet.toArray(new String[0]);
-
-            methodsField.set(null/* static field */, newMethods);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new IllegalStateException(e);
-        }
-    }
 }

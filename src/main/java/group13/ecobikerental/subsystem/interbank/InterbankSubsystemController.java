@@ -28,14 +28,14 @@ public class InterbankSubsystemController {
 				.put("dateExpired", transaction.getDateExpired()).put("command", transaction.getCommand())
 				.put("transactionContent", transaction.getTransactionContent()).put("amount", transaction.getAmount())
 				.put("createdAt", transaction.getCreatedAt());
-
-		JSONObject dataJson = new JSONObject().put("transaction", transactionJson);
-
-		JSONObject request = new JSONObject().put("data", dataJson);
+		
+		JSONObject request = new JSONObject().put("transaction", transactionJson);
+		request.put("version", "1.0.1");
 
 		// send request
-		String responseText = InterbankBoundary.queryManual(Configs.PROCESS_TRANSACTION_URL, request.toString());
-
+		String responseText = InterbankBoundary.query(Configs.PAY_TRANSACTION_URL, request.toString());
+		System.out.println("Log:: responseText: " + responseText);
+		
 		Transaction trx = convertToTransaction(responseText);
 		trx.setCard(card);
 		return trx;
@@ -51,13 +51,13 @@ public class InterbankSubsystemController {
 				.put("transactionContent", transaction.getTransactionContent()).put("amount", transaction.getAmount())
 				.put("createdAt", transaction.getCreatedAt());
 
-		JSONObject dataJson = new JSONObject().put("transaction", transactionJson);
-
-		JSONObject request = new JSONObject().put("data", dataJson);
+		JSONObject request = new JSONObject().put("transaction", transactionJson);
+		request.put("version", "1.0.1");
 
 		// send request
-		String responseText = InterbankBoundary.queryManual(Configs.PROCESS_TRANSACTION_URL, request.toString());
-
+		String responseText = InterbankBoundary.query(Configs.REFUND_TRANSACTION_URL, request.toString());
+		System.out.println("Log:: responseText: " + responseText);
+		
 		Transaction trx = convertToTransaction(responseText);
 		trx.setCard(card);
 		return trx;
@@ -71,7 +71,7 @@ public class InterbankSubsystemController {
 		Gson gson = new Gson();
 
 		Transaction transactionRes = gson
-				.fromJson(resJson.getJSONObject("data").getJSONObject("transaction").toString(), Transaction.class);
+				.fromJson(resJson.getJSONObject("transaction").toString(), Transaction.class);
 		System.out.println(resJson.getString("errorCode"));
 		
 		transactionRes.setErrorCode(resJson.getString("errorCode"));
@@ -85,14 +85,14 @@ public class InterbankSubsystemController {
 			throw new NotEnoughBalanceException();
 		case "03":
 			throw new InternalServerErrorException();
-		case "04":
-			throw new SuspiciousTransactionException();
-		case "05":
-			throw new NotEnoughTransactionInfoException();
-		case "06":
-			throw new InvalidVersionException();
-		case "07":
-			throw new InvalidTransactionAmountException();
+//		case "04":
+//			throw new SuspiciousTransactionException();
+//		case "05":
+//			throw new NotEnoughTransactionInfoException();
+//		case "06":
+//			throw new InvalidVersionException();
+//		case "07":
+//			throw new InvalidTransactionAmountException();
 		default:
 			throw new UnrecognizedException();
 		}
