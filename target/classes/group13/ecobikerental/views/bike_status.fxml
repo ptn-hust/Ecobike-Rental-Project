@@ -132,7 +132,7 @@
                            </HBox.margin>
                         </FontAwesomeIcon>
                         <FontAwesomeIcon fill="#54962a" glyphName="BOLT" size="2em" text="" />
-                        <ProgressBar fx:id="progressBarPin" prefHeight="25.0" prefWidth="600.0" progress="0.75" style="-fx-background-color: #7ac74f;" styleClass="progress-bar-green" stylesheets="@../styles/home.css">
+                        <ProgressBar fx:id="progressBarPin" prefHeight="25.0" prefWidth="600.0" progress="0.75" style="-fx-background-color: #7ac74f;" styleClass="progress-bar-green" stylesheets="@styles/home.css">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin>
