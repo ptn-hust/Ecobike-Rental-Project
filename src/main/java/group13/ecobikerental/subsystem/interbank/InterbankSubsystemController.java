@@ -24,7 +24,6 @@ public class InterbankSubsystemController {
      * @param amount   The transaction amount.
      * @param contents The transaction contents.
      * @return The processed transaction result.
-     * @throws PaymentException if an error occurs during the payment process.
      */
 	public Transaction processPay(CreditCard card, int amount, String contents) {
 		InterbankTransaction transaction = new InterbankTransaction(card.getCardCode(), card.getOwner(),
@@ -54,7 +53,6 @@ public class InterbankSubsystemController {
      * @param amount   The refund amount.
      * @param contents The refund contents.
      * @return The processed refund transaction result.
-     * @throws PaymentException if an error occurs during the refund process.
      */
 	public Transaction processRefund(CreditCard card, int amount, String contents) {
 		InterbankTransaction transaction = new InterbankTransaction(card.getCardCode(), card.getOwner(),
@@ -82,7 +80,7 @@ public class InterbankSubsystemController {
      * Converts the response from the interbank system to a Transaction object and handles potential errors.
      * @param responseText The response received from the interbank system.
      * @return The Transaction object representing the response.
-     * @throws PaymentException if an error occurs during the conversion or if the response indicates an error.
+     * @throws UnrecognizedException if an error occurs during the conversion or if the response indicates an error.
      */
 	private Transaction convertToTransaction(String responseText) {
 		if (responseText == null) {

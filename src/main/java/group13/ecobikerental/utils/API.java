@@ -1,4 +1,4 @@
-/*
+/**
  * API.class
  *
  * This class provides an API client for making HTTP requests to a specified base URL.

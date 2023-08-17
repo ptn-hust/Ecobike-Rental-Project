@@ -28,10 +28,9 @@ public class BaseScreenHandler extends FXMLScreenHandler {
     private BaseController controller;
 
     /**
-     * This method is constructor with new stage.
-     *
-     * @param screenPath -
-     * @throws IOException
+     * Constructor to create a new instance of BaseScreenHandler with the specified stage and screen path.
+     * @param stage      The stage to associate with this screen handler.
+     * @throws IOException If an I/O error occurs while loading the FXML screen file.
      */
     private BaseScreenHandler(String screenPath) throws IOException {
         super(screenPath);
