@@ -69,7 +69,7 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		setImage(imgLogo, Configs.LOGO_IMG_PATH);
-		setImage(imgBike, "assets/images/e-bike.jpg");
+		setImage(imgBike, "assets/images/e-bike.png");
 		btnBack.setVisible(false);
 
 		btnReturn.setOnMouseClicked(mouseEvent -> {
