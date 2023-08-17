@@ -69,7 +69,7 @@
                               <Insets right="20.0" />
                            </HBox.margin>
                         </FontAwesomeIcon>
-                        <TextField fx:id="tfCardholderName" prefHeight="40.0" prefWidth="541.0" promptText="Nguyen Van B" styleClass="infor-box" stylesheets="@../styles/home.css">
+                        <TextField fx:id="tfCardholderName" prefHeight="40.0" prefWidth="541.0" promptText="Nguyen Van B" styleClass="infor-box" stylesheets="@../styles/home.css" text="Group 13">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -92,7 +92,7 @@
                               <Insets right="15.0" />
                            </HBox.margin>
                         </FontAwesomeIcon>
-                        <TextField fx:id="tfCardNumber" prefHeight="40.0" prefWidth="550.0" promptText="424242424242" styleClass="infor-box" stylesheets="@../styles/home.css">
+                        <TextField fx:id="tfCardNumber" prefHeight="40.0" prefWidth="550.0" promptText="Cardholder name" styleClass="infor-box" stylesheets="@../styles/home.css" text="4242424242424242">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -145,7 +145,7 @@
                                           <Insets right="15.0" />
                                        </HBox.margin>
                                     </FontAwesomeIcon>
-                                    <TextField fx:id="tfExpirationDate" prefHeight="40.0" prefWidth="227.0" promptText="MM/YY" styleClass="infor-box" stylesheets="@../styles/home.css">
+                                    <TextField fx:id="tfExpirationDate" prefHeight="40.0" prefWidth="227.0" promptText="MM/YY" styleClass="infor-box" stylesheets="@../styles/home.css" text="08/27">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
