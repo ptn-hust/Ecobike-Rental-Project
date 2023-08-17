@@ -12,6 +12,11 @@ public class SplashScreenHandler implements Initializable {
 
     public ImageView logo;
 
+    /**
+     * Initializes the SplashScreenHandler after loading the FXML screen.
+     * @param url            The URL location of the FXML file.
+     * @param resourceBundle The resource bundle to be used.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File file = new File("assets/images/Splash.png");

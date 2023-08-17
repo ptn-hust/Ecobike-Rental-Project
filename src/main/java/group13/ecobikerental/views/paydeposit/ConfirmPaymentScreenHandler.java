@@ -24,6 +24,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * The screen handler for confirming a payment for deposit.
+ */
 public class ConfirmPaymentScreenHandler extends BaseScreenHandler implements Initializable {
 	public Label lbCardholderName;
 	public Label lbCardNumber;
@@ -39,13 +42,14 @@ public class ConfirmPaymentScreenHandler extends BaseScreenHandler implements In
 	private int amount;
 
 	/**
-	 * This method is constructor with current stage.
-	 *
-	 * @param stage      -
-	 * @param screenPath -
-	 *
-	 * @throws IOException
-	 */
+     * Constructs a new ConfirmPaymentScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @param amount     The amount of payment.
+     * @param card       The credit card information.
+     * @param content    The content of the payment.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public ConfirmPaymentScreenHandler(Stage stage, String screenPath,int amount, CreditCard card, String content)
 			throws IOException {
 		super(stage, screenPath);
@@ -72,6 +76,10 @@ public class ConfirmPaymentScreenHandler extends BaseScreenHandler implements In
 		});
 	}
 
+	/**
+     * Confirms the payment for deposit and handles the result.
+     * @throws Exception If an error occurs during payment processing.
+     */
 	private void confirmPayDeposit() throws Exception {
 		Map<String, String> result = this.getController().payDepositRequest(card, this.amount, content);
 		
@@ -96,6 +104,9 @@ public class ConfirmPaymentScreenHandler extends BaseScreenHandler implements In
 		}
 	}
 
+	/**
+     * Sets the payment information on the confirmation screen.
+     */
 	public void setInfo() {
 		this.lbCardholderName.setText(this.card.getOwner());
 		this.lbCardNumber.setText(this.card.getCardCode());
@@ -104,6 +115,10 @@ public class ConfirmPaymentScreenHandler extends BaseScreenHandler implements In
 		this.lbAmount.setText(Utils.getCurrencyFormat(Invoice.getInstance().getBike().getDeposit()));
 	}
 
+	/**
+     * Returns the PaymentController associated with this screen.
+     * @return The PaymentController instance.
+     */
 	public PaymentController getController() {
 		return (PaymentController) super.getController();
 	}

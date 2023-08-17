@@ -17,6 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * The screen handler for the invoice screen, displaying rental and payment information.
+ */
 public class InvoiceScreenHandler extends BaseScreenHandler implements Initializable {
 
     public Label lbRenter;
@@ -29,12 +32,10 @@ public class InvoiceScreenHandler extends BaseScreenHandler implements Initializ
     public Label lbRentaLFees;
 
     /**
-     * This method is constructor with current stage.
-     *
-     * @param stage      -
-     * @param screenPath -
-     *
-     * @throws IOException
+     * Constructs a new InvoiceScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the screen.
      */
     public InvoiceScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
@@ -62,6 +63,9 @@ public class InvoiceScreenHandler extends BaseScreenHandler implements Initializ
         });
     }
 
+    /**
+     * Sets the rental and payment information on the invoice screen.
+     */
     public void setInfo() {
         lbBikeBarcode.setText(Invoice.getInstance().getBike().getBikecode());
         lbCardNumber.setText(Invoice.getInstance().getPayTransaction().getCard().getCardCode());

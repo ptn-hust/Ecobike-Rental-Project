@@ -18,21 +18,41 @@ import group13.ecobikerental.subsystem.InterbankInterface;
 import group13.ecobikerental.subsystem.InterbankSubsystem;
 
 /**
- * This class controls the flow of events when users return bike to dock
+ * Controller class responsible for handling the return bike process.
  */
 public class ReturnBikeController extends BaseController {
 
 	private InterbankInterface interbank;
 
+	/**
+     * Calculate the rental fee based on the rental time and bike type.
+     * @param timeRental The rental time.
+     * @param bike       The Bike object.
+     * @return The calculated rental fee.
+     */
 	public int calculateRentalFee(String timeRental, Bike bike) {
 		int amount = InvoiceBL.getInstance().calculateRentalFee(timeRental, "Normal", bike);
 		return amount;
 	}
 
+	/**
+     * Calculate the refund amount based on the deposit and rental fee.
+     * @param deposit    The deposit amount.
+     * @param rentalFee  The rental fee amount.
+     * @return The calculated refund amount.
+     */
 	private int calculateRefund(int deposit, int rentalFee) {
 		return (deposit - rentalFee);
 	}
 
+	/**
+     * Handle the process of returning a bike to a dock.
+     * @param dockName    The name of the dock.
+     * @param rentalFees  The rental fees.
+     * @param bike        The Bike object.
+     * @return A map containing the result and message of the return process.
+     * @throws SQLException if a database access error occurs.
+     */
 	public Map<String, String> returnBike(String dockName, int rentalFees, Bike bike) throws SQLException {
 		Map<String, String> result = new Hashtable<String, String>();
 

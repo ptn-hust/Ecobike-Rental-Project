@@ -37,12 +37,11 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
     private Bike bike;
 
     /**
-     * This method is constructor with current stage.
-     *
-     * @param stage      -
-     * @param screenPath -
-     *
-     * @throws IOException
+     * Constructs a new BikeInfoScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @param bike       The bike for which to display information.
+     * @throws IOException If an I/O error occurs while loading the screen.
      */
     public BikeInfoScreenHandler(Stage stage, String screenPath, Bike bike) throws IOException {
         super(stage, screenPath);
@@ -50,7 +49,7 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
     }
 
     /**
-     * this method set info of screen.
+     * Sets the information to be displayed on the screen.
      */
     public void setInfo() {
         this.lbBarcode.setText(this.bike.getBikecode());
@@ -66,6 +65,11 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
         }
     }
 
+    /**
+     * Initializes the BikeInfoScreenHandler after loading the FXML screen.
+     * @param url            The URL location of the FXML file.
+     * @param resourceBundle The resource bundle to be used.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.setImage(imgLogo, Configs.LOGO_IMG_PATH);
@@ -84,6 +88,10 @@ public class BikeInfoScreenHandler extends BaseScreenHandler implements Initiali
         });
     }
 
+    /**
+     * Handles the process of renting a bike.
+     * @throws IOException If an I/O error occurs while navigating to the payment screen.
+     */
     public void rentBike() throws IOException {
     	Invoice.setInstance(); // reset invoice
         Invoice.getInstance().setBike(this.bike);

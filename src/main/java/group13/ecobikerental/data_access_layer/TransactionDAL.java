@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import group13.ecobikerental.entity.payment.Transaction;
 //this class is copied from project Group 2
 /**
- * This class controls the database transactions relate to Transaction
+ * Data Access Layer class for managing transaction-related database operations.
  */
 public class TransactionDAL {
-    /**
-     * This method saves Transaction
-     * @param transaction
+	/**
+     * Saves a transaction to the database.
+     * @param transaction The transaction to be saved.
      */
     public static void save(Transaction transaction) {
         String sql = "insert into transaction values(?,?,?,?,?,?,?,?)";

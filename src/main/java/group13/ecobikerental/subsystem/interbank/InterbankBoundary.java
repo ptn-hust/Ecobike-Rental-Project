@@ -7,7 +7,17 @@ import org.json.JSONObject;
 
 import group13.ecobikerental.utils.API;
 
+/**
+ * This class provides methods for interacting with the interbank system through API calls.
+ */
 public class InterbankBoundary {
+	
+	/**
+     * Sends a query to the specified URL with the given data using the API.post method.
+     * @param url  The URL to send the query to.
+     * @param data The data to be sent in the query.
+     * @return The response received from the API call.
+     */
 	public static String query(final String url, final String data) {
 		String response = null;
 		try {
@@ -19,6 +29,12 @@ public class InterbankBoundary {
 		return response;
 	}
 
+	/**
+     * Sends a manual query to the specified URL with the given data.
+     * @param url  The URL to send the query to.
+     * @param data The data to be sent in the query.
+     * @return The response generated for the manual query.
+     */
 	public static String queryManual(String url, String data) {
 		System.out.println("\ncheck 7: " + data);
 		String response = null;

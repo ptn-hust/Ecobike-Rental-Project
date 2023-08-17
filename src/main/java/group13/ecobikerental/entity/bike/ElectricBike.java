@@ -1,5 +1,8 @@
 package group13.ecobikerental.entity.bike;
 
+/**
+ * Entity class for ElectricBike, which is a type of Bike.
+ */
 public class ElectricBike extends Bike {
 	@Override
 	public String toString() {

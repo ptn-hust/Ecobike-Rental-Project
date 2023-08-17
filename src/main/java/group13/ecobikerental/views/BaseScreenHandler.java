@@ -25,14 +25,12 @@ public class BaseScreenHandler extends FXMLScreenHandler {
     /**
      * controller of screen.
      */
-    //    protected Hashtable<String, String> messages;
     private BaseController controller;
 
     /**
      * This method is constructor with new stage.
      *
      * @param screenPath -
-     *
      * @throws IOException
      */
     private BaseScreenHandler(String screenPath) throws IOException {
@@ -41,12 +39,10 @@ public class BaseScreenHandler extends FXMLScreenHandler {
     }
 
     /**
-     * This method is constructor with current stage.
-     *
-     * @param stage      -
-     * @param screenPath -
-     *
-     * @throws IOException
+     * Constructor to create a new instance of BaseScreenHandler with the specified stage and screen path.
+     * @param stage      The stage to associate with this screen handler.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the FXML screen file.
      */
     public BaseScreenHandler(Stage stage, String screenPath) throws IOException {
         super(screenPath);
@@ -54,32 +50,31 @@ public class BaseScreenHandler extends FXMLScreenHandler {
     }
 
     /**
-     * This method get controller of screen.
-     *
-     * @return controller of screen
+     * Gets the associated controller for this screen handler.
+     * @return The associated controller.
      */
     public BaseController getController() {
         return controller;
     }
 
     /**
-     * @param controller -
+     * Sets the controller for this screen handler.
+     * @param controller The controller to set.
      */
     public void setController(BaseController controller) {
         this.controller = controller;
     }
 
     /**
-     * this method set title for scene.
-     *
-     * @param title
+     * Sets the title of the stage associated with this screen handler.
+     * @param title The title to set.
      */
     public void setScreenTitle(String title) {
         this.stage.setTitle(title);
     }
 
     /**
-     * this method is used to show screen.
+     * Displays the screen associated with this screen handler.
      */
     public void show() {
         if (this.scene == null) {
@@ -90,19 +85,26 @@ public class BaseScreenHandler extends FXMLScreenHandler {
     }
 
     /**
-     * @return previous screen
+     * Gets the previous BaseScreenHandler.
+     * @return The previous BaseScreenHandler.
      */
     public BaseScreenHandler getPrev() {
         return prev;
     }
 
     /**
-     * @param prev - previous screen
+     * Sets the previous BaseScreenHandler.
+     * @param prev The previous BaseScreenHandler to set.
      */
     public void setPrev(final BaseScreenHandler prev) {
         this.prev = prev;
     }
 
+    /**
+     * Creates a new HomeScreenHandler associated with the same stage.
+     * @return A new HomeScreenHandler instance.
+     * @throws IOException If an I/O error occurs while loading the HomeScreen FXML file.
+     */
     public HomeScreenHandler getHomeScreenHandler() throws IOException {
         return new HomeScreenHandler(this.stage, Configs.HOME_SCREEN_PATH);
     }

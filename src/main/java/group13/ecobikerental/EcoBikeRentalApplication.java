@@ -13,7 +13,14 @@ import java.io.IOException;
 import group13.ecobikerental.utils.Configs;
 import group13.ecobikerental.views.home.HomeScreenHandler;
 
+/**
+ * Starts the EcoBikeRental application.
+ */
 public class EcoBikeRentalApplication extends Application {
+	/**
+     * Entry point of the application.
+     * @param stage The primary stage for the application.
+     */
     @Override
     public void start(Stage stage) throws IOException {
         StackPane root = (StackPane) FXMLLoader.load(getClass().getResource(Configs.SPLASH_SCREEN_PATH));
@@ -50,7 +57,11 @@ public class EcoBikeRentalApplication extends Application {
 
         });
     }
-
+    
+    /**
+     * Launches the application.
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
         launch();
     }

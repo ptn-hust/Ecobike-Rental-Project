@@ -5,13 +5,13 @@ import java.sql.SQLException;
 
 import group13.ecobikerental.data_access_layer.DBConnector;
 import group13.ecobikerental.entity.invoice.Invoice;
-// this class is copied from project Group 2
+
 /**
- * This class controls the database transactions relate to Invoice
+ * Data Access Layer class for managing invoice-related database operations.
  */
 public class InvoiceDAL {
-    /**
-     * This method saves invoice
+	/**
+     * Saves the invoice details to the database.
      */
     public static void save(){
         String sql = "insert into invoice(iv_time_rental,iv_rental_fees,bike,iv_pay_deposit_trx,iv_refund_trx)  values(?,?,?,?,?)";

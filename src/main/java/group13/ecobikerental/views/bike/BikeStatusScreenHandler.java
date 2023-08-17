@@ -23,6 +23,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * The screen handler for displaying the status of a bike that is currently in use.
+ */
 public class BikeStatusScreenHandler extends BaseScreenHandler implements Initializable {
 	public Label lbBike;
 	public ImageView imgBike;
@@ -40,11 +43,22 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 	private Timeline timeline;
 	private Bike bike;
 
+	/**
+     * Constructs a new BikeStatusScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public BikeStatusScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		this.bike = Invoice.getInstance().getBike();
 	}
 
+	/**
+     * Initializes the BikeStatusScreenHandler after loading the FXML screen.
+     * @param url            The URL location of the FXML file.
+     * @param resourceBundle The resource bundle to be used.
+     */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		setImage(imgLogo, Configs.LOGO_IMG_PATH);
@@ -122,6 +136,11 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 		timeline.play();
 	}
 
+	/**
+     * Requests to return the bike and navigates to the return bike screen.
+     * @throws IOException  If an I/O error occurs.
+     * @throws SQLException If a SQL-related error occurs.
+     */
 	public void requestToReturnBike() throws IOException, SQLException {
 		Invoice.getInstance().setRentalTime(lbTime.getText());
 		ReturnBikeScreenHandler returnBikeScreen = new ReturnBikeScreenHandler(this.stage,
@@ -134,8 +153,9 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 	}
 
 	/**
-	 * @return - {@link ReturnBikeController}
-	 */
+     * Gets the associated controller for this screen handler.
+     * @return The {@link ReturnBikeController} associated with this screen handler.
+     */
 	public ReturnBikeController getController() {
 		return (ReturnBikeController) super.getController();
 	}

@@ -10,10 +10,17 @@ import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.BikeFactory;
 import group13.ecobikerental.entity.dock.Dock;
 
+/**
+ * Data Access Layer class for managing dock-related database operations.
+ */
 public class DockDAL {
 
 	private List<Dock> dockList;
 
+	/**
+     * Constructor to initialize DockDAL and populate the dockList from the database.
+     * @throws SQLException if a database access error occurs.
+     */
 	public DockDAL() throws SQLException {
 		// initialize a dockList
 		this.dockList = new ArrayList<>();
@@ -33,10 +40,19 @@ public class DockDAL {
 		}
 	}
 
+	/**
+     * Get the list of docks.
+     * @return The list of docks.
+     */
 	public List<Dock> getDockList() {
 		return dockList;
 	}
 
+	/**
+     * Search for docks based on the dock name.
+     * @param name The name to search for.
+     * @return A list of docks matching the search.
+     */
 	public List<Dock> searchDock(final String name) {
 		List<Dock> list = new ArrayList<>();
 		for (Dock dock : dockList) {
@@ -47,6 +63,12 @@ public class DockDAL {
 		return list;
 	}
 
+	/**
+     * Check if a dock has available space for bikes.
+     * @param dockName The name of the dock.
+     * @return True if the dock has available space, false otherwise.
+     * @throws SQLException if a database access error occurs.
+     */
 	public boolean checkDockAvailable(final String dockName) throws SQLException {
 		int total_bike = 0;
 

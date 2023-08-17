@@ -6,21 +6,13 @@ package group13.ecobikerental.entity.bike;
 public class Bike {
 
 	private int bikeId;
-    /**
-     * Represent for code of Bike.
-     */
+
     private String bikeCode;
-    /**
-     * Represent for type of Bike.
-     */
+
     private String type;
-    /**
-     * Represent for deposit fee of bike.
-     */
+
     private String dockName;
-    /**
-     * deposit fee of bike.
-     */
+
     private int dockId;
     
     private int deposit;
@@ -31,17 +23,19 @@ public class Bike {
     
     private int extraFee;
 
+    /**
+     * Default constructor for creating a Bike instance.
+     */
     public Bike() {
 
     }
 
     /**
-     * Constructor with 5 arguments.
-     *
-     * @param bikecode
-     * @param type     - the type of bike
-     * @param dockName - the name of dock
-     * @param deposit  - the deposit fee of bike
+     * Constructor for creating a Bike instance with specified parameters.
+     * @param bikeCode  The code of the bike.
+     * @param type      The type of the bike.
+     * @param dockName  The name of the dock where the bike is located.
+     * @param deposit   The deposit fee of the bike.
      */
     public Bike(String bikecode, String type, String dockName, int deposit) {
         this.bikeCode = bikecode;
@@ -52,13 +46,14 @@ public class Bike {
         this.extraFee = 3000;
     }
     /**
-	 * @param bikeCode
-	 * @param type
-	 * @param dockName
-	 * @param deposit
-	 * @param baseFee
-	 * @param extraFee
-	 */
+     * Constructor for creating a Bike instance with all parameters.
+     * @param bikeCode  The code of the bike.
+     * @param type      The type of the bike.
+     * @param dockName  The name of the dock where the bike is located.
+     * @param deposit   The deposit fee of the bike.
+     * @param baseFee   The base rental fee of the bike.
+     * @param extraFee  The extra rental fee of the bike.
+     */
 	public Bike(String bikeCode, String type, String dockName, int deposit, int baseFee, int extraFee) {
 		super();
 		this.bikeCode = bikeCode;
@@ -70,77 +65,83 @@ public class Bike {
 	}
     
 
-    /**
-     * Getter for type
-     *
-     * @return type
+	/**
+     * Gets the type of the bike.
+     * @return The type of the bike.
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Setter for type
-     *
-     * @param type - the type of bike
+     * Sets the type of the bike.
+     * @param type The type of the bike.
      */
     public void setType(String type) {
         this.type = type;
     }
 
     /**
-     * Getter for bikeCode
-     *
-     * @return bikeCode
+     * Gets the code of the bike.
+     * @return The code of the bike.
      */
     public String getBikecode() {
         return this.bikeCode;
     }
 
     /**
-     * Getter for dock name.
-     *
-     * @return dock name
+     * Gets the name of the dock where the bike is located.
+     * @return The name of the dock.
      */
     public String getDockName() {
         return dockName;
     }
 
     /**
-     * Setter for dock name.
-     *
-     * @param dockName - dock name.
+     * Sets the name of the dock where the bike is located.
+     * @param dockName The name of the dock.
      */
     public void setDockName(String dockName) {
         this.dockName = dockName;
     }
 
     /**
-     * Getter for depositFee.
-     *
-     * @return - deposit
+     * Gets the deposit fee of the bike.
+     * @return The deposit fee.
      */
     public int getDeposit() {
         return deposit;
     }
 
     /**
-     * Setter for deposit fee.
-     *
-     * @param deposit - deposit fee
+     * Sets the deposit fee of the bike.
+     * @param deposit The deposit fee.
      */
     public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
-
+    
+    /**
+     * Gets the code of the bike.
+     * @return The code of the bike.
+     */
     public String getBikeCode() {
         return bikeCode;
     }
 
+    /**
+     * Sets the code of the bike.
+     * @param bikeCode The code of the bike.
+     */
     public void setBikeCode(String bikeCode) {
         this.bikeCode = bikeCode;
     }
     
+    /**
+     * Calculates the rental fee based on the number of minutes.
+     * @param minutes The number of minutes for the rental.
+     * @return The calculated rental fee.
+     */
     public int calculateRentalFee(int minutes) {
     	int rentalFee = 0;
         if (minutes <= 1) {

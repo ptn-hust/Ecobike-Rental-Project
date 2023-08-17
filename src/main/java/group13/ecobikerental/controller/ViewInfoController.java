@@ -10,21 +10,36 @@ import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.dock.Dock;
 
 /**
- * This class controls the flow of events when users view the Dock
+ * Controller class responsible for handling the view information related events.
  */
 public class ViewInfoController extends BaseController {
 	private DockDAL dockDlInstance;
 
+	/**
+     * Constructor for ViewInfoController.
+     * @throws SQLException if a database access error occurs.
+     */
 	public ViewInfoController() throws SQLException {
 		super();
 		this.dockDlInstance = new DockDAL();
 //		this.bikeDlInstance = new BikeDAL();
 	}
 
+	 /**
+     * Retrieve a list of all docks.
+     * @return A list of Dock objects.
+     * @throws SQLException if a database access error occurs.
+     */
 	public List<Dock> getDockListRequest() throws SQLException {
 		return dockDlInstance.getDockList();
 	}
 
+	/**
+     * Search for docks by name.
+     * @param name The name to search for.
+     * @return A list of Dock objects matching the search criteria.
+     * @throws SQLException if a database access error occurs.
+     */
 	public List<Dock> searchDockRequest(final String name) throws SQLException {
 		return dockDlInstance.searchDock(name);
 	}

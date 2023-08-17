@@ -28,6 +28,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * The screen handler for the home screen, where users can view and interact with docks and bikes.
+ */
 public class HomeScreenHandler extends BaseScreenHandler implements Initializable {
 	@FXML
 //	public ChoiceBox cbSort;
@@ -51,6 +54,12 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
 	public TableColumn<Dock, Integer> colAvailableBike;
 
+	/**
+     * Constructs a new HomeScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public HomeScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 	}
@@ -142,10 +151,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	
 
 	/**
-	 * this method insert data into table.
-	 *
-	 * @param listDock - list of dock in database
-	 */
+     * Inserts data into the table.
+     * @param listDock The list of docks from the database.
+     */
 	private void insertTable(final List<Dock> listDock) {
 		ObservableList<Dock> list = FXCollections.observableArrayList(listDock);
 		colId.setCellValueFactory(new PropertyValueFactory<Dock, Integer>("id"));
@@ -158,8 +166,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	}
 
 	/**
-	 * @return - HomeController is controller of HomeScreen
-	 */
+     * Gets the associated controller for this screen handler.
+     * @return The {@link ViewInfoController} associated with this screen handler.
+     */
 	public ViewInfoController getController() {
 		return (ViewInfoController) super.getController();
 	}

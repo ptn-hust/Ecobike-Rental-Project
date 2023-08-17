@@ -18,6 +18,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * The screen handler for entering credit card information for payment.
+ */
+
 public class CreditCardFormScreenHandler extends BaseScreenHandler implements Initializable {
 	public TextField tfCardholderName;
 	public TextField tfCardNumber;
@@ -32,6 +36,13 @@ public class CreditCardFormScreenHandler extends BaseScreenHandler implements In
 
 	private int amount;
 
+	/**
+     * Constructs a new CreditCardFormScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @param amount     The amount of payment.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public CreditCardFormScreenHandler(Stage stage, String screenPath, int amount) throws IOException {
 		super(stage, screenPath);
 		this.amount = amount;
@@ -57,6 +68,10 @@ public class CreditCardFormScreenHandler extends BaseScreenHandler implements In
 //		this.amount = amount;
 //	}
 
+	/**
+     * Requests to process the payment with the entered credit card information.
+     * @throws IOException If an I/O error occurs during payment processing.
+     */
 	private void requestToPay() throws IOException {
 		String owner = tfCardholderName.getText();
 		String cardCode = tfCardNumber.getText();
@@ -87,6 +102,10 @@ public class CreditCardFormScreenHandler extends BaseScreenHandler implements In
 		}
 	}
 
+	/**
+     * Returns the PaymentController associated with this screen.
+     * @return The PaymentController instance.
+     */
 	public PaymentController getController() {
 		return (PaymentController) super.getController();
 	}

@@ -4,9 +4,16 @@ import java.sql.*;
 
 import group13.ecobikerental.utils.Configs;
 
+/**
+ * A utility class for connecting to the database.
+ */
 public class DBConnector {
     private static Connection connect;
 
+    /**
+     * Get the database connection.
+     * @return The database connection.
+     */
     public static Connection getConnection() {
         if (connect != null) {
             return connect;
@@ -23,6 +30,10 @@ public class DBConnector {
         }
     }
 
+    /**
+     * Close the database connection.
+     * @throws SQLException if a database access error occurs.
+     */
     private static void closeConnection() throws SQLException {
         if (connect != null) {
             connect.close();

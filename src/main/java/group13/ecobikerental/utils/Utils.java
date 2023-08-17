@@ -11,16 +11,35 @@ import java.util.Locale;
 import java.util.logging.Logger;
 
 public class Utils {
+	/**
+     * The date formatter used for converting dates to string.
+     */
     public static DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    /**
+     * The logger instance for logging.
+     */
     private static Logger LOGGER = getLogger(Utils.class.getName());
+    /**
+     * Static initializer block to configure the logging format.
+     */
     static {
         System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-4s] [%1$tF %1$tT] [%2$-7s] %5$s %n");
     }
 
+    /**
+     * Gets a logger instance for the specified class name.
+     * @param className The name of the class for which the logger is requested.
+     * @return A logger instance.
+     */
     public static Logger getLogger(String className) {
         return Logger.getLogger(className);
     }
 
+    /**
+     * Formats an integer as currency using the specified locale.
+     * @param num The integer to format as currency.
+     * @return The formatted currency string.
+     */
     public static String getCurrencyFormat(int num) {
         Locale vietname = new Locale("vi", "VN");
         NumberFormat defaultFormat = NumberFormat.getCurrencyInstance(vietname);
@@ -28,9 +47,7 @@ public class Utils {
     }
 
     /**
-     * Return a {@link java.lang.String String} that represents the current time in the format of yyyy-MM-dd HH:mm:ss.
-     *
-     * @author hieudm
+     * Return a {@link java.lang.String String} the current date and time as a formatted string.
      * @return the current time as {@link java.lang.String String}.
      */
     public static String getToday() {
@@ -40,12 +57,9 @@ public class Utils {
     }
 
     /**
-     * Return a {@link java.lang.String String} that represents the cipher text
-     * encrypted by md5 algorithm.
-     *
-     * @author hieudm vnpay
-     * @param message - plain text as {@link java.lang.String String}.
-     * @return cipher text as {@link java.lang.String String}.
+     * Returns the MD5 hash of a given plain text message.
+     * @param message The plain text message to hash.
+     * @return The MD5 hash of the message.
      */
 //    public static String md5(String message) {
 //        String digest = null;

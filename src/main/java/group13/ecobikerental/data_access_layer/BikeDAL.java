@@ -12,10 +12,17 @@ import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.BikeFactory;
 import group13.ecobikerental.entity.bike.ElectricBike;
 
+/**
+ * Data Access Layer for managing Bike data.
+ */
 public class BikeDAL {
 
 	private List<Bike> bikeList;
 
+	/**
+     * Constructor for BikeDAL.
+     * @throws SQLException if a database access error occurs.
+     */
 	public BikeDAL() throws SQLException {
 		this.bikeList = new ArrayList<>();
 
@@ -46,6 +53,13 @@ public class BikeDAL {
 		}
 	}
 
+	/**
+     * Update the bike's information.
+     * @param bikeCode The code of the bike.
+     * @param dockName The name of the dock.
+     * @param option   1 for being used, 0 for not being used.
+     * @throws SQLException if a database access error occurs.
+     */
 	public void updateBike(String bikeCode, String dockName, int option) throws SQLException {
 		int dockId = 0;
 		if (dockName != null) {
@@ -86,6 +100,10 @@ public class BikeDAL {
 
 	}
 
+	/**
+     * Get the list of bikes.
+     * @return A list of Bike objects.
+     */
 	public List<Bike> getBikeList() {
 		return bikeList;
 	}

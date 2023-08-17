@@ -55,13 +55,11 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 	private Timeline timeline;
 
 	/**
-	 * This method is constructor with current stage.
-	 *
-	 * @param stage      -
-	 * @param screenPath -
-	 *
-	 * @throws IOException
-	 */
+     * Constructs a new ReturnBikeScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public ReturnBikeScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		this.rentalTime = Invoice.getInstance().getRentalTime();
@@ -91,6 +89,10 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 
 	}
 
+	/**
+     * Sets the information displayed on the screen.
+     * @throws SQLException If a database access error occurs.
+     */
 	public void setInfo() throws SQLException {
 		setCombobox();
 		this.rentalFee = this.getController().calculateRentalFee(this.rentalTime, this.bike);
@@ -106,6 +108,10 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 		}
 	}
 
+	/**
+     * Sets the options in the return dock combobox based on the available docks.
+     * @throws SQLException If a database access error occurs.
+     */
 	private void setCombobox() throws SQLException {
 		List<Dock> listDock = new DockDAL().getDockList();
 
@@ -116,6 +122,13 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 		cbReturnDock.setItems(listValue);
 	}
 
+	/**
+     * Handles the process of returning a bike.
+     * @param dockReturn The dock to which the bike is being returned.
+     * @param timeRental The rental time of the bike.
+     * @throws IOException If an I/O error occurs while navigating to another screen.
+     * @throws SQLException If a database access error occurs.
+     */
 	public void returnBike(String dockReturn, String timeRental) throws IOException, SQLException {
 		Map<String, String> result = this.getController().returnBike(dockReturn, this.rentalFee, this.bike);
 
@@ -144,6 +157,10 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 		}
 	}
 
+	/**
+     * Returns the RentBikeController associated with this screen.
+     * @return The RentBikeController instance.
+     */
 	public ReturnBikeController getController() {
 		return (ReturnBikeController) super.getController();
 	}

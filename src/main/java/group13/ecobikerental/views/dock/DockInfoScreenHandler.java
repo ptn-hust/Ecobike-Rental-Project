@@ -20,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * The screen handler for displaying information about a dock and viewing bikes available at the dock.
+ */
 public class DockInfoScreenHandler extends BaseScreenHandler implements Initializable {
 	public ImageView imgDock;
 	public ImageView imgLogo;
@@ -33,14 +36,21 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 
 	private Dock dock;
 
+	/**
+     * Constructs a new DockInfoScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @param dock       The dock for which to display information.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public DockInfoScreenHandler(Stage stage, String screenPath, Dock dock) throws IOException {
 		super(stage, screenPath);
 		this.dock = dock;
 	}
 
 	/**
-	 * this method set information of screen.
-	 */
+     * Sets the information to be displayed on the screen.
+     */
 	public void setInfo() {
 		lbName.setText(this.dock.getDockName());
 		lbAddress.setText(this.dock.getAddress());
@@ -73,6 +83,11 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 
 	}
 
+	/**
+     * Views the details of a bike based on the provided barcode.
+     * @param barcode The barcode of the bike to view.
+     * @throws SQLException If a SQL-related error occurs.
+     */
 	public void viewBike(String barcode) throws SQLException {
 		RentBikeController newController = new RentBikeController();
 		String bikeCode = null;

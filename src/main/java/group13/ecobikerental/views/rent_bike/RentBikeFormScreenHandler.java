@@ -17,6 +17,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * The screen handler for renting a bike form.
+ */
 public class RentBikeFormScreenHandler extends BaseScreenHandler implements Initializable {
 	public TextField tfDockId;
 	public TextField tfBarcode;
@@ -24,6 +27,12 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
 	public Button btnViewBike;
 	public Button btnBack;
 
+	/**
+     * Constructs a new RentBikeFormScreenHandler instance.
+     * @param stage      The stage to display the screen on.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the screen.
+     */
 	public RentBikeFormScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		// TODO Auto-generated constructor stub
@@ -61,6 +70,11 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
 		});
 	}
 
+	/**
+     * Displays bike information based on the provided dock ID and bike barcode.
+     * @param dockId  The ID of the dock.
+     * @param barcode The barcode of the bike.
+     */
 	private void viewBike(int dockId, String barcode) {
 		String bikeCode = null;
 		Bike bike = null;
@@ -106,6 +120,10 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
 
 	}
 
+	/**
+     * Returns the RentBikeController associated with this screen.
+     * @return The RentBikeController instance.
+     */
 	public RentBikeController getController() {
 		return (RentBikeController) super.getController();
 	}

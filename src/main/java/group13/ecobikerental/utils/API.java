@@ -3,8 +3,8 @@
  *
  * This class provides an API client for making HTTP requests to a specified base URL.
  * 
- * @Credits: This class is adapted from the 'API' module in a project by vvlong1801.
- *           Original source: https://github.com/vvlong1801/ISD.VN.20211-Group2/
+ * @Credits: This class is adapted from the 'API' module in a project 
+ *           Original source: 
  *
  */
 package group13.ecobikerental.utils;
@@ -29,9 +29,22 @@ import java.util.logging.Logger;
 
 public class API {
 
+	/**
+     * The date formatter used for converting dates to string.
+     */
 	public static DateFormat DATE_FORMATER = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	/**
+     * The logger instance for logging.
+     */
 	private static Logger LOGGER = Utils.getLogger(Utils.class.getName());
 
+	/**
+     * Sends a GET request to the specified URL with the provided token.
+     * @param url   The URL to send the GET request to.
+     * @param token The authorization token.
+     * @return The response from the server.
+     * @throws Exception If an error occurs during the request.
+     */
 	public static String get(String url, String token) throws Exception {
 		LOGGER.info("Request URL: " + url + "\n");
 
@@ -52,6 +65,12 @@ public class API {
 		return response.substring(0, response.length() - 1).toString();
 	}
 
+	/**
+     * Sets up the connection for the HTTP request.
+     * @param url The URL to connect to.
+     * @return The prepared HttpURLConnection.
+     * @throws IOException If an I/O error occurs.
+     */
 	private static HttpURLConnection setupConnection(String url) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		conn.setDoInput(true);
@@ -61,6 +80,13 @@ public class API {
 		return conn;
 	}
 
+	/**
+     * Sends a POST request to the specified URL with the provided data.
+     * @param url  The URL to send the POST request to.
+     * @param data The payload data to include in the request.
+     * @return The response from the server.
+     * @throws IOException If an I/O error occurs.
+     */
 	public static String post(String url, String data) throws IOException {
 		String payload = data;
 		LOGGER.info("Request Info:\nRequest URL: " + url + "\n" + "Payload Data: " + payload + "\n");
@@ -87,6 +113,13 @@ public class API {
 		return response.toString();
 	}
 
+	/**
+     * Sets up a custom connection for the HTTP request.
+     * @param url    The URL to connect to.
+     * @param method The HTTP method (e.g., "POST") to use.
+     * @return The prepared HttpURLConnection.
+     * @throws IOException If an I/O error occurs.
+     */
 	private static HttpURLConnection setupCustomConnection(String url, String method) throws IOException {
 		HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 		conn.setRequestMethod(method);
