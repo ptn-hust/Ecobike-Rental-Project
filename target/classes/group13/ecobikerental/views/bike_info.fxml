@@ -5,6 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -133,6 +134,27 @@
                            </HBox.margin>
                         </Label>
                      </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="295.0" prefHeight="40.0" spacing="100.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Rent option" textFill="#0d3b66">
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                        </Label>
+                        <RadioButton mnemonicParsing="false" prefHeight="19.0" prefWidth="170.0" selected="true" text="Normal (by hour)">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton disable="true" layoutX="311.0" layoutY="10.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="74.0" text="Full day" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
                   </HBox>
                   <HBox prefHeight="44.0" prefWidth="602.0">
                      <children>
