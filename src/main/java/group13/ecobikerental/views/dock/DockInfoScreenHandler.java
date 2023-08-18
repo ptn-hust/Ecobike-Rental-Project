@@ -74,7 +74,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 
 		btnViewBike.setOnAction(event -> {
 			try {
-				viewBike(tfBarcode.getText());
+				enterBarcodeHandle(tfBarcode.getText());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -88,7 +88,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
      * @param barcode The barcode of the bike to view.
      * @throws SQLException If a SQL-related error occurs.
      */
-	public void viewBike(String barcode) throws SQLException {
+	public void enterBarcodeHandle(String barcode) throws SQLException {
 		RentBikeController newController = new RentBikeController();
 		String bikeCode = null;
 		Bike bike = null;

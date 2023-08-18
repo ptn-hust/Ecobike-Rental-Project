@@ -70,7 +70,8 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		setImage(imgLogo, Configs.LOGO_IMG_PATH);
 		setImage(imgBike, "assets/images/e-bike.png");
-		btnBack.setVisible(false);
+//		btnBack.setVisible(false);
+		btnBack.setVisible(true);
 
 		btnReturn.setOnMouseClicked(mouseEvent -> {
 			String dockReturn = cbReturnDock.getValue();
@@ -83,9 +84,9 @@ public class ReturnBikeScreenHandler extends BaseScreenHandler implements Initia
 			}
 		});
 
-//        btnBack.setOnMouseClicked(mouseEvent -> {
-//            this.getPrev().show();
-//        });
+        btnBack.setOnMouseClicked(mouseEvent -> {
+            this.getPrev().show();
+        });
 
 	}
 

@@ -53,7 +53,7 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
 				int dockId = Integer.parseInt(tfDockId.getText());
 				String barcode = tfBarcode.getText();
 				System.out.println("test : " + dockId + " and " + barcode);
-				viewBike(dockId, barcode);
+				enterBarcode(dockId, barcode);
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -75,7 +75,7 @@ public class RentBikeFormScreenHandler extends BaseScreenHandler implements Init
      * @param dockId  The ID of the dock.
      * @param barcode The barcode of the bike.
      */
-	private void viewBike(int dockId, String barcode) {
+	private void enterBarcode(int dockId, String barcode) {
 		String bikeCode = null;
 		Bike bike = null;
 		bikeCode = this.getController().getBikeCodeRequest(barcode);
