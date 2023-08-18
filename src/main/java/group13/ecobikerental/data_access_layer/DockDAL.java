@@ -59,6 +59,8 @@ public class DockDAL {
 		for (Dock dock : dockList) {
 			if (dock.getDockName().contains(name)) {
 				list.add(dock);
+			} else if (dock.getAddress().contains(name)) {
+				list.add(dock);
 			}
 		}
 		return list;
