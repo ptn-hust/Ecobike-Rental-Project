@@ -12,7 +12,6 @@ public class InvoiceBL {
 
     // Private constructor to prevent direct instantiation
     private InvoiceBL() {
-        // Initialization logic here
     }
 
 

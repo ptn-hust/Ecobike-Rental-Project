@@ -28,6 +28,7 @@ public class BikeBL {
      * @param barcode The barcode to validate.
      * @return true if the barcode is valid, false otherwise.
      */
+    // barcode is a string of number, length 12
 	public boolean validateBarcode(final String barcode) {
 		if (barcode == null || barcode.length() != 12 || !barcode.matches("\\d{12}")) {
 			return false;
@@ -41,19 +42,14 @@ public class BikeBL {
      * @return The deduced bike code or null if not deducible.
      */
 	public String deduceBikeCode(String barcode) {
-		int barcodeLength = barcode.length();
-		System.out.println("length " + barcodeLength);
 		String firstHalf = barcode.substring(0, 3);
-		System.out.println("first half "+ firstHalf);
-		
 		String secondHalf = barcode.substring(9,12);
-		System.out.println("second half "+ secondHalf);
 
 		if (secondHalf.equals(firstHalf)) {
 			return firstHalf;
 		}
 
-		return null; // Barcode does not match the pattern
+		return null;
 	}
 	
 	/**

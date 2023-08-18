@@ -2,18 +2,13 @@ package group13.ecobikerental.business_layer;
 
 import java.util.Calendar;
 
-import group13.ecobikerental.entity.invoice.Invoice;
-import group13.ecobikerental.exception.InvalidCardException;
-/**
- * The Credit Card Business Logic class to validate credit card information.
- */
+
 public class CreditCardBL {
 	private static CreditCardBL instance;
 
-	/**
-     * Get the instance of CreditCardBL.
-     * @return The CreditCardBL instance.
-     */
+	private CreditCardBL() {
+	}
+
 	public static CreditCardBL getInstance() {
 		if (instance == null) {
 			instance = new CreditCardBL();
@@ -28,19 +23,14 @@ public class CreditCardBL {
      * @return true if the information is valid, false otherwise.
      */
 	public boolean validateCreditCardInfo(final String expDate, final String cvvCode) {
-		if (isValidCvvCode(cvvCode) || isValidExpiryDate(expDate)) {
+		if (isValidCvvCode(cvvCode) || isValidDate(expDate)) {
 			return true;
 		}
 
 		return false;
 	}
 
-	/**
-     * Validate if the expiration date is valid.
-     * @param input The expiration date in MM/YY format.
-     * @return true if the expiration date is valid, false otherwise.
-     */
-	public boolean isValidExpiryDate(String input) {
+	private boolean isValidDate(String input) {
 		if (input == null || !input.matches("^(0[1-9]|1[0-2])/\\d{2}$")) {
 			return false; // Invalid format
 		}

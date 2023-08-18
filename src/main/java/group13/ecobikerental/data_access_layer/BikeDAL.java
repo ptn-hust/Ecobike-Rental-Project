@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.BikeFactory;
@@ -47,6 +46,9 @@ public class BikeDAL {
 			bike.setDeposit(res.getInt("deposit_fee"));
 			bike.setBaseFee(res.getInt("base_fee"));
 			bike.setExtraFee(res.getInt("extra_fee"));
+			if(res.getString("type").equals("Standard e-bike")) {
+				
+			}
 			System.out.println(bike.toString());
 
 			bikeList.add(bike);

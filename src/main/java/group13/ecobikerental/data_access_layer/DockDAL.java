@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import group13.ecobikerental.entity.bike.ElectricBike;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.bike.BikeFactory;
 import group13.ecobikerental.entity.dock.Dock;
@@ -138,6 +139,17 @@ public class DockDAL {
 			bike.setDeposit(res.getInt("deposit"));
 			bike.setBaseFee(res.getInt("base_fee"));
 			bike.setExtraFee(res.getInt("extra_fee"));
+			
+			if(res.getString("bike_type").equals("Standard e-bike")) {
+				ElectricBike eBike = (ElectricBike) bike;
+				String sql2 = "select * from ebike where ebike_id = " + bike.getBikeId();
+				ResultSet res1 = stmt.executeQuery(sql2);
+				if(res1.next()) {
+					eBike.setLicensePlate(res1.getString("ebike_license"));
+					eBike.setPin(res1.getInt("ebike_battery"));
+				}
+				return eBike;				
+			}
 
 			System.out.println("dockDAL" + bike.getBaseFee());
 			return bike;
