@@ -12,10 +12,12 @@ public class PaymentFactory {
      * @param bike The bike associated with the payment.
      * @return An instance of a payment strategy.
      */
-	public PaymentBase getPayment(String type, Bike bike) {
+	public Payment getPayment(String type, Bike bike) {
 		if (type.equals("Normal")) {
 			return new NormalPayment(bike);
+		} else if(type.equals("Day")) {
+			return new DayPayment();
 		}
-		return new PaymentBase();
+		return null;
 	}
 }

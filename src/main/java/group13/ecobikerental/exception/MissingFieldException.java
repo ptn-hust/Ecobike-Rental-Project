@@ -5,6 +5,11 @@ package group13.ecobikerental.exception;
  * Subclass of EcobikeSystemException.
  */
 public class MissingFieldException extends EcobikeSystemException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public MissingFieldException() {
 		super("ERROR: All field must be required");
 	}

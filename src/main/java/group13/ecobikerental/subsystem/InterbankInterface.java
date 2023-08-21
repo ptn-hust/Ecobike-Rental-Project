@@ -1,11 +1,7 @@
 package group13.ecobikerental.subsystem;
 
-/**
- * This interface represents the communication interface with the interbank system
- * for processing payments and refunds.
- */
-import group13.ecobikerental.entity.payment.CreditCard;
-import group13.ecobikerental.entity.payment.Transaction;
+import group13.ecobikerental.entity.creditcard.CreditCard;
+import group13.ecobikerental.entity.payment.transaction.Transaction;
 import group13.ecobikerental.exception.PaymentException;
 import group13.ecobikerental.exception.UnrecognizedException;
 

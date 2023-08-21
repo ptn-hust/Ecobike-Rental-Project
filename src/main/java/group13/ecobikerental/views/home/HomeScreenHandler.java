@@ -6,20 +6,19 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import group13.ecobikerental.controller.RentBikeController;
+import group13.ecobikerental.DAL.dock.DockDAL;
 import group13.ecobikerental.controller.ViewInfoController;
 import group13.ecobikerental.entity.dock.Dock;
+import group13.ecobikerental.service.dock.DockService;
 import group13.ecobikerental.utils.Configs;
 import group13.ecobikerental.views.BaseScreenHandler;
 import group13.ecobikerental.views.dock.DockInfoScreenHandler;
-import group13.ecobikerental.views.rent_bike.RentBikeFormScreenHandler;
-import javafx.beans.property.Property;
+import group13.ecobikerental.views.rentbike.RentBikeFormScreenHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -67,7 +66,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		try {
-			setController(new ViewInfoController());
+			setController(new ViewInfoController(new DockService(new DockDAL())));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,17 +78,10 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-//
-//		imgLogo.setOnMouseClicked(mouseEvent -> {
-//			try {
-//				this.getHomeScreenHandler().show();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		});
 
 		btnReload.setOnAction(event -> {
 			try {
+				System.out.println("Clicked: Reload");
 				this.getHomeScreenHandler().show();
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -98,23 +90,18 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 
 		btnSearch.setOnAction(event -> {
 			String name = tfSearch.getText();
-			System.out.println("Search name: " + name);
+			System.out.println("Clicked: Search " + name);
 			try {
-				insertTable(getController().searchDockRequest(name));
+				insertTable(this.getController().searchDockRequest(name));
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		});
 		btnRentBike.setOnMouseClicked(mouseEvent -> {			
 			try {
+				System.out.println("Clicked: Rent Bike");
 				RentBikeFormScreenHandler rentBikeFormScreen = new RentBikeFormScreenHandler(this.stage, Configs.RENT_BIKE_FORM_PATH);
 				rentBikeFormScreen.setScreenTitle("Search bike");
-				try {
-					rentBikeFormScreen.setController(new RentBikeController());
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 				rentBikeFormScreen.setPrev(this);
 				rentBikeFormScreen.show();
 			} catch (IOException e) {
@@ -130,7 +117,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Initializabl
 			row.setOnMouseClicked(event -> {
 				if (event.getClickCount() == 2 && (!row.isEmpty())) {
 					Dock rowData = row.getItem();
-					System.out.println("Double click on: " + rowData.getDockName());
+					System.out.println("Double clicked: " + rowData.getDockName());
 					DockInfoScreenHandler dockInfoScreenHandler;
 					try {
 						dockInfoScreenHandler = new DockInfoScreenHandler(this.stage, Configs.DOCK_INFO_SCREEN_PATH,

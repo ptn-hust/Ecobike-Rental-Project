@@ -86,14 +86,14 @@
                                     <Font size="21.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbLicensePlate1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="436.0" text="Thong Nhat" textFill="#0d3b66">
+                              <Label fx:id="lbBrand" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="32.0" prefWidth="436.0" text="Thong Nhat" textFill="#0d3b66">
                                  <font>
                                     <Font size="21.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox prefHeight="0.0" prefWidth="600.0">
+                        <HBox fx:id="hbLicensePlate" prefHeight="0.0" prefWidth="600.0">
                            <children>
                               <Label prefHeight="32.0" prefWidth="178.0" text="License Plate" textFill="#0d3b66">
                                  <font>

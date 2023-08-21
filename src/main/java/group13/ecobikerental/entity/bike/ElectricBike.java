@@ -6,7 +6,7 @@ package group13.ecobikerental.entity.bike;
 public class ElectricBike extends Bike {
 	@Override
 	public String toString() {
-		return "ElectricBike [licensePlate=" + licensePlate + ", pin=" + pin + ", getType()=" + getType()
+		return "ElectricBike [hbLicensePlate=" + licensePlate + ", pin=" + pin + ", getType()=" + getType()
 				+ ", getBarcode()=" + getBikecode() + ", getDockName()=" + getDockName() + ", getDeposit()="
 				+ getDeposit() + ", getBikeCode()=" + getBikeCode() + ", toString()=" + super.toString()
 				+ ", getBikeId()=" + getBikeId() + ", getIsBeingUsed()=" + getIsBeingUsed() + ", getBaseFee()="

@@ -5,7 +5,12 @@ package group13.ecobikerental.exception;
  * Subclass of PaymentException.
  */
 public class InvalidCardException extends PaymentException {
-    public InvalidCardException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public InvalidCardException() {
         super("ERROR: Invalid card information!");
     }
 }

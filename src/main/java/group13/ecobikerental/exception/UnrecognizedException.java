@@ -4,7 +4,12 @@ package group13.ecobikerental.exception;
  * Subclass of RuntimeException.
  */
 public class UnrecognizedException extends RuntimeException {
-    public UnrecognizedException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UnrecognizedException() {
         super("Unrecognized Exception");
     }
 }

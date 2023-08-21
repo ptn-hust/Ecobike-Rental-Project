@@ -5,7 +5,7 @@ import group13.ecobikerental.entity.bike.Bike;
 /**
  * Represents a normal payment for bike rental.
  */
-public class NormalPayment extends PaymentBase {
+public class NormalPayment extends Payment {
 	/**
      * Constructs a NormalPayment instance for the given bike.
      * @param bike The bike for which the payment is made.

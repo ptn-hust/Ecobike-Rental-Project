@@ -1,8 +1,5 @@
 package group13.ecobikerental.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -55,35 +52,4 @@ public class Utils {
         Date date = new Date();
         return dateFormat.format(date);
     }
-
-    /**
-     * Returns the MD5 hash of a given plain text message.
-     * @param message The plain text message to hash.
-     * @return The MD5 hash of the message.
-     */
-//    public static String md5(String message) {
-//        String digest = null;
-//        try {
-//            MessageDigest md = MessageDigest.getInstance("MD5");
-//            byte[] hash = md.digest(message.getBytes("UTF-8"));
-//            // converting byte array to Hexadecimal String
-//            StringBuilder sb = new StringBuilder(2 * hash.length);
-//            for (byte b : hash) {
-//                sb.append(String.format("%02x", b & 0xff));
-//            }
-//            digest = sb.toString();
-//        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
-//            Utils.getLogger(Utils.class.getName());
-//            digest = "";
-//        }
-//        return digest;
-//    }
-
-//    public static void convertObjectToJson(Object obj){
-//
-//    }
-
-//    public static void convertJsonToObject(final String response){
-//
-//    }
 }

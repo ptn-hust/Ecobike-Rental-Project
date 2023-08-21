@@ -1,7 +1,6 @@
 package group13.ecobikerental.views;
 
 import java.io.IOException;
-import java.util.Hashtable;
 
 import group13.ecobikerental.controller.BaseController;
 import group13.ecobikerental.utils.Configs;
