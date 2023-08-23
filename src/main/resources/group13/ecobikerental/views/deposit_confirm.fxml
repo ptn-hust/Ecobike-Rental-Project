@@ -42,9 +42,9 @@
             </Label>
          </children>
       </Pane>
-      <HBox alignment="CENTER" layoutY="182.0" prefHeight="532.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="182.0">
+      <HBox alignment="CENTER" layoutY="192.0" prefHeight="528.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="192.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="465.0" prefWidth="623.0" spacing="30.0">
+            <VBox alignment="TOP_CENTER" prefHeight="470.0" prefWidth="623.0" spacing="20.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="287.0" prefWidth="623.0" spacing="15.0" stylesheets="@../styles/home.css">
                      <children>

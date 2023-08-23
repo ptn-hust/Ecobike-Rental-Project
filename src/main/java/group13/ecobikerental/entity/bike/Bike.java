@@ -5,22 +5,48 @@ package group13.ecobikerental.entity.bike;
  */
 public class Bike {
 
+	/**
+	 * The unique ID of the bike.
+	 */
 	private int bikeId;
 
+	/**
+	 * The code associated with the bike.
+	 */
     private String bikeCode;
 
+    /**
+     * The type of the bike.
+     */
     private String type;
 
+    /**
+     * The name of the dock where the bike is currently located.
+     */
     private String dockName;
 
+    /**
+     * The ID of the dock where the bike is currently located.
+     */
     private int dockId;
     
+    /**
+     * The deposit amount required for renting the bike.
+     */
     private int deposit;
     
+    /**
+     * Indicates whether the bike is currently being used (1 for being used, 0 otherwise).
+     */
     private int isBeingUsed;
     
+    /**
+     * The base rental fee for the bike.
+     */
     private int baseFee;
-    
+    /**
+     * The additional extra fee for the bike.
+     */
     private int extraFee;
 
     /**
@@ -32,7 +58,7 @@ public class Bike {
 
     /**
      * Constructor for creating a Bike instance with specified parameters.
-     * @param bikeCode  The code of the bike.
+     * @param bikecode  The code of the bike.
      * @param type      The type of the bike.
      * @param dockName  The name of the dock where the bike is located.
      * @param deposit   The deposit fee of the bike.
@@ -164,42 +190,82 @@ public class Bike {
 				+ extraFee + "]";
 	}
 
+    /**
+     * Gets the unique ID of the bike.
+     * @return The bike's ID.
+     */
     public int getBikeId() {
         return bikeId;
     }
 
+    /**
+     * Sets the unique ID of the bike.
+     * @param bikeId The bike's ID to set.
+     */
     public void setBikeId(int bikeId) {
         this.bikeId = bikeId;
     }
 
+    /**
+     * Gets the status indicating whether the bike is being used.
+     * @return 1 if the bike is being used, 0 otherwise.
+     */
 	public int getIsBeingUsed() {
 		return isBeingUsed;
 	}
 
+	/**
+	 * Sets the status indicating whether the bike is being used.
+	 * @param isBeingUsed The status to set (1 for being used, 0 otherwise).
+	 */
 	public void setIsBeingUsed(int isBeingUsed) {
 		this.isBeingUsed = isBeingUsed;
 	}
 
+	/**
+	 * Gets the base rental fee for the bike.
+	 * @return The base rental fee.
+	 */
 	public int getBaseFee() {
 		return baseFee;
 	}
 
+	/**
+	 * Sets the base rental fee for the bike.
+	 * @param baseFee The base rental fee to set.
+	 */
 	public void setBaseFee(int baseFee) {
 		this.baseFee = baseFee;
 	}
 
+	/**
+	 * Gets the additional extra fee for the bike.
+	 * @return The extra fee.
+	 */
 	public int getExtraFee() {
 		return extraFee;
 	}
 
+	/**
+	 * Sets the additional extra fee for the bike.
+	 * @param extraFee The extra fee to set.
+	 */
 	public void setExtraFee(int extraFee) {
 		this.extraFee = extraFee;
 	}
 
+	/**
+	 * Gets the ID of the dock where the bike is located.
+	 * @return The dock's ID.
+	 */
 	public int getDockId() {
 		return dockId;
 	}
 
+	/**
+	 * Sets the ID of the dock where the bike is located.
+	 * @param dockId The dock's ID to set.
+	 */
 	public void setDockId(int dockId) {
 		this.dockId = dockId;
 	}

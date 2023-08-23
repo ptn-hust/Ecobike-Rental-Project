@@ -8,6 +8,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * FXML handler
+ */
 public class FXMLScreenHandler {
 	/**
      * The FXMLLoader instance used to load the FXML screen.

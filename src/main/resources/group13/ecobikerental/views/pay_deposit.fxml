@@ -192,7 +192,7 @@
                         <Insets left="30.0" right="60.0" />
                      </padding>
                   </RadioButton>
-                  <RadioButton disable="true" mnemonicParsing="false" prefHeight="35.0" text="Momo" textFill="#160c67">
+                  <RadioButton disable="true" mnemonicParsing="false" prefHeight="35.0" text="Momo" textFill="#0d3b66">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

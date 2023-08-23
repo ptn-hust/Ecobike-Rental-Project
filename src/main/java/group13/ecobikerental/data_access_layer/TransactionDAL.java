@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import group13.ecobikerental.entity.payment.Transaction;
-//this class is copied from project Group 2
+
 /**
  * Data Access Layer class for managing transaction-related database operations.
  */

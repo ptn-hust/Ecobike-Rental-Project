@@ -8,8 +8,8 @@ public class Configs {
 
 	public static final String DB_NAME = "ecobikerental2";
 
-	public static final String DB_USERNAME = "nhiliti";
-	public static final String DB_PASSWORD = "920203";
+	public static final String DB_USERNAME = "root";
+	public static final String DB_PASSWORD = "123456789";
 
 	public static final String SPLASH_SCREEN_PATH = "/group13/ecobikerental/views/splash.fxml";
 	public static final String HOME_SCREEN_PATH = "/group13/ecobikerental/views/home.fxml";

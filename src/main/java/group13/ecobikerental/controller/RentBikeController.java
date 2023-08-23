@@ -20,6 +20,11 @@ public class RentBikeController extends BaseController {
 		this.dockDlInstance = new DockDAL();
 	}
 
+	/**
+     * Retrieves the bike code from a barcode.
+     * @param barcode The barcode of the bike.
+     * @return The bike code.
+     */
 	public String getBikeCodeRequest(String barcode) {
 		String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
 		return bikeCode;

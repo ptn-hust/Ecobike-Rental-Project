@@ -1,11 +1,8 @@
 /**
  * API.class
- *
  * This class provides an API client for making HTTP requests to a specified base URL.
- * 
  * @Credits: This class is adapted from the 'API' module in a project 
- *           Original source: 
- *
+ *           Original source: https://github.com/ptn-hust/API-Ecobike-Rental-System.git
  */
 package group13.ecobikerental.utils;
 
@@ -26,7 +23,9 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.logging.Logger;
-
+/**
+ * API class
+ */
 public class API {
 
 	/**

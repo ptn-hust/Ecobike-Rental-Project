@@ -81,9 +81,9 @@
                         <Insets left="15.0" />
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <TextField fx:id="tfSearch" prefHeight="40.0" prefWidth="222.0" promptText="Search dock" styleClass="transparent" stylesheets="@../styles/home.css">
+                  <TextField fx:id="tfSearch" prefHeight="40.0" prefWidth="229.0" promptText="Search dock" styleClass="transparent" stylesheets="@../styles/home.css">
                      <HBox.margin>
-                        <Insets left="15.0" />
+                        <Insets left="10.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Cambria" size="18.0" />
@@ -94,7 +94,7 @@
                         <Insets bottom="5.0" right="20.0" top="5.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Button>
                </children>

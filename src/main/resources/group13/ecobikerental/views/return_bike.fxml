@@ -161,7 +161,10 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="cbReturnDock" prefHeight="47.0" prefWidth="433.0" promptText="Choose dock" style="-fx-border-width: 2.5;" styleClass="search-box2" stylesheets="@styles/home.css" visibleRowCount="12" />
+                              <ComboBox fx:id="cbReturnDock" prefHeight="47.0" prefWidth="433.0" promptText="Choose dock" style="-fx-border-width: 2.5;" styleClass="search-box2" stylesheets="@styles/home.css" visibleRowCount="12">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding></ComboBox>
                            </children>
                            <VBox.margin>
                               <Insets top="10.0" />

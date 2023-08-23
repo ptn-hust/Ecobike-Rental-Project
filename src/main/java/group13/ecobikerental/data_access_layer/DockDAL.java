@@ -91,6 +91,12 @@ public class DockDAL {
 
 	}
 
+	/**
+	 * Counts the number of available bikes in a specific dock.
+	 * @param dockName The name of the dock.
+	 * @return The number of available bikes.
+	 * @throws SQLException If a database access error occurs.
+	 */
 	public int countAvailableBike(String dockName) throws SQLException {
 		int available_bike = 0;
 
@@ -106,6 +112,11 @@ public class DockDAL {
 		return available_bike;
 	}
 
+	/**
+	 * Gets the ID of a dock by its name.
+	 * @param dockName The name of the dock.
+	 * @return The ID of the dock.
+	 */
 	public int getDockId(String dockName) {
 		for (Dock dock : dockList) {
 			if (dock.getDockName().equals(dockName)) {
@@ -115,6 +126,13 @@ public class DockDAL {
 		return 0;
 	}
 
+	/**
+	 * Retrieves a bike based on its bike code and dock ID.
+	 * @param dockId The ID of the dock.
+	 * @param bikeCode The code of the bike.
+	 * @return The Bike object retrieved from the database.
+	 * @throws SQLException If a database access error occurs.
+	 */
 	public Bike getBikeByBikeCode(int dockId, String bikeCode) throws SQLException {
 		Statement stmt = DBConnector.getConnection().createStatement();
 		String query = "select bike.bike_id as id, bike.bike_barcode as bikecode,\r\n"
@@ -159,6 +177,11 @@ public class DockDAL {
 		return null;
 	}
 
+	/**
+	 * For testing the DockDAL class.
+	 * @param args Command line arguments.
+	 * @throws SQLException If a database access error occurs.
+	 */
 	public static void main(String[] args) throws SQLException {
 		DockDAL instance = new DockDAL();
 		instance.getBikeByBikeCode(5, "666");

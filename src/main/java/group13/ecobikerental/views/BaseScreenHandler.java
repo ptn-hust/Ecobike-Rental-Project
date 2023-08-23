@@ -9,6 +9,10 @@ import group13.ecobikerental.views.home.HomeScreenHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * BaseScreenHandler class represents a handler for displaying JavaFX screens.
+ * It encapsulates the functionality to manage scenes and stages for different screens.
+ */
 public class BaseScreenHandler extends FXMLScreenHandler {
     /**
      * scene of screen.
@@ -28,9 +32,9 @@ public class BaseScreenHandler extends FXMLScreenHandler {
     private BaseController controller;
 
     /**
-     * Constructor to create a new instance of BaseScreenHandler with the specified stage and screen path.
-     * @param stage      The stage to associate with this screen handler.
-     * @throws IOException If an I/O error occurs while loading the FXML screen file.
+     * Constructs a new instance of the {@code BaseScreenHandler} class with the specified screen path.
+     * @param screenPath The path to the FXML screen file.
+     * @throws IOException If an I/O error occurs while loading the screen.
      */
     private BaseScreenHandler(String screenPath) throws IOException {
         super(screenPath);

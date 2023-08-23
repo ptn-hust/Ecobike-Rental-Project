@@ -2,13 +2,19 @@ package group13.ecobikerental.business_layer;
 
 import java.util.Calendar;
 
-
+/**
+ * The Credit Card Business Logic class to validate credit card information.
+ */
 public class CreditCardBL {
 	private static CreditCardBL instance;
 
 	private CreditCardBL() {
 	}
 
+	/**
+     * Get the instance of CreditCardBL.
+     * @return The CreditCardBL instance.
+     */
 	public static CreditCardBL getInstance() {
 		if (instance == null) {
 			instance = new CreditCardBL();
@@ -30,6 +36,11 @@ public class CreditCardBL {
 		return false;
 	}
 
+	/**
+	 * Checks if the input string represents a valid expiration date in the format "MM/YY".
+	 * @param input The input string to be validated.
+	 * @return {@code true} if the input is a valid expiration date, {@code false} otherwise.
+	 */
 	private boolean isValidDate(String input) {
 		if (input == null || !input.matches("^(0[1-9]|1[0-2])/\\d{2}$")) {
 			return false; // Invalid format

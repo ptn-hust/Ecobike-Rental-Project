@@ -14,7 +14,6 @@ public class InvoiceBL {
     private InvoiceBL() {
     }
 
-
     /**
      * Get the singleton instance of InvoiceBL.
      * @return The InvoiceBL instance.
