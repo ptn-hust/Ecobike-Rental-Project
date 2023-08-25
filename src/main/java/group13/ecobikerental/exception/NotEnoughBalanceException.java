@@ -6,7 +6,12 @@ package group13.ecobikerental.exception;
  */
 public class NotEnoughBalanceException extends PaymentException{
 
-    public NotEnoughBalanceException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public NotEnoughBalanceException() {
         super("ERROR: Not enough balance");
     }
 

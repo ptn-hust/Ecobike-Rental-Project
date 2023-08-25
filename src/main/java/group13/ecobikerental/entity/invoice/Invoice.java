@@ -1,8 +1,7 @@
 package group13.ecobikerental.entity.invoice;
 
 import group13.ecobikerental.entity.bike.Bike;
-import group13.ecobikerental.entity.payment.CreditCard;
-import group13.ecobikerental.entity.payment.Transaction;
+import group13.ecobikerental.entity.payment.transaction.Transaction;
 
 /**
  * Entity Invoice
@@ -12,14 +11,15 @@ public class Invoice {
 	 * Represent for bike
 	 */
 	private Bike bike;
-	private String rentalTime;
+
+	private String rentalTime; 	// rental duration
+	
 	private int rentalFee;
 	/**
 	 * Represent for payment transaction.
 	 */
 	private Transaction payTransaction;
 	private Transaction refundTransaction;
-	
 	private String paymentMethod;
 
 	private static Invoice instance;

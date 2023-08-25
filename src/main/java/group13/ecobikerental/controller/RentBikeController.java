@@ -2,39 +2,32 @@ package group13.ecobikerental.controller;
 
 import java.sql.SQLException;
 
-import group13.ecobikerental.business_layer.BikeBL;
-import group13.ecobikerental.data_access_layer.DockDAL;
 import group13.ecobikerental.entity.bike.Bike;
+import group13.ecobikerental.service.bike.IBikeService;
+
 /**
  * Controller responsible for handling bike rental-related actions.
  */
 public class RentBikeController extends BaseController {
-	private DockDAL dockDlInstance;
+	private IBikeService bikeServiceInstance;
 
 	/**
      * Constructs a new RentBikeController instance.
      * @throws SQLException if a database access error occurs.
      */
-	public RentBikeController() throws SQLException {
+	public RentBikeController(IBikeService bikeServiceInstance) throws SQLException {
 		super();
-		this.dockDlInstance = new DockDAL();
+		this.bikeServiceInstance = bikeServiceInstance;
 	}
 
-	public String getBikeCodeRequest(String barcode) {
-		String bikeCode = BikeBL.getInstance().convertBarcodeToBikeCode(barcode);
+	public String getBikeCodeRequest(String barcode) throws SQLException {
+		String bikeCode = this.bikeServiceInstance.convertBarcodeToBikeCode(barcode);
 		return bikeCode;
 	}
 
-	/**
-     * Retrieves a bike from a dock based on its bike code.
-     * @param dockId   The ID of the dock.
-     * @param bikeCode The code of the bike.
-     * @return The Bike object retrieved from the dock.
-     * @throws SQLException if a database access error occurs.
-     */
-	public Bike getBikeRequest2(int dockId, String bikeCode) throws SQLException {
-		Bike biketest;
-		biketest = this.dockDlInstance.getBikeByBikeCode(dockId, bikeCode);
-		return biketest;
+	public Bike getBikeRequest(int dockId, String bikeCode) throws SQLException {
+		Bike bike;
+		bike = this.bikeServiceInstance.getBikeByBikeCode(dockId, bikeCode);
+		return bike;
 	}
 }

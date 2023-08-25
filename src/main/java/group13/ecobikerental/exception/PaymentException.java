@@ -6,7 +6,12 @@ package group13.ecobikerental.exception;
  */
 public class PaymentException extends RuntimeException {
 	
-    public PaymentException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public PaymentException() {
     }
     
     public PaymentException(String message) {

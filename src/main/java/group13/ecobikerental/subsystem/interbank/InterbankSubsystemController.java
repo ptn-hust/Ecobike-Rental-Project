@@ -4,8 +4,8 @@ import org.json.JSONObject;
 
 import com.google.gson.Gson;
 
-import group13.ecobikerental.entity.payment.CreditCard;
-import group13.ecobikerental.entity.payment.Transaction;
+import group13.ecobikerental.entity.creditcard.CreditCard;
+import group13.ecobikerental.entity.payment.transaction.Transaction;
 import group13.ecobikerental.exception.InternalServerErrorException;
 import group13.ecobikerental.exception.InvalidCardException;
 import group13.ecobikerental.exception.NotEnoughBalanceException;

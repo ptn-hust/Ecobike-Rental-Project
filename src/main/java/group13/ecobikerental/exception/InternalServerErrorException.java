@@ -5,7 +5,12 @@ package group13.ecobikerental.exception;
  * Subclass of PaymentException.
  */
 public class InternalServerErrorException extends PaymentException {
-    public InternalServerErrorException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public InternalServerErrorException() {
         super("ERROR: Internal Server Error!");
     }
 }

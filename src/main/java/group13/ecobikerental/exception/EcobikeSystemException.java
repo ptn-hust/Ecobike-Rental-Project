@@ -5,7 +5,12 @@ package group13.ecobikerental.exception;
  */
 public class EcobikeSystemException extends RuntimeException {
 
-    public EcobikeSystemException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public EcobikeSystemException() {
 
 	}
 
