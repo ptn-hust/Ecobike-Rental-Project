@@ -37,9 +37,14 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 	public Label lbBike;
 	public ImageView imgBike;
 	public ProgressBar progressBarPin;
+	
+	public Label lbBarcode;
+	public Label lbBrand;
+	public Label lbLicensePlate;
+	public Label lbBikeType;
+	
 	public Label lbPin;
 	public Label lbTime;
-	public Label lbBikeType;
 	public Label pin;
 	public Button btnReturn;
 	public ImageView imgLogo;
@@ -52,7 +57,6 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 
 	/**
 	 * Constructs a new BikeStatusScreenHandler instance.
-	 * 
 	 * @param stage      The stage to display the screen on.
 	 * @param screenPath The path to the FXML screen file.
 	 * @throws IOException If an I/O error occurs while loading the screen.
@@ -69,13 +73,16 @@ public class BikeStatusScreenHandler extends BaseScreenHandler implements Initia
 			progressBarPin.setVisible(true);
 			lbPin.setVisible(true);
 			pin.setText(eBike.getPin() + "%");
+			lbLicensePlate.setText(eBike.getLicensePlate());
+			
 		}
 		lbBikeType.setText(this.bike.getType());
+		lbBarcode.setText(this.bike.getBikecode());
+		lbBrand.setText(this.bike.getBrand());
 	}
 
 	/**
 	 * Initializes the BikeStatusScreenHandler after loading the FXML screen.
-	 * 
 	 * @param url            The URL location of the FXML file.
 	 * @param resourceBundle The resource bundle to be used.
 	 */

@@ -15,11 +15,17 @@ import group13.ecobikerental.utils.Configs;
 
 import group13.ecobikerental.views.BaseScreenHandler;
 import group13.ecobikerental.views.bike.BikeInfoScreenHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -38,7 +44,21 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 	public Button btnBack;
 
 	private Dock dock;
+	
+	public TableView<Bike> tvBikelist;
+	public TableColumn<Bike, String> colBarcode;
+	public TableColumn<Bike, String> colType;
+	public TableColumn<Bike, String> colBrand;
 
+	
+	ObservableList<Bike> list = FXCollections.observableArrayList(
+			new Bike("333", "Standard bike", "Kymco"),
+			new Bike("331", "Standard bike", "Asagi"),
+			new Bike("332", "Standard bike", "Kymco"),
+			new Bike("334", "Standard bike", "Avibus"),
+			new Bike("335", "Standard bike", "Kasawa"),
+			new Bike("336", "Standard bike", "ASAMA")
+	);
 	/**
      * Constructs a new DockInfoScreenHandler instance.
      * @param stage      The stage to display the screen on.
@@ -65,6 +85,13 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+
+		colBarcode.setCellValueFactory(new PropertyValueFactory<Bike, String>("bikeCode"));
+		colType.setCellValueFactory(new PropertyValueFactory<Bike, String>("type"));
+		colBrand.setCellValueFactory(new PropertyValueFactory<Bike, String>("brand"));
+		tvBikelist.setItems(list);
+		
+		
 		try {
 			setController(new RentBikeController(new BikeService(new BikeDAL())));
 		} catch (SQLException e) {
@@ -85,7 +112,7 @@ public class DockInfoScreenHandler extends BaseScreenHandler implements Initiali
 				e.printStackTrace();
 			}
 		});
-
+		
 	}
 
 	public void enterBarcodeHandle(String barcode) throws SQLException {

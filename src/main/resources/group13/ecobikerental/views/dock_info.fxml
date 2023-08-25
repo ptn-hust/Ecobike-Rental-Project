@@ -45,7 +45,7 @@
                </font>
             </Label>
          </children></Pane>
-      <VBox alignment="CENTER_LEFT" layoutX="75.0" layoutY="205.0" prefHeight="445.0" prefWidth="448.0">
+      <VBox alignment="CENTER_LEFT" layoutX="96.0" layoutY="201.0" prefHeight="248.0" prefWidth="448.0">
          <children>
             <Label fx:id="lbName" prefHeight="50.0" prefWidth="455.0" style="-fx-background-radius: 5;" text="BACH KHOA DOCK" textFill="#50892f">
                <font>
@@ -94,31 +94,17 @@
                   </Label>
                </children>
             </HBox>
-            <ImageView fx:id="imgDock" fitHeight="236.0" fitWidth="400.0" focusTraversable="true" pickOnBounds="true" smooth="false">
-               <image>
-                  <Image url="@../../../../../../assets/images/dock2.jpg" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-               <effect>
-                  <DropShadow />
-               </effect>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-            </ImageView>
          </children>
       </VBox>
-      <Line endX="-153.13336181640625" endY="367.13330078125" layoutX="702.0" layoutY="309.0" startX="-153.13336181640625" startY="-104.39999389648438" />
-      <TableView fx:id="tvDockList" layoutX="592.0" layoutY="208.0" prefHeight="325.0" prefWidth="540.0" stylesheets="@styles/home.css">
+      <Line endX="-153.13336181640625" endY="179.0" layoutX="744.0" layoutY="303.0" startX="-153.13336181640625" startY="-59.933349609375" />
+      <TableView fx:id="tvBikelist" layoutX="616.0" layoutY="177.0" opacity="0.0" prefHeight="38.0" prefWidth="530.0" stylesheets="@styles/home.css">
          <columns>
             <TableColumn fx:id="colBarcode" prefWidth="132.0" text="Barcode" />
             <TableColumn fx:id="colType" prefWidth="231.2000732421875" text="Type" />
             <TableColumn fx:id="colBrand" prefWidth="175.99993896484375" text="Brand" />
          </columns>
       </TableView>
-      <VBox layoutX="592.0" layoutY="568.0" prefHeight="110.0" prefWidth="539.0">
+      <VBox layoutX="320.0" layoutY="541.0" prefHeight="110.0" prefWidth="539.0">
          <children>
             <HBox prefHeight="40.0" spacing="40.0">
                <children>
@@ -146,22 +132,30 @@
                   </Button>
                </children>
             </HBox>
-            <Pane prefHeight="79.0" prefWidth="539.0">
-               <children>
-                  <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="button-red" stylesheets="@styles/home.css" text="Back" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="25.0" />
-               </VBox.margin>
-            </Pane>
          </children>
       </VBox>
+      <ImageView fx:id="imgDock" fitHeight="236.0" fitWidth="400.0" focusTraversable="true" layoutX="653.0" layoutY="245.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../../../../../../assets/images/dock2.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Pane layoutX="315.0" layoutY="613.0" prefHeight="46.0" prefWidth="351.0">
+         <children>
+            <Button fx:id="btnBack" alignment="CENTER" contentDisplay="CENTER" layoutX="227.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" styleClass="button-red" stylesheets="@styles/home.css" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
