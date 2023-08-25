@@ -58,7 +58,7 @@ public class Bike {
 	 * @param baseFee  The base rental fee of the bike.
 	 * @param extraFee The extra rental fee of the bike.
 	 */
-	public Bike(String bikeCode, String type, String dockName, int deposit, int baseFee, int extraFee) {
+	public Bike(String bikeCode, String type, String dockName, String brand, int deposit, int baseFee, int extraFee) {
 		super();
 		this.bikeCode = bikeCode;
 		this.type = type;
@@ -66,6 +66,13 @@ public class Bike {
 		this.deposit = deposit;
 		this.baseFee = baseFee;
 		this.extraFee = extraFee;
+		this.brand = brand;
+	}
+	
+	public Bike (String bikeCode, String type, String brand) {
+		this.bikeCode = bikeCode;
+		this.type = type;
+		this.brand = brand;
 	}
 
 	/**
@@ -195,19 +202,19 @@ public class Bike {
 	public void setDockId(int dockId) {
 		this.dockId = dockId;
 	}
+	
+	/**
+	 * @param brand the brand to set
+	 */
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
 	/**
 	 * @return the brand
 	 */
 	public String getBrand() {
 		return brand;
-	}
-
-	/**
-	 * @param brand the brand to set
-	 */
-	public void setBrand(String brand) {
-		this.brand = brand;
 	}
 
 	/**
