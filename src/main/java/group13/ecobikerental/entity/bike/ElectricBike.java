@@ -4,15 +4,6 @@ package group13.ecobikerental.entity.bike;
  * Entity class for ElectricBike, which is a type of Bike.
  */
 public class ElectricBike extends Bike {
-	@Override
-	public String toString() {
-		return "ElectricBike [hbLicensePlate=" + licensePlate + ", pin=" + pin + ", getType()=" + getType()
-				+ ", getBarcode()=" + getBikecode() + ", getDockName()=" + getDockName() + ", getDeposit()="
-				+ getDeposit() + ", getBikeCode()=" + getBikeCode() + ", toString()=" + super.toString()
-				+ ", getBikeId()=" + getBikeId() + ", getIsBeingUsed()=" + getIsBeingUsed() + ", getBaseFee()="
-				+ getBaseFee() + ", getExtraFee()=" + getExtraFee() + ", getDockId()=" + getDockId() + "]";
-	}
-
 	private String licensePlate;
 	private int pin;
 
@@ -47,6 +38,14 @@ public class ElectricBike extends Bike {
 
 	public void setPin(int pin) {
 		this.pin = pin;
+	}
+	@Override
+	public String toString() {
+		return "ElectricBike [hbLicensePlate=" + licensePlate + ", pin=" + pin + ", getType()=" + getType()
+				+ ", getBarcode()=" + getBikecode() + ", getDockName()=" + getDockName() + ", getDeposit()="
+				+ getDeposit() + ", getBikeCode()=" + getBikeCode() + ", toString()=" + super.toString()
+				+ ", getBikeId()=" + getBikeId() + ", getIsBeingUsed()=" + getIsBeingUsed() + ", getBaseFee()="
+				+ getBaseFee() + ", getExtraFee()=" + getExtraFee() + ", getDockId()=" + getDockId() + "]";
 	}
 
 	@Override
