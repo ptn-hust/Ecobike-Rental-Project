@@ -6,7 +6,7 @@ public class Configs {
 	public static final String PAY_TRANSACTION_URL = "http://localhost:3000/pay";
 	public static final String REFUND_TRANSACTION_URL = "http://localhost:3000/refund";
 
-	public static final String DB_NAME = "ecobikerental2";
+	public static final String DB_NAME = "ecobikerental2hvp";
 
 	public static final String DB_USERNAME = "nhiliti";
 	public static final String DB_PASSWORD = "920203";

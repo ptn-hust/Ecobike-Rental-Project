@@ -14,7 +14,10 @@ import group13.ecobikerental.entity.payment.transaction.Transaction;
 import group13.ecobikerental.exception.PaymentException;
 import group13.ecobikerental.exception.UnrecognizedException;
 import group13.ecobikerental.service.bike.BikeService;
+import group13.ecobikerental.service.bike.IBikeService;
 import group13.ecobikerental.service.creditcard.CreditCardService;
+import group13.ecobikerental.service.creditcard.ICreditCardService;
+import group13.ecobikerental.service.invoice.IInvoiceService;
 import group13.ecobikerental.service.invoice.InvoiceService;
 import group13.ecobikerental.subsystem.InterbankInterface;
 
@@ -23,9 +26,9 @@ import group13.ecobikerental.subsystem.InterbankInterface;
  */
 public class PaymentController extends BaseController {
 	private InterbankInterface interbank;
-	private CreditCardService creditCardServiceInstance;
-	private InvoiceService invoiceServiceInstance;
-	private BikeService bikeServiceInstance;
+	private ICreditCardService creditCardServiceInstance;
+	private IInvoiceService invoiceServiceInstance;
+	private IBikeService bikeServiceInstance;
 
 	public PaymentController(InterbankInterface interbank, CreditCardService creditCardServiceInstance,
 			InvoiceService invoiceServiceInstance, BikeService bikeServiceInstance) throws SQLException {

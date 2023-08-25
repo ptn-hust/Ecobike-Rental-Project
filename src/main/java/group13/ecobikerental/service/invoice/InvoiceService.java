@@ -1,6 +1,8 @@
 package group13.ecobikerental.service.invoice;
 
+import group13.ecobikerental.DAL.invoice.IInvoiceDAL;
 import group13.ecobikerental.DAL.invoice.InvoiceDAL;
+import group13.ecobikerental.DAL.transaction.ITransactionDAL;
 import group13.ecobikerental.DAL.transaction.TransactionDAL;
 import group13.ecobikerental.entity.bike.Bike;
 import group13.ecobikerental.entity.invoice.Invoice;
@@ -12,8 +14,8 @@ import group13.ecobikerental.entity.payment.transaction.Transaction;
  * Business Logic class to calculate rental fees for bikes.
  */
 public class InvoiceService implements IInvoiceService{
-	private InvoiceDAL invoiceDAL;
-	private TransactionDAL transactionDAL;
+	private IInvoiceDAL invoiceDAL;
+	private ITransactionDAL transactionDAL;
 	
 	public InvoiceService() {
 		this.invoiceDAL = new InvoiceDAL();
