@@ -17,12 +17,12 @@ public class ElectricBike extends Bike {
 		this.pin = pin;
 	}
 
-	public ElectricBike(String bikecode, String type, String dockName, int deposit, int baseFee, int extraFee,
-			String licensePlate, int pin) {
-		super(bikecode, type, dockName, deposit, baseFee, extraFee);
-		this.licensePlate = licensePlate;
-		this.pin = pin;
-	}
+//	public ElectricBike(String bikecode, String type, String dockName, int deposit, int baseFee, int extraFee,
+//			String licensePlate, int pin) {
+//		super(bikecode, type, dockName, licensePlate, deposit, baseFee, extraFee);
+//		this.licensePlate = licensePlate;
+//		this.pin = pin;
+//	}
 
 	public String getLicensePlate() {
 		return licensePlate;
