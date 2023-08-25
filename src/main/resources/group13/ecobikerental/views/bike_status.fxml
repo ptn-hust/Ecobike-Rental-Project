@@ -61,7 +61,7 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="265.0" text="111155555" textFill="#0d3b66">
+                        <Label fx:id="lbBarcode" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="265.0" text="11115555" textFill="#0d3b66">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -89,7 +89,7 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="189.0" text="Thong Nhat" textFill="#0d3b66">
+                        <Label fx:id="lbBrand" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="189.0" text="Thong Nhat" textFill="#0d3b66">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -103,7 +103,7 @@
                               <Font name="System Bold" size="26.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="189.0" text="29AA1681" textFill="#0d3b66">
+                        <Label fx:id="lbLicensePlate" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="189.0" text="29AA1681" textFill="#0d3b66">
                            <font>
                               <Font size="26.0" />
                            </font>
@@ -132,7 +132,7 @@
                            </HBox.margin>
                         </FontAwesomeIcon>
                         <FontAwesomeIcon fill="#54962a" glyphName="BOLT" size="2em" text="" />
-                        <ProgressBar fx:id="progressBarPin" prefHeight="25.0" prefWidth="600.0" progress="0.75" style="-fx-background-color: #7ac74f;" styleClass="progress-bar-green" stylesheets="@styles/home.css">
+                        <ProgressBar fx:id="progressBarPin" prefHeight="25.0" prefWidth="600.0" progress="1.0" style="-fx-background-color: #7ac74f;" styleClass="progress-bar-green" stylesheets="@styles/home.css">
                            <HBox.margin>
                               <Insets left="25.0" />
                            </HBox.margin>
